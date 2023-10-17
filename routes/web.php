@@ -51,7 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-permission', [RoleController::class, 'add_permission'])->name('permission.add');
     Route::post('/create-permission', [RoleController::class, 'create_permission'])->name('permission.create');
     Route::get('/give-permission', [RoleController::class, 'assign_permission'])->name('permission.assign');
-
+    Route::get('/give-permission/create', [RoleController::class, 'create_assign_permission'])->name('permission.assign.create');
+    
     //Notice
     Route::get('/notice/add', [TemporaryController::class,'notice_index'])->name('notice.index');
     Route::get('/notice/list', [TemporaryController::class,'notice_list'])->name('notice.list');

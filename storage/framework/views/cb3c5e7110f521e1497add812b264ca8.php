@@ -29,13 +29,32 @@
             <div class="card-body">
                 <form action="" method="POST">
                     <?php echo csrf_field(); ?>
-                <div class="mb-3">
-                    <label for="role">Role Name</label>
-                    <input type="text" name="role_name" required class="form-control" placeholder="Super-Admin" id="role">
-                </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label text-primary">Select User<span
+                                class="required">*</span></label>
+                        <select id="select-user" name="user_id">
+                            <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <option>No User Found</option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-primary">Select Roles<span class="required">*</span></label>
+                        <select id="select-role" name="role_id">
+                            <?php $__empty_1 = true; $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <option value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <option>No role Found</option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -47,17 +66,17 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Role Name</th>
-                            <th>Permissions</th>
-                            <th>Action</th>
+                            <th>User Name</th>
+                            <th>Roles</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($key+1); ?></td>
-                            <td><?php echo e($role->name); ?></td>
-                            <td><?php echo e($role->permissions); ?></td>
+                            <td><?php echo e($user->name); ?></td>
+                            <td><?php echo e($user->roles()->pluck('name')->implode(', ')); ?></td>
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
@@ -85,10 +104,10 @@
 
     <script>
         // Initialize Select2 for the "Select Employee" dropdown
-        $('#employee-select').select2();
+        $('#select-user').select2();
 
         // Initialize Select2 for the "Select Shift" dropdown
-        $('#shift-select').select2();
+        $('#select-role').select2();
     </script>
 <?php $__env->stopPush(); ?>
 

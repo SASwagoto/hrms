@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -37,6 +38,25 @@ class RoleController extends Controller
 
     }
 
+    public function add_permission()
+    {
+        $permissions = Permission::all();
+        return view('settings.role.add_permission', compact('permissions'));
+    }
+
+    public function create_permission(Request $request){
+        
+
+        Permission::create(['name' => $request->permission_name]);
+
+        return redirect()->route('permission.add');
+
+    }
+
+    public function create_assign_permission()
+    {
+        return view('settings.role.access');
+    }
     /**
      * Show the form for creating a new resource.
      */

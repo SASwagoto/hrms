@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    User Role Settings
+    Assign Role Permission
 @endsection
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets') }}/vendor/select2/css/select2.min.css">
@@ -10,7 +10,7 @@
 @endpush
 
 @section('header')
-    User Role Settings
+Assign Role Permission
 @endsection
 @section('content')
 <div class="row mb-3">
@@ -30,18 +30,6 @@
                 <form action="" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label text-primary">Select User<span
-                                class="required">*</span></label>
-                        <select id="select-user" name="user_id">
-                            @forelse ($users as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                            @empty
-                            <option>No User Found</option>
-                            @endforelse
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
                         <label class="form-label text-primary">Select Roles<span class="required">*</span></label>
                         <select id="select-role" name="role_id">
                             @forelse ($roles as $role)
@@ -52,6 +40,17 @@
                         </select>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label text-primary">Select Permissions
+                            <span class="required">*</span></label>
+                        <select class="multi-select" name="permission[]" multiple="multiple">
+                            @forelse ($permissions as $permission)
+                            <option value="{{$permission->id}}">{{$permission->name}}</option>
+                            @empty
+                            <option>No Permission Found</option>
+                            @endforelse
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
@@ -66,21 +65,23 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>User Name</th>
-                            <th>Roles</th>
+                            <th>Role Name</th>
+                            <th>Permissions</th>
                             <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $key => $user)
+                        @forelse ($roles as $key => $role)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->roles()->pluck('name')->implode(', ')}}</td>
+                            <td>{{$role->name}}</td>
+                            <td>{!! $role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<span class="badge badge-danger">Not Assigned</span>' !!}
+                            </td>
+                            {{-- <td>{{$role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<a href="#">Give Permission</a>' }}</td> --}}
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pencil"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-trash"></i></a></li>
                                 </ul>
                             </td>
                         </tr>

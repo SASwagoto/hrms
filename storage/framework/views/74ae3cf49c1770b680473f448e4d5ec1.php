@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title'); ?>
     Attendance
 <?php $__env->stopSection(); ?>

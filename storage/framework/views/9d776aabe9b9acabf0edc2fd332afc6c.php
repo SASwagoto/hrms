@@ -26,7 +26,7 @@ Add New Role
                     <?php echo csrf_field(); ?>
                 <div class="mb-3">
                     <label for="role">Role Name</label>
-                    <input type="text" name="role_name" required class="form-control" placeholder="Super-Admin" id="role">
+                    <input type="text" name="role_name" required class="form-control" placeholder="Enter Role Name" id="role">
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -44,7 +44,7 @@ Add New Role
                             <th>#</th>
                             <th>Role Name</th>
                             <th>Permissions</th>
-                            <th>Action</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,11 +52,14 @@ Add New Role
                         <tr>
                             <td><?php echo e($key+1); ?></td>
                             <td><?php echo e($role->name); ?></td>
-                            <td><?php echo e($role->permissions); ?></td>
+                            <td><?php echo $role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<span class="badge badge-danger">Not Assigned</span>'; ?>
+
+                            </td>
+                            
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pencil"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-trash"></i></a></li>
                                 </ul>
                             </td>
                         </tr>

@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    Add New Role
+    Add New Permission
 @endsection
 
 @section('header')
-Add New Role
+Add New Permission
 @endsection
 @section('content')
 <div class="row mb-3">
@@ -22,11 +22,11 @@ Add New Role
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body">
-                <form action="{{route('roles.create')}}" method="POST">
+                <form action="{{route('permission.create')}}" method="POST">
                     @csrf
                 <div class="mb-3">
-                    <label for="role">Role Name</label>
-                    <input type="text" name="role_name" required class="form-control" placeholder="Enter Role Name" id="role">
+                    <label for="role">Permission Name</label>
+                    <input type="text" name="permission_name" required class="form-control" placeholder="Enter Permission Name" id="permission">
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -48,13 +48,11 @@ Add New Role
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($roles as $key => $role)
+                        @forelse ($permissions as $key => $permission)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$role->name}}</td>
-                            <td>{!! $role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<span class="badge badge-danger">Not Assigned</span>' !!}
-                            </td>
-                            {{-- <td>{{$role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<a href="#">Give Permission</a>' }}</td> --}}
+                            <td>{{$permission->name}}</td>
+                            <td>{{$permission->created_at}}</td>
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
