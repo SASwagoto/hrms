@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TemporaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/teams', [TemporaryController::class,'teams_index'])->name('teams.index');
 
     //Settings
-    Route::get('/settings/site', [TemporaryController::class,'setting_index'])->name('settings.index');
+    Route::get('/settings/site', [SiteController::class,'index'])->name('settings.index');
 
     //User Role Setting
     Route::get('/user-roles', [RoleController::class, 'index'])->name('roles.index');
@@ -51,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-permission', [RoleController::class, 'add_permission'])->name('permission.add');
     Route::post('/create-permission', [RoleController::class, 'create_permission'])->name('permission.create');
     Route::get('/give-permission', [RoleController::class, 'assign_permission'])->name('permission.assign');
-    Route::get('/give-permission/create', [RoleController::class, 'create_assign_permission'])->name('permission.assign.create');
+    Route::post('/give-permission/create', [RoleController::class, 'create_assign_permission'])->name('permission.assign.create');
     
     //Notice
     Route::get('/notice/add', [TemporaryController::class,'notice_index'])->name('notice.index');

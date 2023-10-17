@@ -53,9 +53,22 @@ class RoleController extends Controller
 
     }
 
-    public function create_assign_permission()
+    public function assign_permission()
     {
-        return view('settings.role.access');
+        $roles = Role::all();
+        $permissions = Permission::all();
+        return view('settings.role.access', compact('roles', 'permissions'));
+    }
+
+    public function create_assign_permission(Request $request)
+    {
+        $role = Role::find($request->role_id);
+        $permissions = $request->permission;
+        foreach($permissions as $permission)
+        {
+            $role->givePermissionTo($permission);
+        }
+        return redirect()->route('permission.assign');
     }
     /**
      * Show the form for creating a new resource.

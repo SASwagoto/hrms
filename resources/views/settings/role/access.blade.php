@@ -27,7 +27,7 @@ Assign Role Permission
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{route('permission.assign.create')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label text-primary">Select Roles<span class="required">*</span></label>
