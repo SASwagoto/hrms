@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
+            $table->string('app_title')->default('Smart Technology');
+            $table->string('company_name')->nullable();
+            $table->string('company_email')->nullable();
+            $table->string('company_phone')->nullable();
+            $table->string('company_phone')->nullable();
+            $table->text('about_us')->nullable();
+            $table->string('fb_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('insta_url')->nullable();
+            $table->string('footer_title')->default('Smart Technology');
+            $table->string('footer_url')->default('#');
+            $table->string('app_logo')->nullable();
+            $table->string('fav_icon')->nullable();
             $table->timestamps();
         });
     }
