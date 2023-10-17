@@ -1,0 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+}
+
+.btn-brand{
+    background-color: #d6d6d6 !important;
+}
