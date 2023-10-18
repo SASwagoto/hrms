@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -38,7 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp.create');
 
     //Department
-    Route::get('/department', [TemporaryController::class,'dept_index'])->name('dep.index');
+    Route::get('/department', [DepartmentController::class,'index'])->name('dep.index');
+
+    //positions
     Route::get('/positions', [TemporaryController::class,'position_index'])->name('pos.index');
     Route::get('/teams', [TemporaryController::class,'teams_index'])->name('teams.index');
 

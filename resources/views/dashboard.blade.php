@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-   Dashboard 
+   {{$siteInfo->app_title}}
 @endsection
 @section('content')
     <h1>Hello</h1>

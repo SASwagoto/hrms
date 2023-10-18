@@ -1,9 +1,9 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     Site Setting
-@endsection
-@push('css')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
 <style>
     .ImageView img {
         width: 100px;
@@ -13,15 +13,15 @@
         margin: 10px
     }
 </style>
-@endpush
-@section('header')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('header'); ?>
    Site Setting
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-lg-12">
-        <form action="{{route('settings.update', $data->id)}}" id="siteForm" method="post">
-            @csrf
+        <form action="<?php echo e(route('settings.update', $data->id)); ?>" id="siteForm" method="post">
+            <?php echo csrf_field(); ?>
             <div class="card">
                 <div class="card-header">
                     <h5>General Settings</h5>
@@ -31,23 +31,23 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="appTitle">App Title</label>
-                                <input type="text" name="app_title" id="" class="form-control" value="{{$data->app_title}}">
+                                <input type="text" name="app_title" id="" class="form-control" value="<?php echo e($data->app_title); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Company Name</label>
-                                <input type="text" name="company_name" id="" class="form-control" value="{{$data->company_name}}">
+                                <input type="text" name="company_name" id="" class="form-control" value="<?php echo e($data->company_name); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Company Email</label>
-                                <input type="email" name="company_email" id="" class="form-control" value="{{$data->company_email}}">
+                                <input type="email" name="company_email" id="" class="form-control" value="<?php echo e($data->company_email); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Company Phone</label>
-                                <input type="text" name="company_phone" id="" class="form-control" value="{{$data->company_phone}}">
+                                <input type="text" name="company_phone" id="" class="form-control" value="<?php echo e($data->company_phone); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Footer Title</label>
-                                <input type="text" name="footer_title" id="" class="form-control" value="{{$data->footer_title}}">
+                                <input type="text" name="footer_title" id="" class="form-control" value="<?php echo e($data->footer_title); ?>">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -56,7 +56,7 @@
                                     <div class="mb-3">
                                         <label for="siteLogo">Site Logo</label>
                                         <div class="ImageView">
-                                            <img id="Logo_preview" src="{{ asset('assets') }}/images/logo.png"
+                                            <img id="Logo_preview" src="<?php echo e(asset('assets')); ?>/images/logo.png"
                                                 alt="">
                                         </div>
                                         <input type="file"
@@ -68,7 +68,7 @@
                                     <div class="mb-3">
                                         <label for="siteLogo">Fav Icon</label>
                                         <div class="ImageView">
-                                            <img id="fav_icon_preview" src="{{ asset('assets') }}/images/logo.png"
+                                            <img id="fav_icon_preview" src="<?php echo e(asset('assets')); ?>/images/logo.png"
                                                 alt="">
                                         </div>
                                         <input type="file"
@@ -79,11 +79,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">About us</label>
-                                <textarea rows="4" name="about_us" id="" class="form-control">{{$data->about_us}}</textarea>
+                                <textarea rows="4" name="about_us" id="" class="form-control"><?php echo e($data->about_us); ?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Footer Url</label>
-                                <input type="text" name="footer_url" id="" class="form-control url-input" value="{{$data->footer_url}}">
+                                <input type="text" name="footer_url" id="" class="form-control url-input" value="<?php echo e($data->footer_url); ?>">
                             </div>
                         </div>
                     </div>
@@ -99,21 +99,21 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="appTitle">Facebook Profile URL</label>
-                                <input type="text" name="fb_url" id="" class="form-control url-input" value="{{$data->fb_url}}">
+                                <input type="text" name="fb_url" id="" class="form-control url-input" value="<?php echo e($data->fb_url); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Linkedin Profile URL</label>
-                                <input type="text" name="linkedin_url" id="" class="form-control url-input" value="{{$data->twitter_url}}">
+                                <input type="text" name="linkedin_url" id="" class="form-control url-input" value="<?php echo e($data->twitter_url); ?>">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="appTitle">Twitter Profile URL</label>
-                                <input type="text" name="twitter_url" id="" class="form-control url-input" value="{{$data->linkedin_url}}">
+                                <input type="text" name="twitter_url" id="" class="form-control url-input" value="<?php echo e($data->linkedin_url); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="appTitle">Intagram Profile URL</label>
-                                <input type="text" name="insta_url" id="" class="form-control url-input" value="{{$data->insta_url}}">
+                                <input type="text" name="insta_url" id="" class="form-control url-input" value="<?php echo e($data->insta_url); ?>">
                             </div>
                         </div>
                     </div>
@@ -125,9 +125,9 @@
         </form>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('js')
+<?php $__env->startPush('js'); ?>
 <script>
     $(document).ready(function () {
         $('#submitButton').click(function () {
@@ -146,4 +146,6 @@
         });
     });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/settings/site.blade.php ENDPATH**/ ?>
