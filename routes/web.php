@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     //Settings
     Route::get('/settings/site', [SiteController::class,'index'])->name('settings.index');
+    Route::post('/settings/site/{site}', [SiteController::class,'update'])->name('settings.update');
 
     //User Role Setting
     Route::get('/user-roles', [RoleController::class, 'index'])->name('roles.index');

@@ -12,7 +12,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('settings.site');
+        $data = Site::firstOrFail();
+        return view('settings.site', compact('data'));
     }
 
     /**
@@ -52,7 +53,8 @@ class SiteController extends Controller
      */
     public function update(Request $request, Site $site)
     {
-        //
+        $site->update($request->all());
+        return redirect()->route('settings.index');
     }
 
     /**
