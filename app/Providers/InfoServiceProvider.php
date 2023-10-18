@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Site;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class InfoServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class InfoServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+            $siteInfo = Site::firstOrFail();
+            $view->with('siteInfo', $siteInfo);
+        });
     }
 }
