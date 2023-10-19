@@ -4244,6 +4244,7 @@ Stack trace:
 #9 C:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #10 {main}
 "} 
+<<<<<<< Updated upstream
 [2023-10-19 09:19:33] local.ERROR: Add [dept_id] to fillable property to allow mass assignment on [App\Models\Position]. {"userId":1,"exception":"[object] (Illuminate\\Database\\Eloquent\\MassAssignmentException(code: 0): Add [dept_id] to fillable property to allow mass assignment on [App\\Models\\Position]. at E:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:524)
 [stacktrace]
 #0 E:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(613): Illuminate\\Database\\Eloquent\\Model->fill(Array)
@@ -9876,4 +9877,33 @@ Stack trace:
 #53 E:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 E:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
+=======
+[2023-10-19 09:01:18] local.ERROR: syntax error, unexpected token "<<", expecting ")" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting \")\" at C:\\laragon\\www\\hrms\\bootstrap\\cache\\packages.php:51)
+[stacktrace]
+#0 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#1 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(111): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\laragon\\\\www\\\\...')
+#2 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(90): Illuminate\\Foundation\\PackageManifest->getManifest()
+#3 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(79): Illuminate\\Foundation\\PackageManifest->config('aliases')
+#4 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#5 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap(Object(Illuminate\\Foundation\\Application))
+#6 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#7 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#8 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#9 C:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#10 {main}
+"} 
+[2023-10-19 09:01:21] local.ERROR: syntax error, unexpected token "<<", expecting ")" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting \")\" at C:\\laragon\\www\\hrms\\bootstrap\\cache\\packages.php:51)
+[stacktrace]
+#0 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#1 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(111): Illuminate\\Filesystem\\Filesystem->getRequire('C:\\\\laragon\\\\www\\\\...')
+#2 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(90): Illuminate\\Foundation\\PackageManifest->getManifest()
+#3 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(79): Illuminate\\Foundation\\PackageManifest->config('aliases')
+#4 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#5 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap(Object(Illuminate\\Foundation\\Application))
+#6 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#7 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#8 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#9 C:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#10 {main}
+>>>>>>> Stashed changes
 "} 

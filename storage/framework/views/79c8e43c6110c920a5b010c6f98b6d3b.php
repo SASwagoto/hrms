@@ -30,8 +30,18 @@
                   </div>
                 </div>
               </div>
+  
+      <!--**********************************
+          Modal
+      ***********************************-->
 
-              <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!--**********************************
+		Modal
+	***********************************-->
+	
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-center">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -57,12 +67,6 @@
                   </div>
                 </div>
               </div>
-
-              <script>
-                $(document).ready(function() {
-                    $('#team_select').select2();
-                });
-            </script>
   
       <!--**********************************
           Modal

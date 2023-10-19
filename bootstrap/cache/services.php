@@ -30,16 +30,6 @@
     26 => 'Carbon\\Laravel\\ServiceProvider',
     27 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     28 => 'Termwind\\Laravel\\TermwindServiceProvider',
-<<<<<<< HEAD
-    29 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    30 => 'Spatie\\Permission\\PermissionServiceProvider',
-    31 => 'App\\Providers\\AppServiceProvider',
-    32 => 'App\\Providers\\AuthServiceProvider',
-    33 => 'App\\Providers\\EventServiceProvider',
-    34 => 'App\\Providers\\RouteServiceProvider',
-    35 => 'Spatie\\Permission\\PermissionServiceProvider',
-    36 => 'App\\Providers\\InfoServiceProvider',
-=======
     29 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
     30 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     31 => 'Spatie\\Permission\\PermissionServiceProvider',
@@ -50,7 +40,6 @@
     36 => 'Spatie\\Permission\\PermissionServiceProvider',
     37 => 'App\\Providers\\InfoServiceProvider',
     38 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
->>>>>>> 0b528633a875198900fc6405dca1336f12371ea1
   ),
   'eager' => 
   array (
@@ -68,16 +57,6 @@
     11 => 'Carbon\\Laravel\\ServiceProvider',
     12 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     13 => 'Termwind\\Laravel\\TermwindServiceProvider',
-<<<<<<< HEAD
-    14 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    15 => 'Spatie\\Permission\\PermissionServiceProvider',
-    16 => 'App\\Providers\\AppServiceProvider',
-    17 => 'App\\Providers\\AuthServiceProvider',
-    18 => 'App\\Providers\\EventServiceProvider',
-    19 => 'App\\Providers\\RouteServiceProvider',
-    20 => 'Spatie\\Permission\\PermissionServiceProvider',
-    21 => 'App\\Providers\\InfoServiceProvider',
-=======
     14 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
     15 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     16 => 'Spatie\\Permission\\PermissionServiceProvider',
@@ -88,7 +67,6 @@
     21 => 'Spatie\\Permission\\PermissionServiceProvider',
     22 => 'App\\Providers\\InfoServiceProvider',
     23 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
->>>>>>> 0b528633a875198900fc6405dca1336f12371ea1
   ),
   'deferred' => 
   array (

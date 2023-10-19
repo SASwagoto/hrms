@@ -97,7 +97,7 @@
 		@include('layouts.partials.footer')
 
 	</div>
-
+    @include('layouts.partials.modal')
 	
     <!--**********************************
         Main wrapper end
