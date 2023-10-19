@@ -97,7 +97,7 @@
 		<?php echo $__env->make('layouts.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 	</div>
-
+    <?php echo $__env->make('layouts.partials.modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	
     <!--**********************************
         Main wrapper end
@@ -121,12 +121,5 @@
             $('#main-wrapper').removeClass('active');
         });
     </script>
-
-<script>
-    // Initialize Select2 for the "Select Employee" dropdown
-    $('#team_select').select2();
-</script>
-	
-	
 </body>
 </html><?php /**PATH E:\laragon\www\hrms\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

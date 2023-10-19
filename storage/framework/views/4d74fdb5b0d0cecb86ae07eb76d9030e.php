@@ -53,3 +53,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH E:\laragon\www\hrms\resources\views/layouts/partials/modal.blade.php ENDPATH**/ ?>

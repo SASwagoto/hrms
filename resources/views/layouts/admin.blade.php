@@ -121,12 +121,5 @@
             $('#main-wrapper').removeClass('active');
         });
     </script>
-
-<script>
-    // Initialize Select2 for the "Select Employee" dropdown
-    $('#team_select').select2();
-</script>
-	
-	
 </body>
 </html>
