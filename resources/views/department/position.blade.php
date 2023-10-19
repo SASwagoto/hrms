@@ -20,17 +20,21 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <form action="" method="POST">
+                    <form action="{{route('pos.store')}}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
                             <select id="department-select" class="form-control" name="dep_id">
-                                <option value="IT">IT</option>
-                                <option value="MA">Marketing</option>
+                                @forelse ($depts as $dept)
+                                <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                @empty
+                                <option>No Department Found</option>
+                                @endforelse
                             </select>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="Position" class="form-control input-default "
+                            <input type="text" name="pos_name" class="form-control input-default "
                                 placeholder="Enter Position Name">
                         </div>
                         <div class="mb-3">

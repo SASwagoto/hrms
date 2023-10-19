@@ -20,17 +20,21 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <form action="" method="POST">
+                    <form action="<?php echo e(route('pos.store')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
                             <select id="department-select" class="form-control" name="dep_id">
-                                <option value="IT">IT</option>
-                                <option value="MA">Marketing</option>
+                                <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <option>No Department Found</option>
+                                <?php endif; ?>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="Position" class="form-control input-default "
+                            <input type="text" name="pos_name" class="form-control input-default "
                                 placeholder="Enter Position Name">
                         </div>
                         <div class="mb-3">

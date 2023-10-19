@@ -9,10 +9,6 @@ use Spatie\Permission\Models\Role;
 
 class TemporaryController extends Controller
 {
-    public function position_index()
-    {
-        return view('department.position');
-    }
 
     public function teams_index()
     {
