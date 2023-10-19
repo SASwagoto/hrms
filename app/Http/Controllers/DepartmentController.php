@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
-use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DepartmentController extends Controller
 {
@@ -30,15 +31,22 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $validate = Validator::make($request->all(), [
             'dept_name'=> 'unique:departments',
         ]);
 
-        if ($validate) {
-            Toastr::success('successfully added', 'success');
-            return redirect()->back()->with('success');
+        if ($validate->fails()) {
+            Alert::error( $request->dept_name, 'Already Added!');
+            return redirect()->back();
         }
-        
+
+        if ($validate) {
+            Department::create([
+                'dept_name' => $request->dept_name,
+            ]);
+            Alert::success( $request->dept_name, 'successfull Added');
+            return redirect()->back();
+        }
     }
 
     /**
