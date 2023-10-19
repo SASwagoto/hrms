@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -29,7 +30,15 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'dept_name'=> 'unique:departments',
+        ]);
+
+        if ($validate) {
+            Toastr::success('successfully added', 'success');
+            return redirect()->back()->with('success');
+        }
+        
     }
 
     /**

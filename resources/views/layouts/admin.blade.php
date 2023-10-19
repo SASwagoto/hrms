@@ -92,6 +92,7 @@
 
 	</div>
 
+    {!! Toastr::message() !!}
 	
     <!--**********************************
         Main wrapper end

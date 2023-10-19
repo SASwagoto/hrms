@@ -24,7 +24,7 @@
                 <span class="nav-text">Department</span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="{{route('dep.index')}}">Departments</a></li>
+                <li><a href="{{route('dept.index')}}">Departments</a></li>
                 <li><a href="{{route('pos.index')}}">Positions</a></li>
                 <li><a href="{{route('teams.index')}}">Teams</a></li>
             </ul>

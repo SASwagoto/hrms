@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp.create');
 
     //Department
-    Route::get('/department', [DepartmentController::class,'index'])->name('dep.index');
+    Route::get('/department', [DepartmentController::class,'index'])->name('dept.index');
+    Route::post('/department/store', [DepartmentController::class,'store'])->name('dept.store');
 
     //positions
     Route::get('/positions', [TemporaryController::class,'position_index'])->name('pos.index');

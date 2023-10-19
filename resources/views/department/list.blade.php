@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="" method="POST">
+                        <form action="{{route('dept.store')}}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <input type="text" required name="dept_name" class="form-control input-default"
