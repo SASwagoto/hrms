@@ -1,13 +1,13 @@
-@extends('layouts.admin')
 
-@section('title')
-    Department
-@endsection
 
-@section('header')
+<?php $__env->startSection('title'); ?>
     Department
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('header'); ?>
+    Department
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-xl-5 col-lg-5">
             <div class="card">
@@ -16,8 +16,8 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{route('dept.store')}}" method="POST">
-                            @csrf
+                        <form action="<?php echo e(route('dept.store')); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <div class="mb-3">
                                 <input type="text" required name="dept_name" class="form-control input-default"
                                     placeholder="Enter Department Name">
@@ -53,12 +53,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($departments as $key => $dept)
+                                        <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <tr>
-                                                <th>{{ $key + 1 }}</th>
-                                                <td>{{ $dept->dept_name }}</td>
+                                                <th><?php echo e($key + 1); ?></th>
+                                                <td><?php echo e($dept->dept_name); ?></td>
                                                 <td><span
-                                                        class="badge {{ $dept->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $dept->isActive ? 'Active' : 'Inactive' }}</span>
+                                                        class="badge <?php echo e($dept->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($dept->isActive ? 'Active' : 'Inactive'); ?></span>
                                                 </td>
                                                 <td>
                                                     <ul class="action_btn">
@@ -70,11 +70,11 @@
                                                     </ul>
                                                 </td>
                                             </tr>
-                                        @empty
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                         <tr>
                                             <td colspan="4" class="text-center">No Department Found</td>
                                         </tr>
-                                        @endforelse
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -83,8 +83,6 @@
                 </div>
             </div>
         </div>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
-    @push('js')
-        
-    @endpush
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/list.blade.php ENDPATH**/ ?>

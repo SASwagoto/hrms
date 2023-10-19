@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 	<!-- Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Page Title Here -->
-	<title>@yield('title') || {{ config('app.name', 'Laravel') }}</title>
+	<title><?php echo $__env->yieldContent('title'); ?> || <?php echo e(config('app.name', 'Laravel')); ?></title>
 
 <!-- FAVICONS ICON -->
-	<link rel="shortcut icon" type="image/png" href="{{asset('assets')}}/images/favicon.png" >
-	<link href="{{asset('assets')}}/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
-    @stack('css')
+	<link rel="shortcut icon" type="image/png" href="<?php echo e(asset('assets')); ?>/images/favicon.png" >
+	<link href="<?php echo e(asset('assets')); ?>/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+    <?php echo $__env->yieldPushContent('css'); ?>
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link href="{{asset('assets')}}/css/style.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/css/style.css" rel="stylesheet">
     <style>
         ul.action_btn{
             float: right;
@@ -28,16 +28,13 @@
         .content-body{
             margin-bottom: 40px !important;
         }
-        .ov_auto{
-            overflow: auto !important;
-        }
         .footer{
             position: fixed;
             bottom: 0px;
             width: 100%;
         }
     </style>
-	<link rel="stylesheet" href="{{asset('assets')}}/css/custom.css">
+	<link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/css/custom.css">
 </head>
 <body>
 
@@ -49,7 +46,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        @include('layouts.partials.header')
+        <?php echo $__env->make('layouts.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -57,14 +54,14 @@
 		<!--**********************************
             Chat box start
         ***********************************-->
-		@include('layouts.partials.chatbox')
+		<?php echo $__env->make('layouts.partials.chatbox', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<!--**********************************
             Chat box End
         ***********************************-->
 		<!--**********************************
             Header start
         ***********************************-->
-		@include('layouts.partials.topbar')
+		<?php echo $__env->make('layouts.partials.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 			<!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -72,7 +69,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        @include('layouts.partials.sidebar')
+        <?php echo $__env->make('layouts.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -82,7 +79,7 @@
         ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
-                @yield('content')
+                <?php echo $__env->yieldContent('content'); ?>
             </div>
         </div>
         <!--**********************************
@@ -91,10 +88,11 @@
 		<!--**********************************
 			Footer start
 		***********************************-->
-		@include('layouts.partials.footer')
+		<?php echo $__env->make('layouts.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 	</div>
 
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	
     <!--**********************************
         Main wrapper end
@@ -104,10 +102,10 @@
     ***********************************-->
     
     <!-- Required vendors -->
-    <script src="{{asset('assets')}}/vendor/global/global.min.js"></script>
-    @stack('js')
-    <script src="{{asset('assets')}}/js/custom.min.js"></script>
-	<script src="{{asset('assets')}}/js/dlabnav-init.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/global/global.min.js"></script>
+    <?php echo $__env->yieldPushContent('js'); ?>
+    <script src="<?php echo e(asset('assets')); ?>/js/custom.min.js"></script>
+	<script src="<?php echo e(asset('assets')); ?>/js/dlabnav-init.js"></script>
     
 
     <script>
@@ -116,14 +114,9 @@
         });
         $('.chatbox-close').on('click', function(){
             $('#main-wrapper').removeClass('active');
-        });
+        })
     </script>
-
-<script>
-    // Initialize Select2 for the "Select Employee" dropdown
-    $('#team_select').select2();
-</script>
 	
 	
 </body>
-</html>
+</html><?php /**PATH E:\laragon\www\hrms\resources\views/layouts/admin.blade.php ENDPATH**/ ?>
