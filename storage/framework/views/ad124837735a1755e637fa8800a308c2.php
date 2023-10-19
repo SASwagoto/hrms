@@ -28,6 +28,9 @@
         .content-body{
             margin-bottom: 40px !important;
         }
+        .ov_auto{
+            overflow: auto !important;
+        }
         .footer{
             position: fixed;
             bottom: 0px;
@@ -95,7 +98,6 @@
 
 	</div>
 
-    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	
     <!--**********************************
         Main wrapper end
@@ -117,8 +119,13 @@
         });
         $('.chatbox-close').on('click', function(){
             $('#main-wrapper').removeClass('active');
-        })
+        });
     </script>
+
+<script>
+    // Initialize Select2 for the "Select Employee" dropdown
+    $('#team_select').select2();
+</script>
 	
 	
 </body>

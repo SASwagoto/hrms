@@ -19,6 +19,7 @@
                         <form action="{{route('dept.store')}}" method="POST">
                             @csrf
                             <div class="mb-3">
+                                <label for="" class="form-label text-primary">Department Name <span class="required">*</span></label>
                                 <input type="text" required name="dept_name" class="form-control input-default"
                                     placeholder="Enter Department Name">
                             </div>

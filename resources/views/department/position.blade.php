@@ -34,6 +34,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label text-primary" for="">Position Name <span class="required">*</span></label>
                             <input type="text" name="pos_name" required class="form-control input-default "
                                 placeholder="Enter Position Name">
                         </div>

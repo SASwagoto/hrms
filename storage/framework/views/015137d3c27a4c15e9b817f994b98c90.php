@@ -142,4 +142,4 @@ shiftEndInput.addEventListener('input', calculateWorkingHours);
 
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\hrms\resources\views/attendance/shift.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/attendance/shift.blade.php ENDPATH**/ ?>
