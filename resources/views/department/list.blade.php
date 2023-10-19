@@ -86,5 +86,6 @@
     @endsection
 
     @push('js')
+    
         
     @endpush

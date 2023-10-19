@@ -4,7 +4,9 @@
     Position
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('css'); ?>
-    
+<link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/vendor/select2/css/select2.min.css">
+<link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="<?php echo e(asset('assets')); ?>/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('header'); ?>
    Position
@@ -19,6 +21,14 @@
             <div class="card-body">
                 <div class="basic-form">
                     <form action="" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label text-primary">Select Department<span
+                                    class="required">*</span></label>
+                            <select id="department-select" class="form-control" name="dep_id">
+                                <option value="IT">IT</option>
+                                <option value="MA">Marketing</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <input type="text" name="Position" class="form-control input-default "
                                 placeholder="Enter Position Name">
@@ -81,6 +91,13 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('js'); ?>
-    
+<script src="<?php echo e(asset('assets')); ?>/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/vendor/select2/js/select2.full.min.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/js/plugins-init/select2-init.js"></script>
+<script>
+    // Initialize Select2 for the "Select Employee" dropdown
+    $('#department-select').select2();
+</script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/position.blade.php ENDPATH**/ ?>
