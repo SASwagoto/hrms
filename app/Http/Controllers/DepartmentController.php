@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Position;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -44,7 +45,7 @@ class DepartmentController extends Controller
             Department::create([
                 'dept_name' => $request->dept_name,
             ]);
-            Alert::success( $request->dept_name, 'successfull Added');
+            Alert::success( $request->dept_name, 'Added Successfully');
             return redirect()->back();
         }
     }
@@ -52,20 +53,19 @@ class DepartmentController extends Controller
     public function pos_index()
     {
         $depts = Department::all();
-        return view('department.position', compact('depts'));
+        $positions = Position::all();
+        return view('department.position', compact('depts', 'positions'));
     }
 
 
     public function pos_store(Request $request)
     {
-        $validate = Validator::make($request->all(), [
-            'pos_name'=> 'required',
+        Position::create([
+            'position_name'=> $request->pos_name,
+            'dept_id' => $request->dept_id,
         ]);
-        if ($validate->fails()) {
-            Alert::error( $request->pos_name,'Invalid Input');
-            return redirect()->back();
-        }
-        //return view('department.position', compact('depts'));
+        Alert::success( $request->pos_name,'Added Successfully!');
+        return redirect()->back();
     }
 
     /**

@@ -33,6 +33,9 @@
             bottom: 0px;
             width: 100%;
         }
+        .dropdown.bootstrap-select.swal2-select{
+            display: none;
+        }
     </style>
 	<link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/css/custom.css">
 </head>

@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
-                            <select id="department-select" class="form-control" name="dep_id">
+                            <select id="department-select" class="form-control" name="dept_id">
                                 @forelse ($depts as $dept)
                                 <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
                                 @empty
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="pos_name" class="form-control input-default "
+                            <input type="text" name="pos_name" required class="form-control input-default "
                                 placeholder="Enter Position Name">
                         </div>
                         <div class="mb-3">
@@ -66,13 +66,16 @@
                                         <th>#</th>
                                         <th>Position</th>
                                         <th>Department</th>
+                                        <th>Status</th>
                                         <th style="text-align: end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($positions as $key => $pos)
                                     <tr>
-                                        <th>1</th>
-                                        <td>Admin & HR</td>
+                                        <th>{{$key+1}}</th>
+                                        <td>{{$pos->position_name}}</td>
+                                        <td>{{$pos->department->dept_name}}</td>
                                         <td><span class="badge badge-success light">Active</span>
                                         </td>
                                         <td>
@@ -83,7 +86,11 @@
                                                             style="color: #ff0000;"></i></a></li>
                                             </ul>
                                         </td>
-                                    </tr>
+                                    </tr> 
+                                    @empty
+                                        
+                                    @endforelse
+                                    
                                 </tbody>
                             </table>
                         </div>

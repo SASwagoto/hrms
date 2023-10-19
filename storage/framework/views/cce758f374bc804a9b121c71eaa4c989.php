@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
-                            <select id="department-select" class="form-control" name="dep_id">
+                            <select id="department-select" class="form-control" name="dept_id">
                                 <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="pos_name" class="form-control input-default "
+                            <input type="text" name="pos_name" required class="form-control input-default "
                                 placeholder="Enter Position Name">
                         </div>
                         <div class="mb-3">
@@ -66,13 +66,16 @@
                                         <th>#</th>
                                         <th>Position</th>
                                         <th>Department</th>
+                                        <th>Status</th>
                                         <th style="text-align: end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $__empty_1 = true; $__currentLoopData = $positions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $pos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
-                                        <th>1</th>
-                                        <td>Admin & HR</td>
+                                        <th><?php echo e($key+1); ?></th>
+                                        <td><?php echo e($pos->position_name); ?></td>
+                                        <td><?php echo e($pos->department->dept_name); ?></td>
                                         <td><span class="badge badge-success light">Active</span>
                                         </td>
                                         <td>
@@ -83,7 +86,11 @@
                                                             style="color: #ff0000;"></i></a></li>
                                             </ul>
                                         </td>
-                                    </tr>
+                                    </tr> 
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                        
+                                    <?php endif; ?>
+                                    
                                 </tbody>
                             </table>
                         </div>

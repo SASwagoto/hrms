@@ -85,4 +85,9 @@
         </div>
     <?php $__env->stopSection(); ?>
 
+    <?php $__env->startPush('js'); ?>
+    
+        
+    <?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/list.blade.php ENDPATH**/ ?>
