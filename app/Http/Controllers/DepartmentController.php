@@ -49,6 +49,25 @@ class DepartmentController extends Controller
         }
     }
 
+    public function pos_index()
+    {
+        $depts = Department::all();
+        return view('department.position', compact('depts'));
+    }
+
+
+    public function pos_store(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'pos_name'=> 'required',
+        ]);
+        if ($validate->fails()) {
+            Alert::error( $request->pos_name,'Invalid Input');
+            return redirect()->back();
+        }
+        //return view('department.position', compact('depts'));
+    }
+
     /**
      * Display the specified resource.
      */
