@@ -1,20 +1,20 @@
-@extends('layouts.admin')
-{{-- Title Section --}}
-@section('title')
+
+
+<?php $__env->startSection('title'); ?>
     Employee
-@endsection
-{{-- Extra CSS --}}
-@push('css')
-    <link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-@endpush
-{{-- Header --}}
-@section('header')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('css'); ?>
+    <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('header'); ?>
     Employee List
-@endsection
-{{-- Main Content --}}
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-xl-12">
             <div class="page-title flex-wrap">
@@ -36,7 +36,7 @@
                         <option value="2">Recent</option>
                     </select>
                     <!-- Button trigger modal -->
-                    <a href="{{ route('emp.create') }}" type="button" class="btn btn-primary" data-bs-toggle="modals"
+                    <a href="<?php echo e(route('emp.create')); ?>" type="button" class="btn btn-primary" data-bs-toggle="modals"
                         data-bs-target="#exampleModal">
                         + New Employee
                     </a>
@@ -74,7 +74,7 @@
                             </td>
                             <td>
                                 <div class="trans-list">
-                                    <img src="{{ asset('assets/') }}/images/trans/1.jpg" alt=""
+                                    <img src="<?php echo e(asset('assets/')); ?>/images/trans/1.jpg" alt=""
                                         class="avatar avatar-sm me-3">
                                     <h4>Samantha William</h4>
                                 </div>
@@ -142,7 +142,7 @@
                             </td>
                             <td>
                                 <div class="trans-list">
-                                    <img src="{{ asset('assets/') }}/images/trans/1.jpg" alt=""
+                                    <img src="<?php echo e(asset('assets/')); ?>/images/trans/1.jpg" alt=""
                                         class="avatar avatar-sm me-3">
                                     <h4>Imran Khan</h4>
                                 </div>
@@ -180,11 +180,11 @@
                                 </div>
                             </td>
                             <td>
-                                @php
+                                <?php
                                     $slug = 'abc';
-                                @endphp
+                                ?>
                                 <ul class="action_btn">
-                                    <li><a href="{{ route('employee.show', $slug) }}"><i
+                                    <li><a href="<?php echo e(route('employee.show', $slug)); ?>"><i
                                                 class="fa-solid fa-circle-info fa-beat" style="color: #12a561;"></i></a>
                                     </li>
                                     <li><a href="#"><i class="fa-solid fa-pen-to-square"
@@ -211,12 +211,14 @@
 
         
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-{{-- Extra JS --}}
-@push('js')
-    <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="{{ asset('assets') }}/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets') }}/js/plugins-init/datatables.init.js"></script>
-    <script src="{{ asset('assets') }}/vendor/wow-master/dist/wow.min.js"></script>
-@endpush
+
+<?php $__env->startPush('js'); ?>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/js/plugins-init/datatables.init.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/wow-master/dist/wow.min.js"></script>
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\hrms\resources\views/employee/list.blade.php ENDPATH**/ ?>
