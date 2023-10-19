@@ -18102,3 +18102,16 @@ Stack trace:
 #54 E:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
+[2023-10-19 18:20:56] local.ERROR: Class "RealRashid\SweetAlert\SweetAlertServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"RealRashid\\SweetAlert\\SweetAlertServiceProvider\" not found at C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:831)
+[stacktrace]
+#0 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(765): Illuminate\\Foundation\\Application->resolveProvider('RealRashid\\\\Swee...')
+#1 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('RealRashid\\\\Swee...')
+#2 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(745): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#7 C:\\laragon\\www\\hrms\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#8 C:\\laragon\\www\\hrms\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#9 {main}
+"} 
