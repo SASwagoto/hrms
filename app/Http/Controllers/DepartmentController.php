@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Position;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -52,7 +54,7 @@ class DepartmentController extends Controller
 
     public function pos_index()
     {
-        $depts = Department::all();
+        $depts = Department::active()->get();
         $positions = Position::all();
         return view('department.position', compact('depts', 'positions'));
     }
@@ -65,6 +67,20 @@ class DepartmentController extends Controller
             'dept_id' => $request->dept_id,
         ]);
         Alert::success( $request->pos_name,'Added Successfully!');
+        return redirect()->back();
+    }
+
+    public function team_index()
+    {
+        $depts = Department::active()->get();
+        $teams = Team::all();
+        return view('department.teams', compact('depts','teams'));
+    }
+
+    public function team_store(Request $request)
+    {
+        Team::create($request->all());
+        Alert::success( $request->team_name,'Added Successfully!');
         return redirect()->back();
     }
 

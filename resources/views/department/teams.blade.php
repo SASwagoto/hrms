@@ -20,14 +20,17 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <form action="" method="POST">
+                    <form action="{{route('team.store')}}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
-                            <select id="department-select" name="dep_id">
-                                <option value="IT">IT</option>
-                                <option value="MA">Marketing</option>
+                            <select id="department-select" name="dept_id">
+                                @forelse ($depts as $dept)
+                                <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                @empty
+                                <option>No Department Found</option>
+                                @endforelse
                             </select>
                         </div>
 
@@ -36,16 +39,6 @@
                             <input type="text" required name="team_name" class="form-control input-default"
                                 placeholder="Team Name">
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-primary">Select Team Leader<span class="required">*</span></label>
-                            <select id="leader-select" name="leader_id">
-                                <option value="IM">Imran</option>
-                                <option value="SH">Shawon</option>
-                                <option value="RI">Riyad</option>
-                            </select>
-                        </div>
-
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
@@ -71,19 +64,24 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Department Name</th>
                                         <th>Team Name</th>
-                                        <th>Team Leader</th>
+                                        <th>Department Name</th>
+                                        <th>Leader</th>
                                         <th>Status</th>
                                         <th style="text-align: end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($teams as $key => $team)
                                     <tr>
-                                        <th>1</th>
-                                        <td>IT</td>
-                                        <td>Team 1</td>
-                                        <td>Imran</td>
+                                        <th>{{$key+1}}</th>
+                                        <td>{{$team->team_name}}</td>
+                                        <td>{{$team->department->dept_name}}</td>
+                                        @if ($team->user)
+                                        <td>{{$team->user->name}}</td>
+                                        @else
+                                        <td>Not Assigned</td>
+                                        @endif
                                         <td><span class="badge badge-success light">
                                                 Active</span>
                                         </td>
@@ -96,7 +94,13 @@
                                                             style="color: #ff0000;"></i></a></li>
                                             </ul>
                                         </td>
-                                    </tr>
+                                    </tr> 
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center">No Team Found</td>
+                                        </tr>
+                                    @endforelse
+                                    
                                 </tbody>
                             </table>
                         </div>

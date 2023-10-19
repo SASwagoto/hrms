@@ -12,8 +12,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label text-primary">Select Team</label>
                             <select id="team_select" class="form-control" name="team_id">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
+                              @forelse ($teams as $team)
+                              <option value="{{$team->id}}">{{$team->team_name}}</option>
+                              @empty
+                              <option disabled>No Team Founds</option>
+                              @endforelse
                             </select>
                         </div>
                     </div>

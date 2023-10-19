@@ -45,7 +45,10 @@ Route::middleware('auth')->group(function () {
     //positions
     Route::get('/positions', [DepartmentController::class,'pos_index'])->name('pos.index');
     Route::post('/positions/store', [DepartmentController::class,'pos_store'])->name('pos.store');
-    Route::get('/teams', [TemporaryController::class,'teams_index'])->name('teams.index');
+
+    //teams
+    Route::get('/teams', [DepartmentController::class,'team_index'])->name('teams.index');
+    Route::post('/teams/store', [DepartmentController::class,'team_store'])->name('team.store');
 
     //Settings
     Route::get('/settings/site', [SiteController::class,'index'])->name('settings.index');

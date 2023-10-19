@@ -77,7 +77,8 @@
                                         <th><?php echo e($key+1); ?></th>
                                         <td><?php echo e($pos->position_name); ?></td>
                                         <td><?php echo e($pos->department->dept_name); ?></td>
-                                        <td><span class="badge badge-success light">Active</span>
+                                        <td><span
+                                            class="badge <?php echo e($pos->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($pos->isActive ? 'Active' : 'Inactive'); ?></span>
                                         </td>
                                         <td>
                                             <ul class="action_btn">

@@ -44,67 +44,30 @@
 </head>
 <body>
 
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
     <div id="main-wrapper" class="wallet-open show">
 	
-        <!--**********************************
-            Nav header start
-        ***********************************-->
+
         <?php echo $__env->make('layouts.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-		
-		<!--**********************************
-            Chat box start
-        ***********************************-->
+
 		<?php echo $__env->make('layouts.partials.chatbox', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-		<!--**********************************
-            Chat box End
-        ***********************************-->
-		<!--**********************************
-            Header start
-        ***********************************-->
+
 		<?php echo $__env->make('layouts.partials.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-			<!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
         <?php echo $__env->make('layouts.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
 
-        <!--**********************************
-            Content body start
-        ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
                 <?php echo $__env->yieldContent('content'); ?>
             </div>
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-		<!--**********************************
-			Footer start
-		***********************************-->
+
 		<?php echo $__env->make('layouts.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 	</div>
     <?php echo $__env->make('layouts.partials.modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-    <!--**********************************
-        Scripts
-    ***********************************-->
     
     <!-- Required vendors -->
     <script src="<?php echo e(asset('assets')); ?>/vendor/global/global.min.js"></script>

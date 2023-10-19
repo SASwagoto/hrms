@@ -44,67 +44,30 @@
 </head>
 <body>
 
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
     <div id="main-wrapper" class="wallet-open show">
 	
-        <!--**********************************
-            Nav header start
-        ***********************************-->
+
         @include('layouts.partials.header')
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-		
-		<!--**********************************
-            Chat box start
-        ***********************************-->
+
 		@include('layouts.partials.chatbox')
-		<!--**********************************
-            Chat box End
-        ***********************************-->
-		<!--**********************************
-            Header start
-        ***********************************-->
+
 		@include('layouts.partials.topbar')
-			<!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
         @include('layouts.partials.sidebar')
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
 
-        <!--**********************************
-            Content body start
-        ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
                 @yield('content')
             </div>
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-		<!--**********************************
-			Footer start
-		***********************************-->
+
 		@include('layouts.partials.footer')
 
 	</div>
     @include('layouts.partials.modal')
+
+    @include('sweetalert::alert')
 	
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-    <!--**********************************
-        Scripts
-    ***********************************-->
     
     <!-- Required vendors -->
     <script src="{{asset('assets')}}/vendor/global/global.min.js"></script>

@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('team_name');
-            $table->unsignedBigInteger('team_leader')->nullable();
+            $table->unsignedBigInteger('leader_id')->nullable();
             $table->unsignedBigInteger('dept_id');
             $table->boolean('isActive')->default(true);
             $table->timestamps();
 
-            $table->foreign('team_leader')->references('id')->on('users');
+            $table->foreign('leader_id')->references('id')->on('users');
             $table->foreign('dept_id')->references('id')->on('departments')->onDelete('cascade');
         });
 

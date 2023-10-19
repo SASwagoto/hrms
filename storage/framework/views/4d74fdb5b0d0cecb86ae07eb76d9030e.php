@@ -12,8 +12,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label text-primary">Select Team</label>
                             <select id="team_select" class="form-control" name="team_id">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
+                              <?php $__empty_1 = true; $__currentLoopData = $teams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                              <option value="<?php echo e($team->id); ?>"><?php echo e($team->team_name); ?></option>
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                              <option disabled>No Team Founds</option>
+                              <?php endif; ?>
                             </select>
                         </div>
                     </div>
