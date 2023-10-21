@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     //Department
     Route::get('/department', [DepartmentController::class,'index'])->name('dept.index');
     Route::post('/department/store', [DepartmentController::class,'store'])->name('dept.store');
+    Route::put('/department/update/{department}', [DepartmentController::class,'update'])->name('dept.update');
 
     //positions
     Route::get('/positions', [DepartmentController::class,'pos_index'])->name('pos.index');

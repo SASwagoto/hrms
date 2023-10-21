@@ -105,7 +105,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $isActive = ($request->has('isActive')) ? 1 : 0;
+       
+         $department->update([
+            'dept_name'=> $request->dept_name,
+            'isActive'=> $isActive,
+         ]);
+
+         Alert::success( $request->dept_name,'Updated Successfully!');
+         return redirect()->back();
     }
 
     /**
