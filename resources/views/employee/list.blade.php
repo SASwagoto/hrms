@@ -184,7 +184,7 @@
                                     $slug = 'abc';
                                 @endphp
                                 <ul class="action_btn">
-                                    <li><a href="{{ route('employee.show', $slug) }}"><i
+                                    <li><a href="{{ route('emp.show', $slug) }}"><i
                                                 class="fa-solid fa-circle-info fa-beat" style="color: #12a561;"></i></a>
                                     </li>
                                     <li><a href="#"><i class="fa-solid fa-pen-to-square"

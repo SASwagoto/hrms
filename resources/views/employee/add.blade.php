@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-    <form id="employeeForm" action="" method="post">
+    <form id="employeeForm" action="{{route('emp.store')}}" method="post">
         @csrf
         <div class="row">
             <div class="col-xl-12">
@@ -91,19 +91,20 @@
                                 <div class="">
                                     <label class="form-label text-primary">Select
                                         Department<span class="required">*</span></label>
-                                    <select name="dept_name" class="default-select form-control wide form-control mb-3">
-                                        <option value="">Software Engineer</option>
-                                        <option value="">Sales Executive</option>
-                                        <option value="">HR Manager</option>
+                                    <select name="dept_name" id="department" class="default-select form-control wide form-control mb-3">
+                                        <option value="">Options..</option>
+                                        @forelse ($departments as $dept)
+                                        <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                        @empty
+                                        <option value="">No Department found</option> 
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Select
                                         Designation<span class="required">*</span></label>
-                                    <select name="position" class="default-select form-control wide form-control mb-3">
-                                        <option value="">Junior Software Engineer</option>
-                                        <option value="">Software Engineer</option>
-                                        <option value="">Digitak Marketing</option>>
+                                    <select name="position" id="position" class="default-select form-control wide form-control mb-3">
+                                        <option value="">Options..</option>
                                     </select>
                                 </div>
                             </div>

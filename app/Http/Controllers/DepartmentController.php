@@ -116,4 +116,10 @@ class DepartmentController extends Controller
         Alert::success( $department->name,'Deleted Successfully');
         return redirect()->back();
     }
+
+    public function getPositions(Department $department)
+    {
+        $positions = Position::active()->where('dept_id', $department->id)->pluck('dept_name', 'id');
+        return response()->json($positions);
+    }
 }

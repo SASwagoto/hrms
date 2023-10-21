@@ -72,10 +72,9 @@
     <!-- Required vendors -->
     <script src="{{asset('assets')}}/vendor/global/global.min.js"></script>
     @stack('js')
+    
     <script src="{{asset('assets')}}/js/custom.min.js"></script>
 	<script src="{{asset('assets')}}/js/dlabnav-init.js"></script>
-    
-
     <script>
         $('.bell-link').on('click', function(){
             $('#main-wrapper').addClass('active');

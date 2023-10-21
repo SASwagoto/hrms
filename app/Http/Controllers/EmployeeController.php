@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.add');
+        $departments = Department::active()->orderBy('dept_name', 'asc')->get();
+        return view('employee.add', compact('departments'));
     }
 
     /**
@@ -28,7 +30,8 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        return $request;
     }
 
     /**
