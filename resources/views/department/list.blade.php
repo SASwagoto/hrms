@@ -85,6 +85,10 @@
                                                     </ul>
                                                 </td>
                                                 </form>
+                                                <form action="{{route('dept.delete', $dept->id)}}" method="POST" id="delete-form{{$dept->id}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                             </tr>
                                         @empty
                                             <tr>
