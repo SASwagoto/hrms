@@ -12,6 +12,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DepartmentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      */
@@ -67,20 +72,6 @@ class DepartmentController extends Controller
             'dept_id' => $request->dept_id,
         ]);
         Alert::success( $request->pos_name,'Added Successfully!');
-        return redirect()->back();
-    }
-
-    public function team_index()
-    {
-        $depts = Department::active()->get();
-        $teams = Team::all();
-        return view('department.teams', compact('depts','teams'));
-    }
-
-    public function team_store(Request $request)
-    {
-        Team::create($request->all());
-        Alert::success( $request->team_name,'Added Successfully!');
         return redirect()->back();
     }
 

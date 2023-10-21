@@ -1,17 +1,17 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     Teams
-@endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('assets') }}/vendor/select2/css/select2.min.css">
-    <link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-@endpush
-@section('header')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/vendor/select2/css/select2.min.css">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('header'); ?>
    Teams 
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-xl-3 col-lg-3">
         <div class="card">
@@ -20,8 +20,8 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <form action="{{route('team.store')}}" method="POST">
-                        @csrf
+                    <form action="<?php echo e(route('team.store')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <div class="mb-3">
                             <label class="form-label text-primary">Team Name<span class="required">*</span></label>
                             <input type="text" required name="team_name" class="form-control input-default"
@@ -31,11 +31,11 @@
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
                             <select id="department-select" name="dept_id">
-                                @forelse ($depts as $dept)
-                                <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
-                                @empty
+                                <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <option>No Department Found</option>
-                                @endforelse
+                                <?php endif; ?>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -43,11 +43,11 @@
                                     class="required">*</span></label>
                             <select id="zone-select" name="zone_id">
                                 <option value="0">Select Zone</option>
-                                @forelse ($zones as $zone)
-                                <option value="{{$zone->id}}">{{$zone->zone_name}}</option>
-                                @empty
+                                <?php $__empty_1 = true; $__currentLoopData = $zones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $zone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <option value="<?php echo e($zone->id); ?>"><?php echo e($zone->zone_name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <option>No Zone Found</option>
-                                @endforelse
+                                <?php endif; ?>
                             </select>
                         </div>
 
@@ -85,17 +85,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($teams as $key => $team)
+                                    <?php $__empty_1 = true; $__currentLoopData = $teams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
-                                        <th>{{$key+1}}</th>
-                                        <td>{{$team->team_name}}</td>
-                                        <td>{{$team->department->dept_name}}</td>
+                                        <th><?php echo e($key+1); ?></th>
+                                        <td><?php echo e($team->team_name); ?></td>
+                                        <td><?php echo e($team->department->dept_name); ?></td>
                                         <td>Mirpur-10</td>
-                                        @if ($team->user)
-                                        <td>{{$team->user->name}}</td>
-                                        @else
+                                        <?php if($team->user): ?>
+                                        <td><?php echo e($team->user->name); ?></td>
+                                        <?php else: ?>
                                         <td>Not Assigned</td>
-                                        @endif
+                                        <?php endif; ?>
                                         <td><span class="badge badge-success light">
                                                 Active</span>
                                         </td>
@@ -103,17 +103,18 @@
                                             <ul class="action_btn">
                                                 <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
                                                             style="color: #347af4;"></i></a></li>
-                                                <li><a href="#"><i
+                                                <li><a href="#" onclick="editable();"><i
                                                             class="fa-solid fa-trash fa-xl"
                                                             style="color: #ff0000;"></i></a></li>
                                             </ul>
                                         </td>
                                     </tr> 
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                         <tr>
-                                            <td colspan="5" class="text-center">No Team Found</td>
+                                            <td colspan="6" class="text-center">No Team Found</td>
                                         </tr>
-                                    @endforelse
+                                    <?php endif; ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -123,13 +124,13 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('js')
-    <script src="{{ asset('assets') }}/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-    <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="{{ asset('assets') }}/vendor/select2/js/select2.full.min.js"></script>
-    <script src="{{ asset('assets') }}/js/plugins-init/select2-init.js"></script>
+<?php $__env->startPush('js'); ?>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/select2/js/select2.full.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/js/plugins-init/select2-init.js"></script>
 
     <script>
         // Initialize Select2 for the "Select Employee" dropdown
@@ -138,4 +139,5 @@
         // Initialize Select2 for the "Leader Shift" dropdown
         $('#zone-select').select2();
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/teams.blade.php ENDPATH**/ ?>

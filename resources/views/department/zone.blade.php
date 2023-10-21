@@ -1,27 +1,27 @@
 @extends('layouts.admin')
 
 @section('title')
-    Department
+    Zone
 @endsection
 
 @section('header')
-    Department
+    Zone
 @endsection
 @section('content')
     <div class="row">
         <div class="col-xl-5 col-lg-5">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Add Department</h4>
+                    <h4 class="card-title">Add Zone</h4>
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{route('dept.store')}}" method="POST">
+                        <form action="{{route('zone.store')}}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="" class="form-label text-primary">Department Name <span class="required">*</span></label>
-                                <input type="text" required name="dept_name" class="form-control input-default"
-                                    placeholder="Enter Department Name">
+                                <label for="" class="form-label text-primary">Zone Name <span class="required">*</span></label>
+                                <input type="text" required name="zone_name" class="form-control input-default"
+                                    placeholder="Enter Zone Name">
                             </div>
                             <div class="mb-3">
                                 <button class="btn btn-primary" type="submit">Submit</button>
@@ -35,7 +35,7 @@
             <div class="card" id="bootstrap-table4">
                 <div class="card-header d-flex justify-content-between flex-wrap border-0 px-3">
                     <div>
-                        <h4 class="card-title">Department List</h4>
+                        <h4 class="card-title">Zone List</h4>
                     </div>
                 </div>
 
@@ -50,51 +50,51 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($departments as $key => $dept)
-                                            <tr class="view-mode-row">
-                                                <form action="{{route('dept.update', $dept->id)}}" method="POST" id="updateForm{{$key+1}}">
+                                        @forelse ($zones as $key => $zone)
+                                        <tr class="view-mode-row">
+                                            <form action="{{route('zone.update', $zone->id)}}" method="POST" id="updateForm{{$key+1}}">
+                                            @csrf
+                                            @method('PUT')
+                                            <td>{{$key + 1}}</td>
+                                            <td class="view-mode">{{$zone->zone_name}}</td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="text" class="form-control" name="zone_name" id="" value="{{$zone->zone_name}}">
+                                            </td>
+                                            <td class="view-mode" data-column-name="isActive">
+                                                <span class="badge {{ $zone->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $zone->isActive ? 'Active' : 'Inactive' }}</span>
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="checkbox" name="isActive" @if ($zone->isActive) checked @endif>
+                                            </td>
+                                            <td>
+                                                <ul class="action_btn">
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="edit-button">
+                                                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #347af4;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="save-button" onclick="document.getElementById('updateForm{{$key+1}}').submit()" style="display: none;">
+                                                            <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$key+1}}').submit()"><i class="fa-solid fa-trash fa-xl"
+                                                        style="color: #ff0000;"></i></a></li>
+                                                </ul>
+                                            </td>
+                                            </form>
+                                            <form action="{{route('zone.delete', $zone->id)}}" method="POST" id="delete-form{{$key+1}}">
                                                 @csrf
-                                                @method('PUT')
-                                                <td>{{ $key + 1 }}</td>
-                                                <td class="view-mode">{{ $dept->dept_name }}</td>
-                                                <td class="edit-mode" style="display: none;">
-                                                    <input type="text" class="form-control" name="dept_name" id="" value="{{ $dept->dept_name }}">
-                                                </td>
-                                                <td class="view-mode" data-column-name="isActive">
-                                                    <span class="badge {{ $dept->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $dept->isActive ? 'Active' : 'Inactive' }}</span>
-                                                </td>
-                                                <td class="edit-mode" style="display: none;">
-                                                    <input type="checkbox" name="isActive" @if ($dept->isActive) checked @endif>
-                                                </td>
-                                                <td>
-                                                    <ul class="action_btn">
-                                                        <li>
-                                                            <a href="javascript:void(0);" class="edit-button">
-                                                                <i class="fa-solid fa-pen-to-square fa-xl" style="color: #347af4;"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0);" class="save-button" onclick="document.getElementById('updateForm{{$key+1}}').submit()" style="display: none;">
-                                                                <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$dept->id}}').submit()"><i class="fa-solid fa-trash fa-xl"
-                                                            style="color: #ff0000;"></i></a></li>
-                                                    </ul>
-                                                </td>
-                                                </form>
-                                                <form action="{{route('dept.delete', $dept->id)}}" method="POST" id="delete-form{{$dept->id}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </tr>
+                                                @method('DELETE')
+                                            </form>
+                                        </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="4" class="text-center">No Department Found</td>
+                                                <td colspan="4" class="text-center">No Zone Found</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
@@ -109,7 +109,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($departments as $key => $dept)
+                                        @forelse ($Zones as $key => $dept)
                                             <tr>
                                                 <th>{{ $key + 1 }}</th>
                                                 <td>{{ $dept->dept_name }}</td>
@@ -128,7 +128,7 @@
                                             </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="4" class="text-center">No Department Found</td>
+                                            <td colspan="4" class="text-center">No Zone Found</td>
                                         </tr>
                                         @endforelse
                                     </tbody>

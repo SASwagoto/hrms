@@ -41,5 +41,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('teams');
+        Schema::dropIfExists('team_has_members');
     }
 };

@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TemporaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +50,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/positions/store', [DepartmentController::class,'pos_store'])->name('pos.store');
 
     //teams
-    Route::get('/teams', [DepartmentController::class,'team_index'])->name('teams.index');
-    Route::post('/teams/store', [DepartmentController::class,'team_store'])->name('team.store');
+    Route::get('/teams', [TeamController::class,'team_index'])->name('teams.index');
+    Route::post('/teams/store', [TeamController::class,'team_store'])->name('team.store');
+
+    //Zone
+    Route::get('/zone', [TeamController::class, 'zone'])->name('zone.index');
+    Route::post('/zone/store', [TeamController::class, 'zone_store'])->name('zone.store');
+    Route::put('/zone/update/{zone}', [TeamController::class, 'zone_update'])->name('zone.update');
+    Route::delete('/zone/delete/{zone}', [TeamController::class, 'zone_delete'])->name('zone.delete');
+
+    //Sector
+    Route::get('/sector', [TeamController::class, 'sector'])->name('sector.index');
+    Route::post('/sector/store', [TeamController::class, 'sector_store'])->name('sector.store');
+    Route::get('/sector/assign-leader', [TeamController::class, 'sector_assign_leader'])->name('sector.assign.sl');
 
     //Settings
     Route::get('/settings/site', [SiteController::class,'index'])->name('settings.index');

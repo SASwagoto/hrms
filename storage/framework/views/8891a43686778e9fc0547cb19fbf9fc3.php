@@ -27,6 +27,8 @@
                 <li><a href="<?php echo e(route('dept.index')); ?>">Departments</a></li>
                 <li><a href="<?php echo e(route('pos.index')); ?>">Positions</a></li>
                 <li><a href="<?php echo e(route('teams.index')); ?>">Teams</a></li>
+                <li><a href="<?php echo e(route('sector.index')); ?>">Sector</a></li>
+                <li><a href="<?php echo e(route('zone.index')); ?>">Zone</a></li>
             </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
