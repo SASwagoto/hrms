@@ -30,7 +30,8 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
-                            <select id="department-select" name="dept_id">
+                            <select id="department-select" required name="dept_id">
+                                <option value="">Options..</option>
                                 @forelse ($depts as $dept)
                                 <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
                                 @empty
@@ -39,14 +40,24 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-primary">Select Zone<span
-                                    class="required">*</span></label>
+                            <label class="form-label text-primary">Select Zone</label>
                             <select id="zone-select" name="zone_id">
-                                <option value="0">Select Zone</option>
+                                <option value="">Options..</option>
                                 @forelse ($zones as $zone)
                                 <option value="{{$zone->id}}">{{$zone->zone_name}}</option>
                                 @empty
                                 <option>No Zone Found</option>
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-primary">Select Leader</label>
+                            <select id="emp-select" class="form-control" name="leader_id">
+                                <option value="">Options..</option>
+                                @forelse ($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                @empty
+                                <option>No Employee Found</option>
                                 @endforelse
                             </select>
                         </div>
@@ -90,9 +101,9 @@
                                         <th>{{$key+1}}</th>
                                         <td>{{$team->team_name}}</td>
                                         <td>{{$team->department->dept_name}}</td>
-                                        <td>Mirpur-10</td>
-                                        @if ($team->user)
-                                        <td>{{$team->user->name}}</td>
+                                        <td>{{$team->zone->zone_name}}</td>
+                                        @if ($team->leader_id)
+                                        <td>{{$team->leader->name}}</td>
                                         @else
                                         <td>Not Assigned</td>
                                         @endif
@@ -111,7 +122,7 @@
                                     </tr> 
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">No Team Found</td>
+                                            <td colspan="7" class="text-center">No Team Found</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -137,5 +148,7 @@
 
         // Initialize Select2 for the "Leader Shift" dropdown
         $('#zone-select').select2();
+        $('#emp-select').select2();
+
     </script>
 @endpush

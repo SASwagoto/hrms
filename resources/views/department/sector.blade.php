@@ -17,7 +17,7 @@
         <ul class="action_btn float-start">
             <li><a href="{{ route('sector.index') }}">Create New Sector</a></li>
             <li><a href="{{ route('sector.assign.sl') }}">Assign Sector Leader</a></li>
-            <li><a href="{{ route('permission.add') }}">Assign Team</a></li>
+            <li><a href="{{ route('sector.assign.tm') }}">Assign Team</a></li>
         </ul>
     </div>
 </div>
@@ -73,8 +73,8 @@
                                    <tr>
                                     <th>{{$key + 1}}</th>
                                     <td>{{$sector->sector_name}}</td>
-                                    @if ($sector->user)
-                                        <td>{{$team->user->name}}</td>
+                                    @if ($sector->sector_leader)
+                                        <td>{{$sector->leader->name}}</td>
                                         @else
                                         <td>Not Assigned</td>
                                         @endif

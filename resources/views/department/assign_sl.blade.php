@@ -17,7 +17,7 @@
         <ul class="action_btn float-start">
             <li><a href="{{ route('sector.index') }}">Create New Sector</a></li>
             <li><a href="{{ route('sector.assign.sl') }}">Assign Sector Leader</a></li>
-            <li><a href="{{ route('permission.add') }}">Assign Team</a></li>
+            <li><a href="{{ route('sector.assign.tm') }}">Assign Team</a></li>
         </ul>
     </div>
 </div>
@@ -29,12 +29,12 @@
             </div>
             <div class="card-body">
                 <div class="basic-form">
-                    <form action="" method="POST">
+                    <form action="{{route('assign.sl')}}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Sector<span
                                     class="required">*</span></label>
-                            <select id="sector-select" class="form-control" name="dept_id">
+                            <select id="sector-select" class="form-control" name="sector_id">
                                 @forelse ($sectors as $sector)
                                 <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
                                 @empty
@@ -45,7 +45,7 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Leader<span
                                     class="required">*</span></label>
-                            <select id="emp-select" class="form-control" name="dept_id">
+                            <select id="emp-select" class="form-control" name="sector_leader">
                                 @forelse ($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                                 @empty
@@ -74,36 +74,44 @@
                 <div class="tab-pane fade show active" id="withoutBorder" role="tabpanel"
                     aria-labelledby="home-tab-3">
                     <div class="card-body p-0">
-
                         <div class="table-responsive">
                             <table class="table table-striped table-responsive-sm">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Position</th>
-                                        <th>Department</th>
+                                        <th>Sector Name</th>
+                                        <th>Sector Leader</th>
                                         <th>Status</th>
                                         <th style="text-align: end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
-                                    <tr>
-                                        <th></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td><span
-                                            class="badge badge-success light">Active</span>
-                                        </td>
-                                        <td>
-                                            <ul class="action_btn">
-                                                <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
-                                                    style="color: #347af4;"></i></a></li>
-                                                <li><a href="#"><i class="fa-solid fa-trash fa-xl"
-                                                            style="color: #ff0000;"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>    
+                                   @forelse ($sectors as $key => $sector)
+                                   <tr>
+                                    <th>{{$key + 1}}</th>
+                                    <td>{{$sector->sector_name}}</td>
+                                    @if ($sector->sector_leader)
+                                        <td>{{$sector->leader->name}}</td>
+                                        @else
+                                        <td>Not Assigned</td>
+                                        @endif
+                                    <td><span
+                                        class="badge badge-success light">Active</span>
+                                    </td>
+                                    <td>
+                                        <ul class="action_btn">
+                                            <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
+                                                style="color: #347af4;"></i></a></li>
+                                            <li><a href="#"><i class="fa-solid fa-trash fa-xl"
+                                                        style="color: #ff0000;"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>    
+                                   @empty
+                                      <tr>
+                                        <td colspan="5" class="text-center">No Sector Found</td>
+                                        </tr> 
+                                   @endforelse
                                 </tbody>
                             </table>
                         </div>

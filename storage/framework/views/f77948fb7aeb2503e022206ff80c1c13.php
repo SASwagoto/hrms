@@ -61,7 +61,9 @@
                                                 <?php echo method_field('PUT'); ?>
                                                 <td><?php echo e($key + 1); ?></td>
                                                 <td class="view-mode"><?php echo e($dept->dept_name); ?></td>
-                                                <td class="edit-mode" style="display: none;"><input type="text" name="dept_name" id="" value="<?php echo e($dept->dept_name); ?>"></td>
+                                                <td class="edit-mode" style="display: none;">
+                                                    <input type="text" class="form-control" name="dept_name" id="" value="<?php echo e($dept->dept_name); ?>">
+                                                </td>
                                                 <td class="view-mode" data-column-name="isActive">
                                                     <span class="badge <?php echo e($dept->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($dept->isActive ? 'Active' : 'Inactive'); ?></span>
                                                 </td>

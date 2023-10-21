@@ -18,16 +18,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('zone_has_teams', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('zone_id');
-            $table->unsignedBigInteger('team_id');
-            $table->timestamps();
-
-            $table->foreign('zone_id')->references('id')->on('zones')->onDelete('cascade');
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
-
-        });
     }
 
     /**
@@ -36,6 +26,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('zones');
-        Schema::dropIfExists('zone_has_teams');
     }
 };

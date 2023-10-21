@@ -15,4 +15,9 @@ class Zone extends Model
     {
         return $query->where('isActive', true);
     }
+
+    public function teams($query)
+    {
+        return $this->hasMany(Team::class);
+    }
 }

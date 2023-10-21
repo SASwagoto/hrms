@@ -63,6 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/sector', [TeamController::class, 'sector'])->name('sector.index');
     Route::post('/sector/store', [TeamController::class, 'sector_store'])->name('sector.store');
     Route::get('/sector/assign-leader', [TeamController::class, 'sector_assign_leader'])->name('sector.assign.sl');
+    Route::post('/sector/assign-leader/store', [TeamController::class, 'assign_S_leader'])->name('assign.sl');
+    Route::get('/sector/assign-team', [TeamController::class, 'sector_assign_team'])->name('sector.assign.tm');
+    Route::post('/sector/assign-team/store', [TeamController::class, 'assign_team'])->name('assign.tm');
 
     //Settings
     Route::get('/settings/site', [SiteController::class,'index'])->name('settings.index');

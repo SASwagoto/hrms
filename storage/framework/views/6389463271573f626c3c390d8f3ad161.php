@@ -30,7 +30,8 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
-                            <select id="department-select" name="dept_id">
+                            <select id="department-select" required name="dept_id">
+                                <option value="">Options..</option>
                                 <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -39,14 +40,24 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-primary">Select Zone<span
-                                    class="required">*</span></label>
+                            <label class="form-label text-primary">Select Zone</label>
                             <select id="zone-select" name="zone_id">
-                                <option value="0">Select Zone</option>
+                                <option value="">Options..</option>
                                 <?php $__empty_1 = true; $__currentLoopData = $zones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $zone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <option value="<?php echo e($zone->id); ?>"><?php echo e($zone->zone_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <option>No Zone Found</option>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-primary">Select Leader</label>
+                            <select id="emp-select" class="form-control" name="leader_id">
+                                <option value="">Options..</option>
+                                <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <option>No Employee Found</option>
                                 <?php endif; ?>
                             </select>
                         </div>
@@ -90,9 +101,9 @@
                                         <th><?php echo e($key+1); ?></th>
                                         <td><?php echo e($team->team_name); ?></td>
                                         <td><?php echo e($team->department->dept_name); ?></td>
-                                        <td>Mirpur-10</td>
-                                        <?php if($team->user): ?>
-                                        <td><?php echo e($team->user->name); ?></td>
+                                        <td><?php echo e($team->zone->zone_name); ?></td>
+                                        <?php if($team->leader_id): ?>
+                                        <td><?php echo e($team->leader->name); ?></td>
                                         <?php else: ?>
                                         <td>Not Assigned</td>
                                         <?php endif; ?>
@@ -103,7 +114,7 @@
                                             <ul class="action_btn">
                                                 <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
                                                             style="color: #347af4;"></i></a></li>
-                                                <li><a href="#" onclick="editable();"><i
+                                                <li><a href="#"><i
                                                             class="fa-solid fa-trash fa-xl"
                                                             style="color: #ff0000;"></i></a></li>
                                             </ul>
@@ -111,10 +122,9 @@
                                     </tr> 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                         <tr>
-                                            <td colspan="6" class="text-center">No Team Found</td>
+                                            <td colspan="7" class="text-center">No Team Found</td>
                                         </tr>
                                     <?php endif; ?>
-                                    
                                 </tbody>
                             </table>
                         </div>
@@ -138,6 +148,8 @@
 
         // Initialize Select2 for the "Leader Shift" dropdown
         $('#zone-select').select2();
+        $('#emp-select').select2();
+
     </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/teams.blade.php ENDPATH**/ ?>

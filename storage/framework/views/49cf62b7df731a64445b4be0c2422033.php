@@ -17,7 +17,7 @@
         <ul class="action_btn float-start">
             <li><a href="<?php echo e(route('sector.index')); ?>">Create New Sector</a></li>
             <li><a href="<?php echo e(route('sector.assign.sl')); ?>">Assign Sector Leader</a></li>
-            <li><a href="<?php echo e(route('permission.add')); ?>">Assign Team</a></li>
+            <li><a href="<?php echo e(route('sector.assign.tm')); ?>">Assign Team</a></li>
         </ul>
     </div>
 </div>
@@ -73,8 +73,8 @@
                                    <tr>
                                     <th><?php echo e($key + 1); ?></th>
                                     <td><?php echo e($sector->sector_name); ?></td>
-                                    <?php if($sector->user): ?>
-                                        <td><?php echo e($team->user->name); ?></td>
+                                    <?php if($sector->sector_leader): ?>
+                                        <td><?php echo e($sector->leader->name); ?></td>
                                         <?php else: ?>
                                         <td>Not Assigned</td>
                                         <?php endif; ?>

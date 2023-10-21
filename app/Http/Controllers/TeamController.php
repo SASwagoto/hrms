@@ -7,6 +7,7 @@ use App\Models\Sector;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Zone;
+use DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,12 +22,14 @@ class TeamController extends Controller
     {
         $zones = Zone::active()->orderBy('zone_name', 'asc')->get();
         $depts = Department::active()->get();
+        $users = User::all();
         $teams = Team::all();
-        return view('department.teams', compact('depts','teams', 'zones'));
+        return view('department.teams', compact('depts','teams', 'zones','users'));
     }
 
     public function team_store(Request $request)
     {
+        return $request;
         Team::create($request->all());
         Alert::success( $request->team_name,'Added Successfully!');
         return redirect()->back();
@@ -85,5 +88,39 @@ class TeamController extends Controller
         $users = User::orderBy('name','asc')->get();
 
         return view('department.assign_sl', compact('sectors','users'));
+    }
+
+    public function sector_assign_team()
+    {
+        $sectors = Sector::with('teams')->orderBy('id','desc')->get();
+        $teams = Team::active()->orderBy('team_name','asc')->get();
+
+        return view('department.assign_tm', compact('sectors','teams'));
+    }
+
+    public function assign_S_leader(Request $request)
+    {
+        $sector = Sector::find($request->sector_id);
+        $user = User::find($request->sector_leader);
+        $sector->update([
+            'sector_leader'=> $request->sector_leader,
+        ]);
+        Alert::success('Success', $user->name.' assign to sector leader');
+        return redirect()->back();
+    }
+
+    public function assign_team(Request $request)
+    {
+        $sector = $request->sector_id;
+        $teams = $request->team;
+
+        foreach ($teams as $team) {
+            DB::table('sector_has_teams')->insert([
+                'sector_id'=> $sector,
+                'team_id' => $team,
+            ]);
+        }
+        Alert::success('Success', 'Teams added successfully!');
+        return redirect()->back();
     }
 }
