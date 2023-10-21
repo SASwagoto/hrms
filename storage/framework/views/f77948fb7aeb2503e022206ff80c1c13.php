@@ -1,13 +1,13 @@
-@extends('layouts.admin')
 
-@section('title')
-    Department
-@endsection
 
-@section('header')
+<?php $__env->startSection('title'); ?>
     Department
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('header'); ?>
+    Department
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-xl-5 col-lg-5">
             <div class="card">
@@ -16,8 +16,8 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{route('dept.store')}}" method="POST">
-                            @csrf
+                        <form action="<?php echo e(route('dept.store')); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <div class="mb-3">
                                 <label for="" class="form-label text-primary">Department Name <span class="required">*</span></label>
                                 <input type="text" required name="dept_name" class="form-control input-default"
@@ -54,19 +54,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($departments as $key => $dept)
+                                        <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <tr class="view-mode-row">
-                                                <form action="{{route('dept.update', $dept->id)}}" method="POST" id="updateForm{{$key+1}}">
-                                                @csrf
-                                                @method('PUT')
-                                                <td>{{ $key + 1 }}</td>
-                                                <td class="view-mode">{{ $dept->dept_name }}</td>
-                                                <td class="edit-mode" style="display: none;"><input type="text" name="dept_name" id="" value="{{ $dept->dept_name }}"></td>
+                                                <form action="<?php echo e(route('dept.update', $dept->id)); ?>" method="POST" id="updateForm<?php echo e($key+1); ?>">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PUT'); ?>
+                                                <td><?php echo e($key + 1); ?></td>
+                                                <td class="view-mode"><?php echo e($dept->dept_name); ?></td>
+                                                <td class="edit-mode" style="display: none;"><input type="text" name="dept_name" id="" value="<?php echo e($dept->dept_name); ?>"></td>
                                                 <td class="view-mode" data-column-name="isActive">
-                                                    <span class="badge {{ $dept->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $dept->isActive ? 'Active' : 'Inactive' }}</span>
+                                                    <span class="badge <?php echo e($dept->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($dept->isActive ? 'Active' : 'Inactive'); ?></span>
                                                 </td>
                                                 <td class="edit-mode" style="display: none;">
-                                                    <input type="checkbox" name="isActive" @if ($dept->isActive) checked @endif>
+                                                    <input type="checkbox" name="isActive" <?php if($dept->isActive): ?> checked <?php endif; ?>>
                                                 </td>
                                                 <td>
                                                     <ul class="action_btn">
@@ -76,70 +76,37 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" class="save-button" onclick="document.getElementById('updateForm{{$key+1}}').submit()" style="display: none;">
+                                                            <a href="javascript:void(0);" class="save-button" onclick="document.getElementById('updateForm<?php echo e($key+1); ?>').submit()" style="display: none;">
                                                                 <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
                                                             </a>
                                                         </li>
-                                                        <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$dept->id}}').submit()"><i class="fa-solid fa-trash fa-xl"
+                                                        <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form<?php echo e($dept->id); ?>').submit()"><i class="fa-solid fa-trash fa-xl"
                                                             style="color: #ff0000;"></i></a></li>
                                                     </ul>
                                                 </td>
                                                 </form>
-                                                <form action="{{route('dept.delete', $dept->id)}}" method="POST" id="delete-form{{$dept->id}}">
-                                                    @csrf
-                                                    @method('DELETE')
+                                                <form action="<?php echo e(route('dept.delete', $dept->id)); ?>" method="POST" id="delete-form<?php echo e($dept->id); ?>">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('DELETE'); ?>
                                                 </form>
                                             </tr>
-                                        @empty
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <tr>
                                                 <td colspan="4" class="text-center">No Department Found</td>
                                             </tr>
-                                        @endforelse
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
-                                {{-- <table class="table-striped table-responsive-sm table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Status</th>
-                                            <th style="text-align: end">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($departments as $key => $dept)
-                                            <tr>
-                                                <th>{{ $key + 1 }}</th>
-                                                <td>{{ $dept->dept_name }}</td>
-                                                <td><span
-                                                        class="badge {{ $dept->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $dept->isActive ? 'Active' : 'Inactive' }}</span>
-                                                </td>
-                                                <td>
-                                                    <ul class="action_btn">
-                                                        <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
-                                                                    style="color: #347af4;"></i></a></li>
-                                                        <li><a href="#" onclick="editable();"><i
-                                                                    class="fa-solid fa-trash fa-xl"
-                                                                    style="color: #ff0000;"></i></a></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No Department Found</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table> --}}
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
-    @push('js')
+    <?php $__env->startPush('js'); ?>
     <script>
         $(document).ready(function () {
             // Function to switch to edit mode
@@ -188,4 +155,6 @@
         });
     </script>
         
-    @endpush
+    <?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/department/list.blade.php ENDPATH**/ ?>
