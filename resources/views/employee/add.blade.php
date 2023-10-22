@@ -63,7 +63,7 @@
                                                 placeholder="First Name">
                                                 @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                                @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">User Name<span
@@ -71,14 +71,20 @@
                                             <div class="d-flex">
                                                 <input type="text" name="username" class="form-control"
                                                     placeholder="User Name">
+                                                    @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Last
-                                                Name<span class="required">*</span></label>
+                                                Name<span class="required">*</span> @error('last_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror</label>
                                             <input type="text" name="last_name" class="form-control" placeholder="Wally">
+                                            
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Employee ID<span

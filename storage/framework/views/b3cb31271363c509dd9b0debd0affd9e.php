@@ -65,7 +65,7 @@ if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="text-danger"><?php echo e($message); ?></span>
-                                            <?php unset($message);
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
@@ -76,14 +76,34 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="d-flex">
                                                 <input type="text" name="username" class="form-control"
                                                     placeholder="User Name">
+                                                    <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Last
-                                                Name<span class="required">*</span></label>
+                                                Name<span class="required">*</span> <?php $__errorArgs = ['last_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></label>
                                             <input type="text" name="last_name" class="form-control" placeholder="Wally">
+                                            
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Employee ID<span
