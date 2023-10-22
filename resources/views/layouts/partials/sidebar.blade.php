@@ -9,15 +9,14 @@
         <ul class="metismenu" id="menu">
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
                     <i class="material-symbols-outlined">groups </i>
-                    <span class="nav-text">Employee</span>
+                    <span class="nav-text">{{__('menu.employee')}}</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('emp.create')}}">Add Employee</a></li>
-                    <li><a href="{{route('emp.index')}}">Employee List</a></li>
-                    <li><a href="{{route('att.list')}}">Attendance</a></li>
-                    <li><a href="{{route('leave.list')}}">Leaves</a></li>
+                    <li><a href="{{route('emp.create')}}">{{__('menu.employee.add')}}</a></li>
+                    <li><a href="{{route('emp.index')}}">{{__('menu.employee.list')}}</a></li>
+                    <li><a href="{{route('att.list')}}">{{__('menu.attendence')}}</a></li>
+                    <li><a href="{{route('leave.list')}}">{{__('menu.leaves')}}</a></li>
                 </ul>
-
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
                 <i class="material-symbols-outlined">apartment </i>

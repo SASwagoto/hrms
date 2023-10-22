@@ -10,7 +10,7 @@
    {{$siteInfo->app_title}}
 @endsection
 @section('content')
-    <h1>Hello</h1>
+    <h1>{{__('messages.welcome')}}</h1>
 @endsection
 @push('js')
     

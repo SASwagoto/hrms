@@ -117,9 +117,11 @@ class DepartmentController extends Controller
         return redirect()->back();
     }
 
-    public function getPositions(Department $department)
+    public function getPositions($id)
     {
-        $positions = Position::active()->where('dept_id', $department->id)->pluck('dept_name', 'id');
-        return response()->json($positions);
+        $positions = Position::active()->where('dept_id', $id)->get();
+
+        return view('layouts.partials.positions', compact('positions'));
+        //return response()->json($positions);
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/language/{lang}', [LangController::class, 'index'])->name('langChange');
+
     //Employee route
     Route::get('/employee', [EmployeeController::class, 'index'])->name('emp.index');
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp.create');
@@ -41,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/show/{slug}', [EmployeeController::class, 'show'])->name('emp.show');
 
     //getPosition
-    Route::get('/get-positions/{department}', [DepartmentController::class,'getPositions']);
+    Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions']);
 
     //Department
     Route::get('/department', [DepartmentController::class,'index'])->name('dept.index');

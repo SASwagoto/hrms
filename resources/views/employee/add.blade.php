@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="change-btn mb-lg-0 mb-3 mt-2">
-                                        <input type='file' class="form-control d-none" id="imageUpload"
+                                        <input type='file' name="profile_img" class="form-control d-none" id="imageUpload"
                                             accept=".png, .jpg, .jpeg">
                                         <label for="imageUpload" class="dlab-upload btn btn-primary btn-sm mb-0">Choose
                                             File</label>
@@ -100,11 +100,11 @@
                                         @endforelse
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 position">
                                     <label class="form-label text-primary">Select
-                                        Designation<span class="required">*</span></label>
-                                    <select name="position" id="position" class="default-select form-control wide form-control mb-3">
-                                        <option value="">Options..</option>
+                                        positions<span class="required">*</span></label>
+                                    <select name="position" class="default-select form-control wide form-control mb-3">
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Phone
                                         Number<span class="required">*</span></label>
-                                    <input type="number" name="phn_number" class="form-control"
+                                    <input type="number" name="phone_number	" class="form-control"
                                         placeholder="+123456789">
                                 </div>
                                 <div class="password_container mb-3">
@@ -154,32 +154,33 @@
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="">
                                             <label class="form-label text-primary">Select
-                                                Examination<span class="required">*</span></label>
-                                            <select name="exam[]"
-                                                class="default-select form-control wide form-control mb-3">
-                                                <option value="">Secondary School Certificate</option>
-                                                <option value="">Higher Secondary Certificate</option>
-                                                <option value="">Honours</option>
-                                                <option value="">Masters</option>
+                                                Examination<span
+                                                class="required">*</span></label>
+                                            <select name="exam[]" class="default-select form-control wide form-control mb-3">
+                                                <option value="">Options..</option>
+                                                <option>Secondary School Certificate</option>
+                                                <option>Higher Secondary Certificate</option>
+                                                <option>Honours</option>
+                                                <option>Masters</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Institution<span
-                                                    class="required">*</span></label>
+                                                class="required">*</span></label>
                                             <input type="text" name="institute[]" class="form-control"
                                                 placeholder="Institution">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Subject<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Subject</label>
                                             <input type="text" name="subject[]" class="form-control"
                                                 placeholder="Subject">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Passing
-                                                Year<span class="required">*</span></label>
+                                                Year<span
+                                                class="required">*</span></label>
                                             <input type="number" name="pass_year[]" class="form-control"
                                                 placeholder="Passing Year">
                                         </div>
@@ -189,13 +190,12 @@
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Group<span
-                                                    class="required">*</span></label>
+                                                class="required">*</span></label>
                                             <input type="text" name="group[]"
                                                 class="form-control"placeholder="Group">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Seasson<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Seasson</label>
                                             <input type="text" name="session[]" class="form-control"
                                                 placeholder="Seasson">
                                         </div>
@@ -226,13 +226,14 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Date of
-                                        Birth<span class="required">*</span></label>
+                                        Birth</label>
                                     <input type="Date" name="dob" class="form-control" placeholder="First Name">
                                 </div>
                                 <div class="">
                                     <label class="form-label text-primary">Blood
-                                        Group<span class="required">*</span></label>
+                                        Group</label>
                                     <select id="selectValue" name="blood_group" class="default-select form-control wide form-control mb-3">
+                                        <option value="">Options..</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
                                         <option value="B+">B+</option>
@@ -244,41 +245,52 @@
                                         <option value="Others">Others</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label text-primary">Religion<span class="required">*</span></label>
+                                <div class="">
+                                    <label class="form-label text-primary">Religion</label>
                                     <select name="religion" class="default-select form-control wide form-control mb-3">
-                                        <option value="">Islam</option>
-                                        <option value="">Hinduism</option>
-                                        <option value="">Christianity</option>
-                                        <option value="">Buddhism</option>
-                                        <option value="">Others</option>
+                                        <option value="">Options..</option>
+                                        <option>Islam</option>
+                                        <option>Hinduism</option>
+                                        <option>Christianity</option>
+                                        <option>Buddhism</option>
+                                        <option>Others</option>
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">Present Address</label>
+                                    <input type="text" name="present_address" class="form-control" placeholder="Enter your present address">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="">
                                     <label class="form-label text-primary">Marital
-                                        Status<span class="required">*</span></label>
+                                        Status</label>
                                     <select name="marital_status"
                                         class="default-select form-control wide form-control mb-3">
-                                        <option value="">Unmarried</option>
-                                        <option value="">Married</option>
-                                        <option value="">Divorced</option>
-                                        <option value="">Widow</option>
-                                        <option value="">Single</option>
+                                        <option value="">Options..</option>
+                                        <option>Unmarried</option>
+                                        <option>Married</option>
+                                        <option>Divorced</option>
+                                        <option>Widow</option>
+                                        <option>Single</option>
                                     </select>
                                 </div>
                                 <div class="">
-                                    <label class="form-label text-primary">Gender<span class="required">*</span></label>
+                                    <label class="form-label text-primary">Gender</label>
                                     <select name="gender" class="default-select form-control wide form-control mb-3">
+                                        <option value="">Options</option>
                                         <option>Male</option>
                                         <option>Female</option>
                                         <option>Others</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-primary">NID<span class="required">*</span></label>
+                                    <label class="form-label text-primary">NID</label>
                                     <input type="number" name="nid_num" class="form-control" placeholder="NID">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">Permanent Address</label>
+                                    <input type="text" name="permanent_address" class="form-control" placeholder="Enter your Permanent address">
                                 </div>
                                 <div class="float-end">
                                     <button type="button" id="saveDraftButton" class="btn btn-info">Save as
@@ -298,6 +310,28 @@
     <script src="{{ asset('assets') }}/vendor/bootstrap-datetimepicker/js/moment.js"></script>
     <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="{{ asset('assets') }}/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#department').on('change', function () {
+                var departmentId = $(this).val();
+                var positionSelect = $('#position');
+                positionSelect.prop('disabled', true); // Disable "Position" select while loading data.
+    
+                $.ajax({
+                    url: '/get-positions/' + departmentId,
+                    type: 'GET',
+                    success: function (data) {
+                        //console.log(data);
+                        $('.position').html(data); 
+                    },
+                    error: function (xhr) {
+                        // Handle errors here.
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         $(function() {
             $("#datepicker").datepicker({
@@ -387,8 +421,7 @@
                                                 placeholder="Institution">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Subject<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Subject</label>
                                             <input type="text" name="subject[]" class="form-control"
                                                 placeholder="Subject">
                                         </div>
@@ -409,8 +442,7 @@
                                                 class="form-control"placeholder="Group">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Seasson<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Seasson</label>
                                             <input type="text" name="session[]" class="form-control"
                                                 placeholder="Seasson">
                                         </div>
