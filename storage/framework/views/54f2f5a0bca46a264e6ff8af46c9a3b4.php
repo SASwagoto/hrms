@@ -71,12 +71,10 @@
     
     <!-- Required vendors -->
     <script src="<?php echo e(asset('assets')); ?>/vendor/global/global.min.js"></script>
-    
+    <?php echo $__env->yieldPushContent('js'); ?>
     
     <script src="<?php echo e(asset('assets')); ?>/js/custom.min.js"></script>
 	<script src="<?php echo e(asset('assets')); ?>/js/dlabnav-init.js"></script>
-    <?php echo $__env->yieldPushContent('js'); ?>
-
     <script>
         $('.bell-link').on('click', function(){
             $('#main-wrapper').addClass('active');

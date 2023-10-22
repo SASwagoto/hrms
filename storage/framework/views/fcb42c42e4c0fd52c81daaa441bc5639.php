@@ -9,15 +9,14 @@
         <ul class="metismenu" id="menu">
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
                     <i class="material-symbols-outlined">groups </i>
-                    <span class="nav-text">Employee</span>
+                    <span class="nav-text"><?php echo e(__('menu.employee')); ?></span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="<?php echo e(route('emp.create')); ?>">Add Employee</a></li>
-                    <li><a href="<?php echo e(route('emp.index')); ?>">Employee List</a></li>
-                    <li><a href="<?php echo e(route('att.list')); ?>">Attendance</a></li>
-                    <li><a href="<?php echo e(route('leave.list')); ?>">Leaves</a></li>
+                    <li><a href="<?php echo e(route('emp.create')); ?>"><?php echo e(__('menu.employee.add')); ?></a></li>
+                    <li><a href="<?php echo e(route('emp.index')); ?>"><?php echo e(__('menu.employee.list')); ?></a></li>
+                    <li><a href="<?php echo e(route('att.list')); ?>"><?php echo e(__('menu.attendence')); ?></a></li>
+                    <li><a href="<?php echo e(route('leave.list')); ?>"><?php echo e(__('menu.leaves')); ?></a></li>
                 </ul>
-
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
                 <i class="material-symbols-outlined">apartment </i>

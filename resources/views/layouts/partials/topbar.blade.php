@@ -341,12 +341,10 @@
                                     class="ti-arrow-end"></i></a>
                         </div>
                     </li>
-
-                    <li class="nav-item dropdown notification_dropdown" id="bn">
-                        <a class="nav-link me-0 bn" href="{{route('langChange', 'bn')}}">Bn</a>
-                    </li>
-                    <li class="nav-item dropdown notification_dropdown d-none" id="en">
-                        <a class="nav-link me-0 en" href="{{route('langChange', 'en')}}">En</a>
+                    
+                    <li class="nav-item dropdown notification_dropdown" id="en">
+                        <a class="nav-link me-0 {{session('lang_code') == 'en' ? 'd-none' : ''}}" href="{{route('langChange', 'en')}}">En</a>
+                        <a class="nav-link me-0 {{session('lang_code') == 'bn' ? 'd-none' : ''}}" href="{{route('langChange', 'bn')}}">Bn</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown header-profile2">

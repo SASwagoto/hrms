@@ -61,6 +61,9 @@
                                                 Name<span class="required">*</span></label>
                                             <input type="text" name="first_name" class="form-control"
                                                 placeholder="First Name">
+                                                @error('first_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">User Name<span

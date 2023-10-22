@@ -9,7 +9,7 @@
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-    <h1>Hello</h1>
+    <h1><?php echo e(__('messages.welcome')); ?></h1>
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('js'); ?>
     
