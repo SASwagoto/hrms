@@ -23,28 +23,17 @@ class EmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'profile_img' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'join_date'=>'required|date',
         'first_name' => 'required|string',
         'username' => 'required|string',
         'last_name' => 'string',
-        'emp_id' => 'required|numeric',
+        'employee_id' => 'required|numeric|unique:employees,employee_id',
         'dept_name' => 'required',
         'position' => 'required',
         'email' => 'required|unique:users,email',
         'password' => 'required|min:8',
-        'phone_number' => 'required|numeric|unique:employees, phone_number',
+        'phone_number' => 'required|numeric|unique:employees,phone_number',
         'confirm_password' => 'required|same:password',
-        'exam.*' => 'required',
-        'institute.*' => 'required|string',
-        'subject.*' => 'string',
-        'pass_year.*' => 'numeric',
-        'group.*' => 'string',
-        'session.*' => 'string',
-        'result.*' => 'numeric',
-        'dob' => 'date',
-        'present_address' => 'string',
-        'nid_num' => 'numeric',
-        'permanent_address' => 'string',
         ];
     }
 }

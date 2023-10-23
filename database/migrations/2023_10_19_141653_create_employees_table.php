@@ -29,6 +29,7 @@ return new class extends Migration
             $table->text('permanent_address')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
             $table->unsignedBigInteger('position_id')->nullable();
+            $table->date('join_date')->default(now());
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

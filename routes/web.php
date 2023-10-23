@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee', [EmployeeController::class, 'index'])->name('emp.index');
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp.create');
     Route::post('/employee/store', [EmployeeController::class, 'store'])->name('emp.store');
-    Route::get('/employee/show/{slug}', [EmployeeController::class, 'show'])->name('emp.show');
+    Route::get('/employee/show/{employee}', [EmployeeController::class, 'show'])->name('emp.show');
 
     //getPosition
     Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions']);

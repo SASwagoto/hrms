@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('institute');
             $table->string('subject')->nullable();
             $table->string('group')->nullable();
-            $table->string('session')->nullable();
+            $table->string('session_year')->nullable();
             $table->string('pass_year')->nullable();
             $table->string('result')->nullable();
             $table->timestamps();
