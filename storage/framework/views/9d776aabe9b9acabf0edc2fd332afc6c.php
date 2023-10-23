@@ -5,16 +5,17 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('header'); ?>
-Add New Role
+<?php echo e(__('messages.add.new.role')); ?>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row mb-3">
     <div class="col-lg-12">
         <ul class="action_btn float-start">
-            <li><a href="<?php echo e(route('roles.index')); ?>">Assign User Role</a></li>
-            <li><a href="<?php echo e(route('roles.add')); ?>">Add New Role</a></li>
-            <li><a href="<?php echo e(route('permission.add')); ?>">Add New Permission</a></li>
-            <li><a href="<?php echo e(route('permission.assign')); ?>">Give Role Permission</a></li>
+            <li><a href="<?php echo e(route('roles.index')); ?>"><?php echo e(__('messages.assign.user.role')); ?></a></li>
+            <li><a href="<?php echo e(route('roles.add')); ?>"><?php echo e(__('messages.add.new.role')); ?></a></li>
+            <li><a href="<?php echo e(route('permission.add')); ?>"><?php echo e(__('messages.add.new.permission')); ?></a></li>
+            <li><a href="<?php echo e(route('permission.assign')); ?>"><?php echo e(__('messages.give.role.permission')); ?></a></li>
         </ul>
     </div>
 </div>
@@ -25,11 +26,11 @@ Add New Role
                 <form action="<?php echo e(route('roles.create')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                 <div class="mb-3">
-                    <label for="role">Role Name</label>
+                    <label for="role"><?php echo e(__('messages.role.name')); ?></label>
                     <input type="text" name="role_name" required class="form-control" placeholder="Enter Role Name" id="role">
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"><?php echo e(__('messages.submit')); ?></button>
                 </div>
                 </form>
             </div>
@@ -42,9 +43,9 @@ Add New Role
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Role Name</th>
-                            <th>Permissions</th>
-                            <th class="text-end">Action</th>
+                            <th><?php echo e(__('messages.role.name')); ?></th>
+                            <th><?php echo e(__('messages.permissions')); ?></th>
+                            <th class="text-end"><?php echo e(__('messages.action')); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +66,7 @@ Add New Role
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
-                            <td colspan="4" class="text-center">No Data Found</td>
+                            <td colspan="4" class="text-center"><?php echo e(__('messages.no.permission.found')); ?></td>
                         </tr>
                         <?php endif; ?>
                     </tbody>

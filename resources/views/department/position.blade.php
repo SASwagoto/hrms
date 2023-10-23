@@ -26,6 +26,7 @@
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
                             <select id="department-select" class="form-control" name="dept_id">
+                                <option value="">Options..</option>
                                 @forelse ($depts as $dept)
                                 <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
                                 @empty

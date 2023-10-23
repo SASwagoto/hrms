@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    User Role Settings
+    Assign Role Permission
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('css'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/vendor/select2/css/select2.min.css">
@@ -10,7 +10,7 @@
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('header'); ?>
-    <?php echo e(__('messages.user.role.settings')); ?>
+<?php echo e(__('messages.assign.role.permission')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -28,20 +28,8 @@
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="<?php echo e(route('permission.assign.create')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
-                    <div class="mb-3">
-                        <label class="form-label text-primary"><?php echo e(__('messages.select.user')); ?><span
-                                class="required">*</span></label>
-                        <select id="select-user" name="user_id">
-                            <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                            <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                            <option><?php echo e(__('messages.no.user.found')); ?></option>
-                            <?php endif; ?>
-                        </select>
-                    </div>
-
                     <div class="mb-3">
                         <label class="form-label text-primary"><?php echo e(__('messages.select.roles')); ?><span class="required">*</span></label>
                         <select id="select-role" name="role_id">
@@ -53,6 +41,18 @@
                         </select>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label text-primary"><?php echo e(__('messages.select.permissions')); ?>
+
+                            <span class="required">*</span></label>
+                        <select class="multi-select" name="permission[]" multiple="multiple">
+                            <?php $__empty_1 = true; $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <option value="<?php echo e($permission->id); ?>"><?php echo e($permission->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <option><?php echo e(__('messages.no.permission.found')); ?></option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <button class="btn btn-primary" type="submit"><?php echo e(__('messages.submit')); ?></button>
                     </div>
@@ -67,21 +67,24 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th><?php echo e(__('messages.user.name')); ?></th>
-                            <th><?php echo e(__('messages.roles')); ?></th>
+                            <th><?php echo e(__('messages.role.name')); ?></th>
+                            <th><?php echo e(__('messages.permissions')); ?></th>
                             <th class="text-end"><?php echo e(__('messages.action')); ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($key+1); ?></td>
-                            <td><?php echo e($user->name); ?></td>
-                            <td><?php echo e($user->roles()->pluck('name')->implode(', ')); ?></td>
+                            <td><?php echo e($role->name); ?></td>
+                            <td><?php echo $role->permissions()->pluck('name')->implode(', ') ? $role->permissions()->pluck('name')->implode(', ') : '<span class="badge badge-danger">Not Assigned</span>'; ?>
+
+                            </td>
+                            
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pencil"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-trash"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -112,4 +115,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/settings/role/role.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/settings/role/access.blade.php ENDPATH**/ ?>
