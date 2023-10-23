@@ -80,7 +80,34 @@ return [
     "nid"=> "NID",
     "permanent.address"=> "Permanent Address",
     "save.as.draft"=> "Save as draft",
-    ""=> "",
+
+    //Employee List
+    "employee.list"=> "Employee List",
+    "new.employee"=> "+ New Employee",
+    "name"=> "Name",
+    "id"=> "ID",
+    "join.date"=> "Join Date",
+    "designation"=> "Designation",
+    "contact"=> "Contact",
+    "grade"=> "Grade",
+
+    //Attendence
+    "attendance"=> "Attendance",
+    "status"=> "Status",
+    "clock.in"=> "Clock-In",
+    "clock.out"=> "Clock-Out",
+    "hours"=> "Hours",
+    "overtime"=> "Overtime",
+
+    //Leaves
+    "leave.type"=> "Leave Type",
+    "from"=> "From",
+    "to"=> "To",
+    "days"=> "Days",
+    "reason"=> "Reason",
+    "applied.on"=> "Applied On",
+
+
 
 
 
