@@ -22,14 +22,13 @@ class TeamController extends Controller
     {
         $zones = Zone::active()->orderBy('zone_name', 'asc')->get();
         $depts = Department::active()->get();
-        $users = User::all();
+        $users = User::role('employee')->orderBy('name', 'asc')->get();
         $teams = Team::all();
         return view('department.teams', compact('depts','teams', 'zones','users'));
     }
 
     public function team_store(Request $request)
     {
-        return $request;
         Team::create($request->all());
         Alert::success( $request->team_name,'Added Successfully!');
         return redirect()->back();
@@ -85,8 +84,7 @@ class TeamController extends Controller
     public function sector_assign_leader()
     {
         $sectors = Sector::active()->orderBy('id','desc')->get();
-        $users = User::orderBy('name','asc')->get();
-
+        $users = User::role('employee')->orderBy('name', 'asc')->get();
         return view('department.assign_sl', compact('sectors','users'));
     }
 

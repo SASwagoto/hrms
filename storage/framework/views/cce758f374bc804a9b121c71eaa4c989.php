@@ -91,7 +91,9 @@
                                         </td>
                                     </tr> 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data Found</td>
+                                        </tr>
                                     <?php endif; ?>
                                     
                                 </tbody>

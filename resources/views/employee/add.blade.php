@@ -118,7 +118,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </label>
-                                    <select name="dept_name" id="department"
+                                    <select name="dept_id" id="department"
                                         class="default-select form-control wide form-control mb-3">
                                         <option value="">Options..</option>
                                         @forelse ($departments as $dept)
@@ -135,7 +135,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </label>
-                                    <select name="position" class="default-select form-control wide form-control mb-3">
+                                    <select name="position_id" class="default-select form-control wide form-control mb-3">
 
                                     </select>
                                 </div>
@@ -175,7 +175,7 @@
                                             class="required">* </span> <span id="pass_check_msg" class=""></span></label>
                                     <input type="password" name="confirm_password" class="form-control confirm_pass"
                                         placeholder="Confirm Password">
-                                    <a href="javascript:void(0);" class="eye_btn pass_show"><i
+                                    <a href="javascript:void(0);" class="eye_btn pass_show d-none"><i
                                             class="fa-solid fa-eye fa-lg"></i></a>
                                     <a href="javascript:void(0);" class="eye_btn pass_hide d-none"><i
                                             class="fa-solid fa-eye-slash fa-lg"></i></i></a>
@@ -247,7 +247,7 @@
                                             <label class="form-label text-primary">Result<span
                                                     class="required">*</span></label>
                                             <input type="number" name="result[]" class="form-control"
-                                                value="{{ old('result[]') }}" placeholder="Result">
+                                                value="{{ old('result[]') }}" step="0.01" placeholder="Result">
                                         </div>
                                     </div>
                                 </div>
@@ -478,7 +478,7 @@
             alert('Draft saved!');
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.pass_show').on('click', function() {
                 $('.confirm_pass').attr('type', 'text');
@@ -493,7 +493,7 @@
                 $('.pass_show').removeClass('d-none');
             });
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(function() {
             $('#department').on('change', function() {
@@ -536,13 +536,14 @@
                                        <div class="">
                                            <label class="form-label text-primary">Select
                                                Examination<span class="required">*</span></label>
-                                           <select name="exam[]"
-                                               class="default-select form-control wide form-control mb-3">
-                                               <option value="">Secondary School Certificate</option>
-                                               <option value="">Higher Secondary Certificate</option>
-                                               <option value="">Honours</option>
-                                               <option value="">Masters</option>
-                                           </select>
+                                               <select name="exam[]"
+                                                class="default-select form-control wide form-control mb-3">
+                                                <option value="">Options..</option>
+                                                <option>Secondary School Certificate</option>
+                                                <option>Higher Secondary Certificate</option>
+                                                <option>Honours</option>
+                                                <option>Masters</option>
+                                            </select>
                                        </div>
                                    </div>
                                    <div class="col-xl-6 col-sm-6">
@@ -575,13 +576,13 @@
                                        </div>
                                        <div class="mb-3">
                                            <label class="form-label text-primary">Seasson</label>
-                                           <input type="text" name="session[]" class="form-control"
+                                           <input type="text" name="session_year[]" class="form-control"
                                                placeholder="Seasson">
                                        </div>
                                        <div class="mb-3">
                                            <label class="form-label text-primary">Result<span
                                                    class="required">*</span></label>
-                                           <input type="number" name="result[]" class="form-control"
+                                           <input type="number" name="result[]" class="form-control" step="0.01" 
                                                placeholder="Result">
                                        </div>
                                    </div>
