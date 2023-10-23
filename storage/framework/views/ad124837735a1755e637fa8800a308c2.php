@@ -82,14 +82,6 @@
         $('.chatbox-close').on('click', function(){
             $('#main-wrapper').removeClass('active');
         });
-        $('.en').on('click', function(){
-            $('#en').addClass('d-none');
-            $('#bn').removeClass('d-none');
-        });
-        $('.bn').on('click', function(){
-            $('#bn').addClass('d-none');
-            $('#en').removeClass('d-none');
-        });
     </script>
 </body>
 </html><?php /**PATH E:\laragon\www\hrms\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

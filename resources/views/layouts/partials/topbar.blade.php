@@ -342,9 +342,20 @@
                         </div>
                     </li>
                     
-                    <li class="nav-item dropdown notification_dropdown" id="en">
-                        <a class="nav-link me-0 {{session('lang_code') == 'en' ? 'd-none' : ''}}" href="{{route('langChange', 'en')}}">En</a>
-                        <a class="nav-link me-0 {{session('lang_code') == 'bn' ? 'd-none' : ''}}" href="{{route('langChange', 'bn')}}">Bn</a>
+                    <li class="nav-item dropdown notification_dropdown">
+                        @php
+                            $currentLang = session('lang_code', 'en');
+                        @endphp
+
+                        @switch($currentLang)
+                            @case('en')
+                            <a class="nav-link me-0" href="{{route('langChange', 'bn')}}">Bn</a>
+                                @break
+                            @case('bn')
+                            <a class="nav-link me-0" href="{{route('langChange', 'en')}}">En</a>
+                                @break
+                            @default    
+                        @endswitch
                     </li>
                     <li class="nav-item">
                         <div class="dropdown header-profile2">
