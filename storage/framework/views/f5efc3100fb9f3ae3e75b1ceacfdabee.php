@@ -94,7 +94,11 @@
                                    <tr>
                                     <th><?php echo e($key+1); ?></th>
                                     <td><?php echo e($sector->sector_name); ?></td>
+                                    <?php if($sector->leader): ?>
                                     <td><?php echo e($sector->leader->name); ?></td>
+                                    <?php else: ?>
+                                    <td>Not Assigned</td>
+                                    <?php endif; ?>
                                     <td>
                                     <?php $__currentLoopData = $sector->teams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php echo e($team->team_name.','); ?>   

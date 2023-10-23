@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
     //Notice
     Route::get('/notice/list', [NoticeController::class,'index'])->name('notice.index');
     Route::get('/notice/create', [NoticeController::class,'create'])->name('notice.create');
+    Route::post('/notice/store', [NoticeController::class,'store'])->name('notice.store');
 
     //Attendance
     Route::get('/attendance/list', [TemporaryController::class,'attendance_list'])->name('att.list');

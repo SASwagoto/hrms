@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->date('notice_date')->nullable();
+            $table->string('notice_to')->nullable();
+            $table->string('noticefile')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('isApproved')->default(false);
+            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });
     }

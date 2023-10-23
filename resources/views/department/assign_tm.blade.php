@@ -94,7 +94,11 @@
                                    <tr>
                                     <th>{{$key+1}}</th>
                                     <td>{{$sector->sector_name}}</td>
+                                    @if ($sector->leader)
                                     <td>{{$sector->leader->name}}</td>
+                                    @else
+                                    <td>Not Assigned</td>
+                                    @endif
                                     <td>
                                     @foreach ($sector->teams as $team)
                                         {{$team->team_name.','}}   

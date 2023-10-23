@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
+use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class NoticeController extends Controller
 {
@@ -28,7 +31,17 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $notice = Notice::create([
+            'title'=> $request->title,
+            'notice_date'=> $request->notice_date,
+            'notice_to'=> $request->notice_to,
+            'noticefile'=> $request->noticefile,
+            'description'=> $request->description,
+            'created_by'=> Auth::id(),
+        ]);
+
+        Alert::success('Success', $notice->title.' Added Successfully!');
+        return redirect()->route('notice.index');
     }
 
     /**

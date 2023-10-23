@@ -19,48 +19,46 @@
                 <h4 class="mb-0">Notice Details</h4>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-6 col-sm-6">
-                        <div class="mb-3">
-                            <label for=" 8"
-                                class="form-label text-primary">Title<span
-                                    class="required">*</span></label>
-                            <input type="text" class="form-control" 
-                                placeholder="Title">
+                <form action="<?php echo e(route('notice.store')); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <div class="row">
+                        <div class="col-xl-6 col-sm-6">
+                            <div class="mb-3">
+                                <label for=" 8"
+                                    class="form-label text-primary">Title<span
+                                        class="required">*</span></label>
+                                <input type="text" class="form-control" name="title" 
+                                    placeholder="Title">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-primary">To</label>
+                                <input type="text" class="form-control" name="notice_to" placeholder="To">
+                            </div>
+    
                         </div>
-                        <div class="mb-3">
+    
+                        <div class="col-xl-6 col-sm-6">
+                            <div class="mb-3">
+                                <label  class="form-label text-primary">Date</label>
+                                <input type="date" name="notice_date" class="form-control" 
+                                    placeholder="Create On">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label text-primary">Files</label>
+                                <input class="form-control" name="noticefile" type="file" id="formFile">
+                            </div> 
+                        </div>
+                        <div class="mb-12">
                             <label 
-                                class="form-label text-primary">To<span class="required">*</span></label>
-                            <input type="number" class="form-control" 
-                                placeholder="To">
+                                class="form-label text-primary">Description</label>
+                                <textarea class="form-control" name="description" id="exampleFormControlTextarea2" rows="6"></textarea><br>
                         </div>
-
-                    </div>
-
-                    <div class="col-xl-6 col-sm-6">
-                        <div class="mb-3">
-                            <label  class="form-label text-primary">Create On<span
-                                    class="required">*</span></label>
-                            <input type="date" class="form-control" 
-                                placeholder="Create On">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary w-100" type="submit">Submit</button>
                         </div>
-                        <div class="mb-3">
-                            <label  class="form-label text-primary">Files<span
-                                    class="required">*</span></label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div> 
                     </div>
-                    <div class="mb-12">
-                        <label 
-                            class="form-label text-primary">Description<span class="required">*</span></label>
-                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="6"></textarea><br>
-                    </div>
-                    <div class="col-lg-12">
-                        <button class="btn btn-primary w-100" type="button">Save</button>
-                    </div>
-                </div>
-            </div>
-                   
+                </form>
+            </div>      
         </div>
     </div>
 <?php $__env->stopSection(); ?>
