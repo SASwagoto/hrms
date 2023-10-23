@@ -37,6 +37,10 @@
                         <div class="row mb-3">
                             <div class="col-xl-4 col-lg-4">
                                 <label class="form-label text-primary">Photo<span class="required">*</span></label>
+                                <div class="float-end">
+                                    <label for="" class="form-label text-primary">Joining Date<span class="required">*</span></label>
+                                    <input type="date" name="join_date" class="form-control" id="">
+                                </div>
                                 <div class="avatar-upload">
                                     <div class="avatar-preview">
                                         <div id="imagePreview"
@@ -44,8 +48,8 @@
                                         </div>
                                     </div>
                                     <div class="change-btn mb-lg-0 mb-3 mt-2">
-                                        <input type='file' name="profile_img" class="form-control d-none" id="imageUpload"
-                                            accept=".png, .jpg, .jpeg">
+                                        <input type='file' name="profile_img" class="form-control d-none"
+                                            id="imageUpload" accept=".png, .jpg, .jpeg">
                                         <label for="imageUpload" class="dlab-upload btn btn-primary btn-sm mb-0">Choose
                                             File</label>
                                         <a href="javascript:void"
@@ -53,41 +57,45 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-xl-8 col-lg-8">
                                 <div class="row">
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label for=" 1" class="form-label text-primary">First
-                                                Name<span class="required">*</span></label>
-                                            <input type="text" name="first_name" class="form-control"
-                                                placeholder="First Name">
+                                                Name<span class="required">* </span>
                                                 <?php $__errorArgs = ['first_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </label>
+                                            <input type="text" name="first_name" class="form-control"
+                                                value="<?php echo e(old('first_name')); ?>" placeholder="First Name">
+
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">User Name<span
-                                                    class="required">*</span></label>
-                                            <div class="d-flex">
-                                                <input type="text" name="username" class="form-control"
-                                                    placeholder="User Name">
-                                                    <?php $__errorArgs = ['username'];
+                                            <label class="form-label text-primary">User Name<span class="required">* </span>
+                                                <?php $__errorArgs = ['username'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </label>
+                                            <div class="d-flex">
+                                                <input type="text" name="username" class="form-control"
+                                                    value="<?php echo e(old('username')); ?>" placeholder="User Name">
+
                                             </div>
                                         </div>
                                     </div>
@@ -99,18 +107,31 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?></label>
-                                            <input type="text" name="last_name" class="form-control" placeholder="Wally">
-                                            
+unset($__errorArgs, $__bag); ?>
+                                            </label>
+                                            <input type="text" name="last_name" class="form-control"
+                                                value="<?php echo e(old('last_name')); ?>" placeholder="Wally">
+
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Employee ID<span
-                                                    class="required">*</span></label>
-                                            <input type="number" name="emp_id" class="form-control" placeholder="123456">
+                                            <label class="form-label text-primary">Employee ID<span class="required">*
+                                                </span> <?php $__errorArgs = ['employee_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </label>
+                                            <input type="number" name="employee_id" class="form-control"
+                                                value="<?php echo e(old('employee_id')); ?>" placeholder="123456">
                                         </div>
                                     </div>
                                 </div>
@@ -120,50 +141,107 @@ unset($__errorArgs, $__bag); ?></label>
                             <div class="col-xl-4">
                                 <div class="">
                                     <label class="form-label text-primary">Select
-                                        Department<span class="required">*</span></label>
-                                    <select name="dept_name" id="department" class="default-select form-control wide form-control mb-3">
+                                        Department<span class="required">* </span>
+                                        <?php $__errorArgs = ['dept_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </label>
+                                    <select name="dept_name" id="department"
+                                        class="default-select form-control wide form-control mb-3">
                                         <option value="">Options..</option>
                                         <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                        <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
+                                            <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <option value="">No Department found</option> 
+                                            <option value="">No Department found</option>
                                         <?php endif; ?>
                                     </select>
                                 </div>
-                                <div class="mb-3 position">
+                                <div class="position mb-3">
                                     <label class="form-label text-primary">Select
-                                        positions<span class="required">*</span></label>
+                                        positions<span class="required">*</span>
+                                        <?php $__errorArgs = ['position'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </label>
                                     <select name="position" class="default-select form-control wide form-control mb-3">
-                                        
+
                                     </select>
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="mb-3">
-                                    <label class="form-label text-primary">Email<span class="required">*</span></label>
-                                    <input type="email" name="email" class="form-control"
+                                    <label class="form-label text-primary">Email<span class="required">* </span>
+                                        <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </label>
+                                    <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>"
                                         placeholder="hello@example.com">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-primary">Password<span class="required">*</span></label>
-                                    <input type="password" name="password" class="form-control pass" placeholder="Password">
+                                    <label class="form-label text-primary">Password<span class="required">* </span>
+                                        <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </label>
+                                    <input type="password" name="password" class="form-control pass"
+                                        value="<?php echo e(old('password')); ?>" placeholder="Password">
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Phone
-                                        Number<span class="required">*</span></label>
-                                    <input type="number" name="phone_number	" class="form-control"
-                                        placeholder="+123456789">
+                                        Number<span class="required">* </span> <?php $__errorArgs = ['phone_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </label>
+                                    <input type="number" name="phone_number" class="form-control"
+                                        value="<?php echo e(old('phone_number')); ?>" placeholder="+123456789">
                                 </div>
                                 <div class="password_container mb-3">
                                     <label class="form-label text-primary">Confirm Password<span
-                                            class="required">*</span><span id="pass_check_msg"
-                                            class=""></span></label>
+                                            class="required">* </span> <span id="pass_check_msg" class=""></span></label>
                                     <input type="password" name="confirm_password" class="form-control confirm_pass"
                                         placeholder="Confirm Password">
-                                    <a href="javascript:void(0);" class="eye_btn pass_show"><i class="fa-solid fa-eye fa-lg"></i></a>
-                                    <a href="javascript:void(0);" class="eye_btn pass_hide d-none"><i class="fa-solid fa-eye-slash fa-lg"></i></i></a>
+                                    <a href="javascript:void(0);" class="eye_btn pass_show"><i
+                                            class="fa-solid fa-eye fa-lg"></i></a>
+                                    <a href="javascript:void(0);" class="eye_btn pass_hide d-none"><i
+                                            class="fa-solid fa-eye-slash fa-lg"></i></i></a>
                                 </div>
                             </div>
                         </div>
@@ -184,9 +262,9 @@ unset($__errorArgs, $__bag); ?></label>
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="">
                                             <label class="form-label text-primary">Select
-                                                Examination<span
-                                                class="required">*</span></label>
-                                            <select name="exam[]" class="default-select form-control wide form-control mb-3">
+                                                Examination<span class="required">*</span></label>
+                                            <select name="exam[]"
+                                                class="default-select form-control wide form-control mb-3">
                                                 <option value="">Options..</option>
                                                 <option>Secondary School Certificate</option>
                                                 <option>Higher Secondary Certificate</option>
@@ -198,21 +276,20 @@ unset($__errorArgs, $__bag); ?></label>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Institution<span
-                                                class="required">*</span></label>
+                                                    class="required">*</span></label>
                                             <input type="text" name="institute[]" class="form-control"
-                                                placeholder="Institution">
+                                                value="<?php echo e(old('institute[]')); ?>" placeholder="Institution">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Subject</label>
                                             <input type="text" name="subject[]" class="form-control"
-                                                placeholder="Subject">
+                                                value="<?php echo e(old('subject[]')); ?>" placeholder="Subject">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Passing
-                                                Year<span
-                                                class="required">*</span></label>
+                                                Year<span class="required">*</span></label>
                                             <input type="number" name="pass_year[]" class="form-control"
-                                                placeholder="Passing Year">
+                                                value="<?php echo e(old('pass_year[]')); ?>" placeholder="Passing Year">
                                         </div>
 
                                     </div>
@@ -220,20 +297,20 @@ unset($__errorArgs, $__bag); ?></label>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Group<span
-                                                class="required">*</span></label>
-                                            <input type="text" name="group[]"
-                                                class="form-control"placeholder="Group">
+                                                    class="required">*</span></label>
+                                            <input type="text" name="group[]" class="form-control"
+                                                value="<?php echo e(old('group[]')); ?>" placeholder="Group">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Seasson</label>
-                                            <input type="text" name="session[]" class="form-control"
-                                                placeholder="Seasson">
+                                            <input type="text" name="session_year[]" class="form-control"
+                                                value="<?php echo e(old('session_year[]')); ?>" placeholder="Seasson">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Result<span
                                                     class="required">*</span></label>
                                             <input type="number" name="result[]" class="form-control"
-                                                placeholder="Result">
+                                                value="<?php echo e(old('result[]')); ?>" placeholder="Result">
                                         </div>
                                     </div>
                                 </div>
@@ -255,14 +332,14 @@ unset($__errorArgs, $__bag); ?></label>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-primary">Date of
-                                        Birth</label>
-                                    <input type="Date" name="dob" class="form-control" placeholder="First Name">
+                                    <label class="form-label text-primary">Date of Birth</label>
+                                    <input type="Date" name="dob" class="form-control"
+                                        value="<?php echo e(old('dob')); ?>" placeholder="First Name">
                                 </div>
                                 <div class="">
-                                    <label class="form-label text-primary">Blood
-                                        Group</label>
-                                    <select id="selectValue" name="blood_group" class="default-select form-control wide form-control mb-3">
+                                    <label class="form-label text-primary">Blood Group</label>
+                                    <select id="selectValue" name="blood_group"
+                                        class="default-select form-control wide form-control mb-3">
                                         <option value="">Options..</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
@@ -288,7 +365,8 @@ unset($__errorArgs, $__bag); ?></label>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Present Address</label>
-                                    <input type="text" name="present_address" class="form-control" placeholder="Enter your present address">
+                                    <input type="text" name="present_address" class="form-control"
+                                        value="<?php echo e(old('present_address')); ?>" placeholder="Enter your present address">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -316,11 +394,14 @@ unset($__errorArgs, $__bag); ?></label>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">NID</label>
-                                    <input type="number" name="nid_num" class="form-control" placeholder="NID">
+                                    <input type="number" name="nid_num" class="form-control"
+                                        value="<?php echo e(old('nid_num')); ?>" placeholder="NID">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Permanent Address</label>
-                                    <input type="text" name="permanent_address" class="form-control" placeholder="Enter your Permanent address">
+                                    <input type="text" name="permanent_address" class="form-control"
+                                        value="<?php echo e(old('permanent_address')); ?>"
+                                        placeholder="Enter your Permanent address">
                                 </div>
                                 <div class="float-end">
                                     <button type="button" id="saveDraftButton" class="btn btn-info">Save as
@@ -340,28 +421,6 @@ unset($__errorArgs, $__bag); ?></label>
     <script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-datetimepicker/js/moment.js"></script>
     <script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="<?php echo e(asset('assets')); ?>/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#department').on('change', function () {
-                var departmentId = $(this).val();
-                var positionSelect = $('#position');
-                positionSelect.prop('disabled', true); // Disable "Position" select while loading data.
-    
-                $.ajax({
-                    url: '/get-positions/' + departmentId,
-                    type: 'GET',
-                    success: function (data) {
-                        //console.log(data);
-                        $('.position').html(data); 
-                    },
-                    error: function (xhr) {
-                        // Handle errors here.
-                    }
-                });
-            });
-        });
-    </script>
-
     <script>
         $(function() {
             $("#datepicker").datepicker({
@@ -412,93 +471,11 @@ unset($__errorArgs, $__bag); ?></label>
             }
         })
     </script>
-
-    <script>
-         function removeQualification() {
-            const qualificationDivs = document.querySelectorAll('.qualification');
-            if (qualificationDivs.length > 1) {
-                const lastQualification = qualificationDivs[qualificationDivs.length - 1];
-                lastQualification.parentNode.removeChild(lastQualification);
-            }
-        }
-
-        document.getElementById('addMore').addEventListener('click', function() {
-            const qualificationDiv = document.createElement('div');
-            qualificationDiv.className = 'qualification';
-
-            const count = document.querySelectorAll('.qualification').length + 1;
-            qualificationDiv.innerHTML = `
-            <div class="qualification">
-                                <div class="row">
-                                    <div class="col-xl-12 col-sm-12">
-                                        <div class="">
-                                            <label class="form-label text-primary">Select
-                                                Examination<span class="required">*</span></label>
-                                            <select name="exam[]"
-                                                class="default-select form-control wide form-control mb-3">
-                                                <option value="">Secondary School Certificate</option>
-                                                <option value="">Higher Secondary Certificate</option>
-                                                <option value="">Honours</option>
-                                                <option value="">Masters</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-sm-6">
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Institution<span
-                                                    class="required">*</span></label>
-                                            <input type="text" name="institute[]" class="form-control"
-                                                placeholder="Institution">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Subject</label>
-                                            <input type="text" name="subject[]" class="form-control"
-                                                placeholder="Subject">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Passing
-                                                Year<span class="required">*</span></label>
-                                            <input type="number" name="pass_year[]" class="form-control"
-                                                placeholder="Passing Year">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-xl-6 col-sm-6">
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Group<span
-                                                    class="required">*</span></label>
-                                            <input type="text" name="group[]"
-                                                class="form-control"placeholder="Group">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Seasson</label>
-                                            <input type="text" name="session[]" class="form-control"
-                                                placeholder="Seasson">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label text-primary">Result<span
-                                                    class="required">*</span></label>
-                                            <input type="number" name="result[]" class="form-control"
-                                                placeholder="Result">
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-                            <button type="button" class="btn btn-danger float-start me-2" onclick="removeQualification()">Remove</button>
-        `;
-
-            document.getElementById('qualificationForm').insertBefore(qualificationDiv, document.getElementById(
-                'addMore'));
-        });
-    </script>
-
     <script>
         // Load saved draft when the page loads
         window.addEventListener('load', function() {
             const savedDraft = JSON.parse(localStorage.getItem('employeeDraft'));
-            
+
             if (savedDraft) {
                 // Populate form fields with the saved draft data
                 document.getElementsByName('first_name')[0].value = savedDraft.first_name || '';
@@ -563,22 +540,122 @@ unset($__errorArgs, $__bag); ?></label>
 
             alert('Draft saved!');
         });
-
     </script>
     <script>
-        $( document ).ready(function() {
-            $('.pass_show').on('click', function(){
+        $(document).ready(function() {
+            $('.pass_show').on('click', function() {
                 $('.confirm_pass').attr('type', 'text');
                 $('.pass').attr('type', 'text');
                 $('.pass_show').addClass('d-none');
                 $('.pass_hide').removeClass('d-none');
             });
-            $('.pass_hide').on('click', function(){
+            $('.pass_hide').on('click', function() {
                 $('.confirm_pass').attr('type', 'password');
                 $('.pass').attr('type', 'password');
                 $('.pass_hide').addClass('d-none');
                 $('.pass_show').removeClass('d-none');
             });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#department').on('change', function() {
+                var departmentId = $(this).val();
+                var positionSelect = $('#position');
+                positionSelect.prop('disabled', true); // Disable "Position" select while loading data.
+
+                $.ajax({
+                    url: '/get-positions/' + departmentId,
+                    type: 'GET',
+                    success: function(data) {
+                        //console.log(data);
+                        $('.position').html(data);
+                    },
+                    error: function(xhr) {
+                        // Handle errors here.
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function removeQualification() {
+            const qualificationDivs = document.querySelectorAll('.qualification');
+            if (qualificationDivs.length > 1) {
+                const lastQualification = qualificationDivs[qualificationDivs.length - 1];
+                lastQualification.parentNode.removeChild(lastQualification);
+            }
+        }
+
+        document.getElementById('addMore').addEventListener('click', function() {
+            const qualificationDiv = document.createElement('div');
+            qualificationDiv.className = 'qualification';
+
+            const count = document.querySelectorAll('.qualification').length + 1;
+            qualificationDiv.innerHTML = `
+           <div class="qualification">
+                               <div class="row">
+                                   <div class="col-xl-12 col-sm-12">
+                                       <div class="">
+                                           <label class="form-label text-primary">Select
+                                               Examination<span class="required">*</span></label>
+                                           <select name="exam[]"
+                                               class="default-select form-control wide form-control mb-3">
+                                               <option value="">Secondary School Certificate</option>
+                                               <option value="">Higher Secondary Certificate</option>
+                                               <option value="">Honours</option>
+                                               <option value="">Masters</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="col-xl-6 col-sm-6">
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Institution<span
+                                                   class="required">*</span></label>
+                                           <input type="text" name="institute[]" class="form-control"
+                                               placeholder="Institution">
+                                       </div>
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Subject</label>
+                                           <input type="text" name="subject[]" class="form-control"
+                                               placeholder="Subject">
+                                       </div>
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Passing
+                                               Year<span class="required">*</span></label>
+                                           <input type="number" name="pass_year[]" class="form-control"
+                                               placeholder="Passing Year">
+                                       </div>
+
+                                   </div>
+
+                                   <div class="col-xl-6 col-sm-6">
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Group<span
+                                                   class="required">*</span></label>
+                                           <input type="text" name="group[]"
+                                               class="form-control"placeholder="Group">
+                                       </div>
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Seasson</label>
+                                           <input type="text" name="session[]" class="form-control"
+                                               placeholder="Seasson">
+                                       </div>
+                                       <div class="mb-3">
+                                           <label class="form-label text-primary">Result<span
+                                                   class="required">*</span></label>
+                                           <input type="number" name="result[]" class="form-control"
+                                               placeholder="Result">
+                                       </div>
+                                   </div>
+                               </div>
+                               <hr>
+                           </div>
+                           <button type="button" class="btn btn-danger float-start me-2" onclick="removeQualification()">Remove</button>
+       `;
+
+            document.getElementById('qualificationForm').insertBefore(qualificationDiv, document.getElementById(
+                'addMore'));
         });
     </script>
 <?php $__env->stopPush(); ?>

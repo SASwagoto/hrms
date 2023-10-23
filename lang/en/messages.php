@@ -45,7 +45,45 @@ return [
     "no.permission.found"=> "No Permission Found",
 
     //employee-add employee
+    "add.employee"=> "Add Employee",
+    "add.new.employee"=> "Add New Employee",
+    "photo"=> "Photo",
+    "joining.date"=> "Joining Date",
+    "choose.file"=> "Choose File",
+    "remove"=> "Remove",
+    "select.department"=> "Select Department",
+    "select.positions"=> "Select Positions",
+    "first.name"=> "First Name",
+    "users.name"=> "User Name",
+    "email"=> "Email",
+    "password"=> "Password",
+    "last.name"=> "Last Name",
+    "employee.id"=> "Employee ID",
+    "phone.number"=> "Phone Number",
+    "confirm.password"=> "Confirm Password",
+    "educational.details"=> "Educational Details",
+    "select.examination"=> "Select Examination",
+    "institution"=> "Institution",
+    "subject"=> "Subject",
+    "passing.year"=> "Passing Year",
+    "group"=> "Group",
+    "seasson"=> "Seasson",
+    "result"=> "Result",
+    "add.more"=> "Add More",
+    "personal.details"=> "Personal Details",
+    "date.of.birth"=> "Date of Birth",
+    "blood.group"=> "Blood Group",
+    "religion"=> "Religion",
+    "present.address"=> "Present Address",
+    "marital.status"=> "Marital Status",
+    "gender"=> "Gender",
+    "nid"=> "NID",
+    "permanent.address"=> "Permanent Address",
+    "save.as.draft"=> "Save as draft",
     ""=> "",
+
+
+
 
 
 
