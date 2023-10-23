@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title'); ?>
     Add Employee
 <?php $__env->stopSection(); ?>
@@ -95,7 +93,6 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="d-flex">
                                                 <input type="text" name="username" class="form-control"
                                                     value="<?php echo e(old('username')); ?>" placeholder="User Name">
-
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +139,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="">
                                     <label class="form-label text-primary">Select
                                         Department<span class="required">* </span>
-                                        <?php $__errorArgs = ['dept_name'];
+                                        <?php $__errorArgs = ['dept_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -166,7 +163,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="position mb-3">
                                     <label class="form-label text-primary">Select
                                         positions<span class="required">*</span>
-                                        <?php $__errorArgs = ['position'];
+                                        <?php $__errorArgs = ['position_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -262,7 +259,16 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="">
                                             <label class="form-label text-primary">Select
-                                                Examination<span class="required">*</span></label>
+                                                Examination<span class="required">*</span> <?php $__errorArgs = ['exam'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></label>
                                             <select name="exam[]"
                                                 class="default-select form-control wide form-control mb-3">
                                                 <option value="">Options..</option>
@@ -287,7 +293,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Passing
-                                                Year<span class="required">*</span></label>
+                                                Year</label>
                                             <input type="number" name="pass_year[]" class="form-control"
                                                 value="<?php echo e(old('pass_year[]')); ?>" placeholder="Passing Year">
                                         </div>
@@ -296,8 +302,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Group<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Group</label>
                                             <input type="text" name="group[]" class="form-control"
                                                 value="<?php echo e(old('group[]')); ?>" placeholder="Group">
                                         </div>

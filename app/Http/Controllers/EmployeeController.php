@@ -40,7 +40,6 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-
         $name = $request->first_name.' '.$request->last_name;
         $addUser = User::create([
             'name'=> $name,
@@ -69,7 +68,7 @@ class EmployeeController extends Controller
         ]);
 
         
-        if ($request->has('exam')) {
+        if ($request->input('exam') !== null) {
             foreach ($request->exam as $key => $exam) {
                 Education::create([
                     'user_id'=> $addUser->id,

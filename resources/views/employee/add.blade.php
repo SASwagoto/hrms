@@ -81,7 +81,6 @@
                                             <div class="d-flex">
                                                 <input type="text" name="username" class="form-control"
                                                     value="{{ old('username') }}" placeholder="User Name">
-
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +113,7 @@
                                 <div class="">
                                     <label class="form-label text-primary">Select
                                         Department<span class="required">* </span>
-                                        @error('dept_name')
+                                        @error('dept_id')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </label>
@@ -131,7 +130,7 @@
                                 <div class="position mb-3">
                                     <label class="form-label text-primary">Select
                                         positions<span class="required">*</span>
-                                        @error('position')
+                                        @error('position_id')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </label>
@@ -199,7 +198,9 @@
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="">
                                             <label class="form-label text-primary">Select
-                                                Examination<span class="required">*</span></label>
+                                                Examination<span class="required">*</span> @error('exam[]')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror</label>
                                             <select name="exam[]"
                                                 class="default-select form-control wide form-control mb-3">
                                                 <option value="">Options..</option>
@@ -213,7 +214,9 @@
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Institution<span
-                                                    class="required">*</span></label>
+                                                    class="required">*</span> @error('institute[]')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror</label>
                                             <input type="text" name="institute[]" class="form-control"
                                                 value="{{ old('institute[]') }}" placeholder="Institution">
                                         </div>
@@ -224,7 +227,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Passing
-                                                Year<span class="required">*</span></label>
+                                                Year</label>
                                             <input type="number" name="pass_year[]" class="form-control"
                                                 value="{{ old('pass_year[]') }}" placeholder="Passing Year">
                                         </div>
@@ -233,8 +236,7 @@
 
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
-                                            <label class="form-label text-primary">Group<span
-                                                    class="required">*</span></label>
+                                            <label class="form-label text-primary">Group</label>
                                             <input type="text" name="group[]" class="form-control"
                                                 value="{{ old('group[]') }}" placeholder="Group">
                                         </div>

@@ -23,7 +23,6 @@ class EmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'join_date'=>'required|date',
         'first_name' => 'required|string',
         'username' => 'required|string',
         'last_name' => 'string',
@@ -34,6 +33,8 @@ class EmployeeRequest extends FormRequest
         'password' => 'required|min:8',
         'phone_number' => 'required|numeric|unique:employees,phone_number',
         'confirm_password' => 'required|same:password',
+        'exam.*'=> 'required',
+        'institute.*'=> 'required',
         ];
     }
 }
