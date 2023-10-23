@@ -334,9 +334,20 @@
                         </div>
                     </li>
                     
-                    <li class="nav-item dropdown notification_dropdown" id="en">
-                        <a class="nav-link me-0 <?php echo e(session('lang_code') == 'en' ? 'd-none' : ''); ?>" href="<?php echo e(route('langChange', 'en')); ?>">En</a>
-                        <a class="nav-link me-0 <?php echo e(session('lang_code') == 'bn' ? 'd-none' : ''); ?>" href="<?php echo e(route('langChange', 'bn')); ?>">Bn</a>
+                    <li class="nav-item dropdown notification_dropdown">
+                        <?php
+                            $currentLang = session('lang_code', 'en');
+                        ?>
+
+                        <?php switch($currentLang):
+                            case ('en'): ?>
+                            <a class="nav-link me-0" href="<?php echo e(route('langChange', 'bn')); ?>">Bn</a>
+                                <?php break; ?>
+                            <?php case ('bn'): ?>
+                            <a class="nav-link me-0" href="<?php echo e(route('langChange', 'en')); ?>">En</a>
+                                <?php break; ?>
+                            <?php default: ?>    
+                        <?php endswitch; ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown header-profile2">

@@ -10,16 +10,16 @@
 @endpush
 
 @section('header')
-Assign Role Permission
+{{__('messages.assign.role.permission')}}
 @endsection
 @section('content')
 <div class="row mb-3">
     <div class="col-lg-12">
         <ul class="action_btn float-start">
-            <li><a href="{{ route('roles.index') }}">Assign User Role</a></li>
-            <li><a href="{{ route('roles.add') }}">Add New Role</a></li>
-            <li><a href="{{ route('permission.add') }}">Add New Permission</a></li>
-            <li><a href="{{ route('permission.assign') }}">Give Role Permission</a></li>
+            <li><a href="{{ route('roles.index') }}">{{__('messages.assign.user.role')}}</a></li>
+            <li><a href="{{ route('roles.add') }}">{{__('messages.add.new.role')}}</a></li>
+            <li><a href="{{ route('permission.add') }}">{{__('messages.add.new.permission')}}</a></li>
+            <li><a href="{{ route('permission.assign') }}">{{__('messages.give.role.permission')}}</a></li>
         </ul>
     </div>
 </div>
@@ -30,29 +30,29 @@ Assign Role Permission
                 <form action="{{route('permission.assign.create')}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label text-primary">Select Roles<span class="required">*</span></label>
+                        <label class="form-label text-primary">{{__('messages.select.roles')}}<span class="required">*</span></label>
                         <select id="select-role" name="role_id">
                             @forelse ($roles as $role)
                             <option value="{{$role->id}}">{{$role->name}}</option>
                             @empty
-                            <option>No role Found</option>
+                            <option>{{__('messages.no.role.found')}}</option>
                             @endforelse
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label text-primary">Select Permissions
+                        <label class="form-label text-primary">{{__('messages.select.permissions')}}
                             <span class="required">*</span></label>
                         <select class="multi-select" name="permission[]" multiple="multiple">
                             @forelse ($permissions as $permission)
                             <option value="{{$permission->id}}">{{$permission->name}}</option>
                             @empty
-                            <option>No Permission Found</option>
+                            <option>{{__('messages.no.permission.found')}}</option>
                             @endforelse
                         </select>
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">{{__('messages.submit')}}</button>
                     </div>
                 </form>
             </div>
@@ -65,9 +65,9 @@ Assign Role Permission
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Role Name</th>
-                            <th>Permissions</th>
-                            <th class="text-end">Action</th>
+                            <th>{{__('messages.role.name')}}</th>
+                            <th>{{__('messages.permissions')}}</th>
+                            <th class="text-end">{{__('messages.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +87,7 @@ Assign Role Permission
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center">No Data Found</td>
+                            <td colspan="4" class="text-center">{{__('messages.no.data.found')}}</td>
                         </tr>
                         @endforelse
                     </tbody>

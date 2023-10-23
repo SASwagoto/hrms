@@ -5,16 +5,16 @@
 @endsection
 
 @section('header')
-Add New Permission
+{{__('messages.add.new.permission')}}
 @endsection
 @section('content')
 <div class="row mb-3">
     <div class="col-lg-12">
         <ul class="action_btn float-start">
-            <li><a href="{{route('roles.index')}}">Assign User Role</a></li>
-            <li><a href="{{route('roles.add')}}">Add New Role</a></li>
-            <li><a href="{{route('permission.add')}}">Add New Permission</a></li>
-            <li><a href="{{route('permission.assign')}}">Give Role Permission</a></li>
+            <li><a href="{{route('roles.index')}}">{{__('messages.assign.user.role')}}</a></li>
+            <li><a href="{{route('roles.add')}}">{{__('messages.add.new.role')}}</a></li>
+            <li><a href="{{route('permission.add')}}">{{__('messages.add.new.permission')}}</a></li>
+            <li><a href="{{route('permission.assign')}}">{{__('messages.give.role.permission')}}</a></li>
         </ul>
     </div>
 </div>
@@ -25,11 +25,11 @@ Add New Permission
                 <form action="{{route('permission.create')}}" method="POST">
                     @csrf
                 <div class="mb-3">
-                    <label for="role">Permission Name</label>
+                    <label for="role">{{__('messages.permission.name')}}</label>
                     <input type="text" name="permission_name" required class="form-control" placeholder="Enter Permission Name" id="permission">
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
                 </div>
                 </form>
             </div>
@@ -42,9 +42,9 @@ Add New Permission
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Role Name</th>
-                            <th>Permissions</th>
-                            <th class="text-end">Action</th>
+                            <th>{{__('messages.role.name')}}</th>
+                            <th>{{__('messages.permissions')}}</th>
+                            <th class="text-end">{{__('messages.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +62,7 @@ Add New Permission
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center">No Data Found</td>
+                            <td colspan="4" class="text-center">{{__('messages.no.data.found')}}</td>
                         </tr>
                         @endforelse
                     </tbody>
