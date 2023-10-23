@@ -3,6 +3,7 @@
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
@@ -88,8 +89,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/give-permission/create', [RoleController::class, 'create_assign_permission'])->name('permission.assign.create');
     
     //Notice
-    Route::get('/notice/add', [TemporaryController::class,'notice_index'])->name('notice.index');
-    Route::get('/notice/list', [TemporaryController::class,'notice_list'])->name('notice.list');
+    Route::get('/notice/list', [NoticeController::class,'index'])->name('notice.index');
+    Route::get('/notice/create', [NoticeController::class,'create'])->name('notice.create');
 
     //Attendance
     Route::get('/attendance/list', [TemporaryController::class,'attendance_list'])->name('att.list');

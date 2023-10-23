@@ -153,7 +153,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                     </label>
-                                    <select name="dept_name" id="department"
+                                    <select name="dept_id" id="department"
                                         class="default-select form-control wide form-control mb-3">
                                         <option value="">Options..</option>
                                         <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -177,7 +177,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                     </label>
-                                    <select name="position" class="default-select form-control wide form-control mb-3">
+                                    <select name="position_id" class="default-select form-control wide form-control mb-3">
 
                                     </select>
                                 </div>

@@ -15,10 +15,6 @@ class TemporaryController extends Controller
         return view('settings.site');
     }
 
-    public function notice_index()
-    {
-        return view('notice.add');
-    }
 
     public function notice_list()
     {

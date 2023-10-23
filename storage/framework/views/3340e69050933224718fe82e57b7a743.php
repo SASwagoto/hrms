@@ -1,17 +1,17 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     Notice
-@endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('assets') }}/vendor/jquery-nice-select/css/nice-select.css">
-    <link href="{{ asset('assets') }}/vendor/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-@endpush
-@section('header')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/vendor/jquery-nice-select/css/nice-select.css">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('header'); ?>
     Notice 
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -63,10 +63,10 @@
                    
         </div>
     </div>
-@endsection
-@push('js')
-<script src="{{ asset('assets') }}/vendor/bootstrap-datetimepicker/js/moment.js"></script>
-<script src="{{ asset('assets') }}/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('js'); ?>
+<script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
 <script>
     $(function() {
         $("#datepicker").datepicker({
@@ -119,4 +119,5 @@
     })
 
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/notice/add.blade.php ENDPATH**/ ?>

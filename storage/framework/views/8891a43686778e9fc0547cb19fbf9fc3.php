@@ -90,8 +90,8 @@
                     <span class="nav-text"><?php echo e(__('menu.notice')); ?></span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="<?php echo e(route('notice.list')); ?>"><?php echo e(__('menu.notices')); ?></a></li>
-                    <li><a href="<?php echo e(route('notice.index')); ?>"><?php echo e(__('menu.add.notice')); ?></a></li>
+                    <li><a href="<?php echo e(route('notice.index')); ?>"><?php echo e(__('menu.notices')); ?></a></li>
+                    <li><a href="<?php echo e(route('notice.create')); ?>"><?php echo e(__('menu.add.notice')); ?></a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

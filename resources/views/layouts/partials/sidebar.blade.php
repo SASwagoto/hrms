@@ -90,8 +90,8 @@
                     <span class="nav-text">{{__('menu.notice')}}</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('notice.list')}}">{{__('menu.notices')}}</a></li>
-                    <li><a href="{{route('notice.index')}}">{{__('menu.add.notice')}}</a></li>
+                    <li><a href="{{route('notice.index')}}">{{__('menu.notices')}}</a></li>
+                    <li><a href="{{route('notice.create')}}">{{__('menu.add.notice')}}</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">
