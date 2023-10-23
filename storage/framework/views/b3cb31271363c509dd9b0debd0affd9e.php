@@ -259,7 +259,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="">
                                             <label class="form-label text-primary">Select
-                                                Examination<span class="required">*</span> <?php $__errorArgs = ['exam'];
+                                                Examination<span class="required">*</span> <?php $__errorArgs = ['exam[]'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -282,7 +282,16 @@ unset($__errorArgs, $__bag); ?></label>
                                     <div class="col-xl-6 col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label text-primary">Institution<span
-                                                    class="required">*</span></label>
+                                                    class="required">*</span> <?php $__errorArgs = ['institute[]'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></label>
                                             <input type="text" name="institute[]" class="form-control"
                                                 value="<?php echo e(old('institute[]')); ?>" placeholder="Institution">
                                         </div>

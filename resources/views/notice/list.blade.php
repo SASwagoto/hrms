@@ -60,11 +60,13 @@
                                 <th>Description</th>
                                 <th>To</th>
                                 <th>Create On</th>
-                                <th>Files</th>
+                                <th>Created by</th>
+                                <th>Status</th>
                                 <th class="text-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($notices as $key => $notice)
                             <tr>
                                 <td>
                                     <div class="checkbox me-0 align-self-center">
@@ -75,26 +77,22 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td>{{$key+1}}</td>
+                                <td><span class="text-primary font-w600">{{$notice->title}}</span></td>
                                 <td>
-                                    <a href="">1</a>
+                                    <h6 class="mb-0">{{ implode(' ', array_slice(str_word_count($notice->description, 1), 0, 5)) }}</h6>
                                 </td>
-                                <td><span class="text-primary font-w600">Eid al-Fitr</span></td>
+                                <td><span class="text-primary font-w600">{{$notice->notice_to ? $notice->notice_to : 'All Employee'}}</span></td>
                                 <td>
-                                    <h6 class="mb-0">Eid-ul-Fitr 2023 Date: Eid ul Fitr . </h6>
-                                </td>
-                                <td><span class="text-primary font-w600">Employee</span></td>
-                                <td>
-                                    <div>March 25, 2023</div>
+                                    <div>{{$notice->notice_date}}</div>
                                 </td>
                                 <td>
-                                    <div>Notice</div>
+                                    <div>{{$notice->createdBy->name}}</div>
                                 </td>
+                                <td><span class="badge  {{$notice->isApproved ? 'badge-success':'badge-danger'}}">{{$notice->isApproved ? 'Approved':'Pending'}}</span></td>
                                 <td>
-                                    @php
-                                        $slug = 'abc';
-                                    @endphp
                                     <ul class="action_btn">
-                                        <li><a href="{{ route('emp.show', $slug) }}"><i
+                                        <li><a href="#"><i
                                                     class="fa-solid fa-circle-info fa-beat"
                                                     style="color: #12a561;"></i></a></li>
                                         <li><a href="#"><i class="fa-solid fa-pen-to-square"
@@ -104,6 +102,9 @@
                                     </ul>
                                 </td>
                             </tr>
+                            @empty
+                                
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
