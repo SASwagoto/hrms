@@ -100,12 +100,48 @@ return [
     "overtime"=> "Overtime",
 
     //Leaves
+    "leave"=> "Leave",
+    "add.leave.request"=> "Add Leave Request",
     "leave.type"=> "Leave Type",
     "from"=> "From",
     "to"=> "To",
     "days"=> "Days",
     "reason"=> "Reason",
     "applied.on"=> "Applied On",
+
+    //Departments
+    "department"=> "Department",
+    "add.department"=> "Add Department",
+    "department.name"=> "Department Name",
+    "department.list"=> "Department List",
+    
+    //Position
+    "position"=> "Position",
+    "add.position"=> "Add Position",
+    "position.name"=> "Position Name",
+    "position.list"=> "Position List",
+
+    //Teams
+    "teams"=> "Teams",
+    "add.team"=> "Add Team",
+    "select.zone"=> "Select Zone",
+    "select.leader"=> "Select Leader",
+    "team.list"=> "Team List",
+    "team.name"=> "Team Name",
+    "zone"=> "Zone",
+    "leader"=> "Leader",
+
+    //Sector
+    "sector"=> "Sector",
+    "create.new.sector"=> "Create New Sector",
+    "assign.sector.leader"=> "Assign Sector Leader",
+    "assign.team"=> "Assign Team",
+    "add.sector"=> "Add Sector",
+    "sector.name"=> "Sector Name",
+    "sector.leader"=> "Sector Leader",
+    "select.sector"=> "Select Sector",
+    ""=> "",
+    
 
 
 

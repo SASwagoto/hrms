@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title'); ?>
     Position
 <?php $__env->stopSection(); ?>
@@ -24,6 +26,7 @@
                             <label class="form-label text-primary">Select Department<span
                                     class="required">*</span></label>
                             <select id="department-select" class="form-control" name="dept_id">
+                                <option value="">Options..</option>
                                 <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -88,7 +91,9 @@
                                         </td>
                                     </tr> 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data Found</td>
+                                        </tr>
                                     <?php endif; ?>
                                     
                                 </tbody>
