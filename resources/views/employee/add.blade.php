@@ -333,8 +333,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">NID</label>
-                                    <input type="number" name="nid_num" class="form-control"
-                                        value="{{ old('nid_num') }}" placeholder="NID">
+                                    <input type="number" name="nid" class="form-control"
+                                        value="{{ old('nid') }}" placeholder="NID">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label text-primary">Permanent Address</label>

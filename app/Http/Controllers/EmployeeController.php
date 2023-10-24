@@ -59,7 +59,7 @@ class EmployeeController extends Controller
             'blood_group'=> $request->blood_group,
             'gender'=> $request->gender,
             'religion'=> $request->religion,
-            'nid'=> $request->nid_num,
+            'nid'=> $request->nid,
             'present_address'=> $request->present_address,
             'permanent_address'=> $request->permanent_address,
             'dept_id'=> $request->dept_id,
