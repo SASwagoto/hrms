@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{$emp->username}} :: Employee Details
+    {{$employee->username}} :: Employee Details
 @endsection
 @push('css')
     <link href="{{ asset('assets') }}/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 @endpush
 
 @section('header')
-{{$emp->user->name}} Details
+{{$employee->user->name}} Details
 @endsection
 
 @section('content')
@@ -51,13 +51,13 @@
                                     <img src="{{ asset('assets') }}/images/av.jpg" alt="" class="avatar avatar-xxl">
                                 </div>
                                 <div class="hd">
-                                    <h2 class="mb-0">{{$emp->user->name}}</h2>
-                                    <p class="text-primary font-w600 hd">{{$emp->position->position_name}}</p>
+                                    <h2 class="mb-0">{{$employee->user->name}}</h2>
+                                    <p class="text-primary font-w600 hd">{{$employee->position->position_name}}</p>
                                 </div>
                                 <div class="basic-form ef d-none" style="width: 500px;">
                                     <div class="mb-3">
                                         <input type="text" class="form-control input-default"
-                                            value="{{$emp->user->name}}">
+                                            value="{{$employee->user->name}}">
                                     </div>
                                     <div class="mb-3">
                                         <select class="default-select form-control wide form-control mb-3">
@@ -85,11 +85,11 @@
                                     </li>
                                     <li>
                                         <span>Email:</span>
-                                        <h5 class="hd mb-0"><a href="mailto:{{$emp->user->email}}">{{$emp->user->email}}</a>
+                                        <h5 class="hd mb-0"><a href="mailto:{{$employee->user->email}}">{{$employee->user->email}}</a>
                                         </h5>
                                         <div class="basic-form ef d-none">
                                             <input type="email" class="form-control input-default"
-                                                value="{{$emp->user->email}}" style="width: 445px">
+                                                value="{{$employee->user->email}}" style="width: 445px">
                                         </div>
                                     </li>
                                 </ul>
@@ -102,7 +102,7 @@
                                         </a>
                                     </li>
                                     <li><span>Department:</span>
-                                        <h5 class="hd mb-0">{{$emp->department->dept_name}}</h5>
+                                        <h5 class="hd mb-0">{{$employee->department->dept_name}}</h5>
                                         <div class="basic-form ef d-none" style="width: 445px">
                                             <select class="default-select form-control wide form-control mb-3">
                                                 @foreach ($departments as $dept)
@@ -121,9 +121,9 @@
                                         </a>
                                     </li>
                                     <li><span>Phone:</span>
-                                        <h5 class="hd mb-0">{{$emp->phone_number}}</h5>
+                                        <h5 class="hd mb-0">{{$employee->phone_number}}</h5>
                                         <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control input-default" value="{{$emp->phone_number}}"
+                                            <input type="text" class="form-control input-default" value="{{$employee->phone_number}}"
                                                 style="width: 445px">
                                         </div>
                                     </li>
@@ -138,10 +138,10 @@
 
                                     </li>
                                     <li><span>Address:</span>
-                                        <h5 class="hd mb-0">{{$emp->present_address}}</h5>
+                                        <h5 class="hd mb-0">{{$employee->present_address}}</h5>
                                         <div class="basic-form ef d-none">
                                             <input type="text" class="form-control input-default"
-                                                value="{{$emp->present_address}}" style="width: 445px">
+                                                value="{{$employee->present_address}}" style="width: 445px">
                                         </div>
                                     </li>
                                 </ul>
@@ -160,14 +160,15 @@
                         <div class="col-6">
                             <h5>Educational Qualification</h5>
                             <hr>
-                            @if ($emp->education)
+                            @if ($employee->education)
                             <ul class="edu_list d-block w-100 mb-3">
-                                @foreach ($emp->education as $education)
+                                @foreach ($employee->education as $education)
                                 <li>
                                     <h6>{{$education->exam}}</h6>
                                     <p><strong>institute: </strong>{{$education->institute}}<br>
                                         <strong>Subject/Group: </strong>{{$education->subject}} {{$education->group}}<br>
                                         <strong>Session: </strong>{{$education->session_year}}<br>
+                                        <strong>Passing Year: </strong>{{$education->pass_year}}<br>
                                         <strong>Result: </strong>{{$education->result}}
                                     </p>
                                 </li>
@@ -184,32 +185,32 @@
                         <tr>
                             <th>Gender</th>
                             <th>:</th>
-                            <td>{{$emp->gender}}</td>
+                            <td>{{$employee->gender}}</td>
                         </tr>
                         <tr>
                             <th>Religion</th>
                             <th>:</th>
-                            <td>{{$emp->religion}}</td>
+                            <td>{{$employee->religion}}</td>
                         </tr>
                         <tr>
                             <th>Blood Group</th>
                             <th>:</th>
-                            <td>{{$emp->blood_group}}</td>
+                            <td>{{$employee->blood_group}}</td>
                         </tr>
                         <tr>
                             <th>Date of Birth</th>
                             <th>:</th>
-                            <td>{{$emp->dob}}</td>
+                            <td>{{$employee->dob}}</td>
                         </tr>
                         <tr>
                             <th>NID Number</th>
                             <th>:</th>
-                            <td>{{$emp->nid_num}}</td>
+                            <td>{{$employee->nid}}</td>
                         </tr>
                         <tr>
                             <th>Marital Status</th>
                             <th>:</th>
-                            <td>{{$emp->marital_status}}</td>
+                            <td>{{$employee->marital_status}}</td>
                         </tr>
                     </tbody>
                 </table>

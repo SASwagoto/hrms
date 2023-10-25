@@ -23,7 +23,7 @@
                     <div class="col-xl-12">
                         <div class="mb-3">
                             <label class="form-label text-primary">Job Title<span class="required">*</span></label>
-                            <input type="text" name="job_titel" class="form-control"
+                            <input type="text" name="job_title" class="form-control"
                                 placeholder="Job Title">
                         </div>
                         <div class="mb-3">

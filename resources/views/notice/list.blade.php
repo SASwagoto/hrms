@@ -56,7 +56,7 @@
                                         required="">
                                 </th>
                                 <th>SL</th>
-                                <th>Titel</th>
+                                <th>title</th>
                                 <th>Description</th>
                                 <th>To</th>
                                 <th>Create On</th>

@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="appTitle">{{__('messages.app.titel')}}</label>
+                                <label for="appTitle">{{__('messages.app.title')}}</label>
                                 <input type="text" name="app_title" id="" class="form-control" value="{{$data->app_title}}">
                             </div>
                             <div class="mb-3">
@@ -46,7 +46,7 @@
                                 <input type="text" name="company_phone" id="" class="form-control" value="{{$data->company_phone}}">
                             </div>
                             <div class="mb-3">
-                                <label for="appTitle">{{__('messages.footer.titel')}}</label>
+                                <label for="appTitle">{{__('messages.footer.title')}}</label>
                                 <input type="text" name="footer_title" id="" class="form-control" value="{{$data->footer_title}}">
                             </div>
                         </div>

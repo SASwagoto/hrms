@@ -6,11 +6,11 @@ return [
     // site setting
     "site.setting"=> "Site Setting",
     "general.settings"=> "General Settings",
-    "app.titel"=> "App Titel",
+    "app.title"=> "App title",
     "company.name"=> "Company Name",
     "company.email"=> "Company Email",
     "company.phone"=> "Company Phone",
-    "footer.titel"=> "Footer Title",
+    "footer.title"=> "Footer Title",
     "site.logo"=> "Site Logo",
     "fav.icon"=> "Fav Icon",
     "about.us"=> "About us",

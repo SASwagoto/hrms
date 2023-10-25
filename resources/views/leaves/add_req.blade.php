@@ -21,7 +21,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="employee" class="form-label text-primary">Employee</label>
-                                <input type="text" class="form-control" disabled value="{{Auth::user()->name}}">
+                                <input type="text" class="form-control" readonly value="{{Auth::user()->name}}">
                                 <input type="hidden" name="emp_id" value="{{Auth::user()->id}}">
                             </div>
                             <div class="mb-3">
@@ -38,7 +38,8 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label text-primary">Leave Type<span class="required">*</span></label>
-                                <select name="leave_id" class="default-select form-control wide form-control mb-3">
+                                <select name="leave_id" id="leave_type" class="default-select form-control wide form-control mb-3">
+                                    <option value="">Options..</option>
                                     @forelse ($types as $type)
                                     <option value="{{$type->id}}">{{$type->name}}</option>
                                     @empty
@@ -61,7 +62,9 @@
                             <div class="mb-3" style="padding-top: 5px">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
-    
+                        </div>
+                        <div class="col-lg-6">
+                            <h5 id="leaveBalanceDisplay"></h5>
                         </div>
                     </div>
                 </div>
@@ -95,5 +98,25 @@
             dayInput.value = "";
         }
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#leave_type').on('change', function(){
+            var leaveID = $(this).val();
+            var userId = {{ auth()->user()->id }};
+            $.ajax({
+                url: '/get-leave-balance/' + userId + '/' + leaveID,
+                method: 'GET',
+                success: function(data) {
+                    
+                    $('#leaveBalanceDisplay').text('Your Available Leave Balance : '+ data +' days');
+                },
+                error: function() {
+                    $('#leaveBalanceDisplay').text('Error fetching leave balance.');
+                }
+            });
+        });
+    });
 </script>
 @endpush

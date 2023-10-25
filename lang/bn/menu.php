@@ -20,6 +20,7 @@ return [
     "leave.add"=> "ছুটি যোগ করুন",
     "leave.balances"=> "ছুটির হিসাব",
     "leave.request"=> "ছুটির আবেদন",
+    "leave.policy"=> "ছুটির নীতিমালা",
     "holiday"=> "ছুটির দিন",
     "payroll"=> "বেতন",
     "salary.information"=> "বেতন তথ্য",

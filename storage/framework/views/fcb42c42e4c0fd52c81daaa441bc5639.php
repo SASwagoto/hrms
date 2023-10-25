@@ -100,7 +100,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="<?php echo e(route('documents.doc')); ?>"><?php echo e(__('menu.hr.documents')); ?></a></li>
-                    <li><a href="<?php echo e(route('documents.policie')); ?>"><?php echo e(__('menu.policies')); ?></a></li>
+                    <li><a href="<?php echo e(route('policy.index')); ?>"><?php echo e(__('menu.policies')); ?></a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

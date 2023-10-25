@@ -11,8 +11,28 @@ class Leave extends Model
 
     protected $guarded = [];
 
+
     public function scopeActive($query)
     {
         return $query->where('isActive', true);
     }
+
+    // Relationship with leave requests
+    public function leaveRequests()
+    {
+        return $this->hasMany(LeaveRequest::class, 'leave_id');
+    }
+
+    // Relationship with leave balances
+    public function leaveBalances()
+    {
+        return $this->hasMany(LeaveBalance::class, 'leave_id');
+    }
+
+    // Relationship with leave policies
+    public function leavePolicy()
+    {
+        return $this->hasOne(LeavePolicy::class, 'leave_id');
+    }
+
 }

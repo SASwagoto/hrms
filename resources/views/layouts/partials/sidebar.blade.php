@@ -48,6 +48,7 @@
                 <li><a href="{{route('leave.add')}}">{{__('menu.leave.add')}}</a></li>
                 <li><a href="{{route('leave.balance')}}">{{__('menu.leave.balances')}}</a></li>
                 <li><a href="{{route('leave.request')}}">{{__('menu.leave.request')}}</a></li>
+                <li><a href="{{route('leave.policy')}}">{{__('menu.leave.policy')}}</a></li>
                 <li><a href="{{route('holi.add')}}">{{__('menu.holiday')}}</a></li>	
             </ul>
             </li>
@@ -100,7 +101,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{route('documents.doc')}}">{{__('menu.hr.documents')}}</a></li>
-                    <li><a href="{{route('documents.policie')}}">{{__('menu.policies')}}</a></li>
+                    <li><a href="{{route('policy.index')}}">{{__('menu.policies')}}</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

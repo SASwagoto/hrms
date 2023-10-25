@@ -48,6 +48,7 @@
                 <li><a href="<?php echo e(route('leave.add')); ?>"><?php echo e(__('menu.leave.add')); ?></a></li>
                 <li><a href="<?php echo e(route('leave.balance')); ?>"><?php echo e(__('menu.leave.balances')); ?></a></li>
                 <li><a href="<?php echo e(route('leave.request')); ?>"><?php echo e(__('menu.leave.request')); ?></a></li>
+                <li><a href="<?php echo e(route('leave.policy')); ?>"><?php echo e(__('menu.leave.policy')); ?></a></li>
                 <li><a href="<?php echo e(route('holi.add')); ?>"><?php echo e(__('menu.holiday')); ?></a></li>	
             </ul>
             </li>
@@ -100,7 +101,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="<?php echo e(route('documents.doc')); ?>"><?php echo e(__('menu.hr.documents')); ?></a></li>
-                    <li><a href="<?php echo e(route('documents.policie')); ?>"><?php echo e(__('menu.policies')); ?></a></li>
+                    <li><a href="<?php echo e(route('policy.index')); ?>"><?php echo e(__('menu.policies')); ?></a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

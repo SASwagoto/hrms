@@ -36,7 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sectors');
+        
         Schema::dropIfExists('sector_has_teams');
+        Schema::dropIfExists('sectors');
     }
 };

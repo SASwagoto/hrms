@@ -1,13 +1,13 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     New policies
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('header')
+<?php $__env->startSection('header'); ?>
    New Policies 
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
@@ -20,9 +20,9 @@
                     <div class="row">
                     <div class="col-xl-12">
                         <div class="mb-6">
-                            <label class="form-label text-primary">Titel<span class="required">*</span></label>
-                            <input type="text" name="titel" class="form-control"
-                                placeholder="Titel">
+                            <label class="form-label text-primary">title<span class="required">*</span></label>
+                            <input type="text" name="title" class="form-control"
+                                placeholder="title">
                         </div><br>
                         <div class="mb-6">
                             <label class="form-label text-primary">Policies<span class="required">*</span></label>
@@ -38,4 +38,6 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/documents/add.blade.php ENDPATH**/ ?>

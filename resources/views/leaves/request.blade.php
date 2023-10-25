@@ -27,15 +27,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($leave_requests as $key => $leave_request)
                             <tr>
-                                <td>1</td>
-                                <td>123</td>
-                                <td>Imran</td>
-                                <td>Sick Leave</td>
-                                <td>Feaver</td>
-                                <td>12/10/2023</td>
-                                <td>14/10/2023</td>
-                                <td>3</td>
+                                <td>{{$key + 1}}</td>
+                                <td>{{$leave_request->user->emp->employee_id}}</td>
+                                <td>{{$leave_request->user->name}}</td>
+                                <td>{{$leave_request->leave->name}}</td>
+                                <td>{{$leave_request->reason}}</td>
+                                <td>{{$leave_request->start_date}}</td>
+                                <td>{{$leave_request->end_date}}</td>
+                                <td>{{$leave_request->days}}</td>
                                 <td>
                                     <ul class="action_btn">
                                         <li><a href="#"><i class="fa-solid fa-check fa-lg"
@@ -46,6 +47,12 @@
                                 </td>
 
                             </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="9" class="text-center">No Leave Request Found</td>
+                                </tr>
+                            @endforelse
+                            
                         </tbody>
                         <tfoot>
                             <tr>

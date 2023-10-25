@@ -19,7 +19,7 @@
                     <div class="col-xl-6">
                         <div class="mb-3">
                             <label class="form-label text-primary">Title<span class="required">*</span></label>
-                            <input type="text" name="titel" class="form-control"
+                            <input type="text" name="title" class="form-control"
                                 placeholder="Title">
                         </div> 
                         <div class="mb-3">

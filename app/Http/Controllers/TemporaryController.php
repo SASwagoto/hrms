@@ -52,10 +52,7 @@ class TemporaryController extends Controller
         return view('leaves.balance');
     }
 
-    public function leave_request()
-    {
-        return view('leaves.request');
-    }
+
 
 
     public function acc_income()
@@ -102,13 +99,6 @@ class TemporaryController extends Controller
         return view('documents.doc');
 
     }
-
-    public function documents_policie()
-    {
-        return view('documents.policie');
-
-    }
-
     public function documents_add()
     {
         return view('documents.add');

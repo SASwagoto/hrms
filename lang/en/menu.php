@@ -20,6 +20,7 @@ return [
     "leave.add"=> "Add Leave",
     "leave.balances"=> "Leave Balances",
     "leave.request"=> "Leave Request",
+    "leave.policy"=> "Leave Policy",
     "holiday"=> "Holiday",
     "payroll"=> "Payroll",
     "salary.information"=> "Salary Information",

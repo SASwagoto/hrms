@@ -1,20 +1,20 @@
-@extends('layouts.admin')
-{{-- Title Section --}}
-@section('title')
+
+
+<?php $__env->startSection('title'); ?>
     Add Policies
-@endsection
-{{-- Extra CSS --}}
-@push('css')
-<link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-<link href="{{ asset('assets') }}/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<link href="{{ asset('assets') }}/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-@endpush
-{{-- Header --}}
-@section('header')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('css'); ?>
+<link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="<?php echo e(asset('assets')); ?>/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('header'); ?>
     Add Policies
-@endsection
-{{-- Main Content --}}
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title flex-wrap">
@@ -36,7 +36,7 @@
                             <option value="2">Recent</option>
                         </select>
                         <!-- Button trigger modal -->
-                        <a href="{{route('documents.add')}}" type="button" class="btn btn-primary"
+                        <a href="<?php echo e(route('documents.add')); ?>" type="button" class="btn btn-primary"
                             data-bs-toggle="modals" data-bs-target="#exampleModal">
                             + New Policies
                         </a>
@@ -55,7 +55,7 @@
                                     <input type="checkbox" class="form-check-input" id="checkAll"
                                         required="">
                                 </th>
-                                <th>Titel</th>
+                                <th>title</th>
                                 <th>Policies</th>
                                 <th>Status</th>
                                 <th class="text-end">Action</th>
@@ -96,12 +96,14 @@
             <!--/column-->
         </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-{{-- Extra JS --}}
-@push('js')
-<script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="{{ asset('assets') }}/vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="{{ asset('assets') }}/js/plugins-init/datatables.init.js"></script>
-<script src="{{ asset('assets') }}/vendor/wow-master/dist/wow.min.js"></script>
-@endpush
+
+<?php $__env->startPush('js'); ?>
+<script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/js/plugins-init/datatables.init.js"></script>
+<script src="<?php echo e(asset('assets')); ?>/vendor/wow-master/dist/wow.min.js"></script>
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laragon\www\hrms\resources\views/documents/policie.blade.php ENDPATH**/ ?>

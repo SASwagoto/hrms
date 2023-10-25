@@ -93,10 +93,12 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        $emp = $employee->with('education')->first();
-        $positions = Position::active()->where('dept_id', $emp->dept_id)->get();
-        $departments = Department::active()->get();
-        return view('employee.show', compact('emp', 'positions', 'departments'));
+
+        // $emp = Employee::where('username', $employee->username)->first();
+         $positions = Position::active()->where('dept_id', $employee->dept_id)->get();
+         $departments = Department::active()->get();
+        //return view('employee.show', compact('emp', 'positions', 'departments'));
+        return view('employee.show', compact('employee', 'positions', 'departments'));
     }
 
     /**

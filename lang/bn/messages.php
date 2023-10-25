@@ -7,11 +7,11 @@ return [
     // site setting
     "site.setting"=> "সাইট সেটিং",
     "general.settings"=> "সাধারণ সেটিং",
-    "app.titel"=> "অ্যাপ টাইটেল",
+    "app.title"=> "অ্যাপ টাইটেল",
     "company.name"=> "কোমপানির নাম",
     "company.email"=> "কোম্পানির ইমেইল",
     "company.phone"=> "কোম্পানির ফোন",
-    "footer.titel"=> "ফুটার টাইটেল",
+    "footer.title"=> "ফুটার টাইটেল",
     "site.logo"=> "সাইট লোগো",
     "fav.icon"=> "ফেভিকন",
     "about.us"=> "আমাদের সম্পর্কে",

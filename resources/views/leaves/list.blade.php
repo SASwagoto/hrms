@@ -35,15 +35,28 @@
 							</tr>
 						</thead>
 						<tbody>
+							@forelse ($leave_requests as $key => $leave_req)
 							<tr>
-								<td>1</td>
-								<td>Sick Leave</td>
-								<td>11/10/2023</td>
-								<td>13/10/2023</td>
-								<td>3</td>
-								<td>Sick Leave</td>
-								<td>10/10/2023</td>
-								<td><span class="badge badge-success light">Approved</span></td>
+								<td>{{$key + 1}}</td>
+								<td>{{$leave_req->leave->name}}</td>
+								<td>{{$leave_req->start_date}}</td>
+								<td>{{$leave_req->end_date}}</td>
+								<td>{{$leave_req->days}}</td>
+								<td>{{$leave_req->reason}}</td>
+								<td>{{$leave_req->created_at}}</td>
+								<td>@switch($leave_req->status)
+									@case(0)
+									<span class="badge badge-danger light">Pending</span></td>
+										@break
+									@case(1)
+									<span class="badge badge-warning light">Approved by TL</span></td>
+										@break
+									@case(2)
+									<span class="badge badge-success light">Approved by HR</span></td>
+										@break
+									@default
+									<span class="badge badge-danger light">Pending</span></td>
+								@endswitch
 								<td>
 									<ul class="action_btn">
 										<li><a href="/#"><i
@@ -57,6 +70,9 @@
 								</td>
 			
 							</tr>
+							@empty
+								
+							@endforelse
 						</tbody>
 						<tfoot>
 							<tr>

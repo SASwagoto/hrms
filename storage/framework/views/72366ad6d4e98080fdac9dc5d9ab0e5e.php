@@ -35,15 +35,28 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php $__empty_1 = true; $__currentLoopData = $leave_requests; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $leave_req): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 							<tr>
-								<td>1</td>
-								<td>Sick Leave</td>
-								<td>11/10/2023</td>
-								<td>13/10/2023</td>
-								<td>3</td>
-								<td>Sick Leave</td>
-								<td>10/10/2023</td>
-								<td><span class="badge badge-success light">Approved</span></td>
+								<td><?php echo e($key + 1); ?></td>
+								<td><?php echo e($leave_req->leave->name); ?></td>
+								<td><?php echo e($leave_req->start_date); ?></td>
+								<td><?php echo e($leave_req->end_date); ?></td>
+								<td><?php echo e($leave_req->days); ?></td>
+								<td><?php echo e($leave_req->reason); ?></td>
+								<td><?php echo e($leave_req->created_at); ?></td>
+								<td><?php switch($leave_req->status):
+									case (0): ?>
+									<span class="badge badge-danger light">Pending</span></td>
+										<?php break; ?>
+									<?php case (1): ?>
+									<span class="badge badge-warning light">Approved by TL</span></td>
+										<?php break; ?>
+									<?php case (2): ?>
+									<span class="badge badge-success light">Approved by HR</span></td>
+										<?php break; ?>
+									<?php default: ?>
+									<span class="badge badge-danger light">Pending</span></td>
+								<?php endswitch; ?>
 								<td>
 									<ul class="action_btn">
 										<li><a href="/#"><i
@@ -57,6 +70,9 @@
 								</td>
 			
 							</tr>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+								
+							<?php endif; ?>
 						</tbody>
 						<tfoot>
 							<tr>

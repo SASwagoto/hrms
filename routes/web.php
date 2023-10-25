@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
@@ -102,10 +103,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/leave/add', [LeaveController::class,'create'])->name('leave.add');
     Route::post('/leave/store', [LeaveController::class,'store'])->name('leave.store');
     Route::get('/leave/request/add', [LeaveController::class,'leave_add_req'])->name('leave.add_req');
-    Route::get('/leave/request/store', [LeaveController::class,'request_store'])->name('leave.request.store');
+    Route::post('/leave/request/store', [LeaveController::class,'request_store'])->name('leave.request.store');
+    Route::get('/leave/requests', [LeaveController::class,'leave_request'])->name('leave.request');
+    Route::get('/leave/policy', [LeaveController::class,'leave_policy'])->name('leave.policy');
+
+    Route::get('/get-leave-balance/{userId}/{leaveId}', [LeaveController::class,'getLeaveBalance']);
 
     Route::get('/leave/balance', [TemporaryController::class,'leave_balance'])->name('leave.balance');
-    Route::get('/leave/request', [TemporaryController::class,'leave_request'])->name('leave.request');
+    
     
     //Shift
     Route::get('/attendance/shift', [TemporaryController::class,'shift_index'])->name('att.shift');
@@ -127,10 +132,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/recruitment/interview', [TemporaryController::class, 'rec_int'])->name('rec.int');
     Route::get('/recruitment/onboarding', [TemporaryController::class, 'rec_on'])->name('rec.on');
 
-    //Documents
+    //Documents & policy
     Route::get('/documents/doc', [TemporaryController::class, 'documents_doc'])->name('documents.doc');
-    Route::get('/documents/policie', [TemporaryController::class, 'documents_policie'])->name('documents.policie');
-    Route::get('/documents/add', [TemporaryController::class, 'documents_add'])->name('documents.add');
+    Route::get('/policies', [PolicyController::class, 'index'])->name('policy.index');
+    Route::get('/policies/add', [PolicyController::class, 'create'])->name('policy.create');
+    Route::post('/policies/store', [PolicyController::class, 'store'])->name('policy.store');
+    //Route::get('/documents/add', [TemporaryController::class, 'documents_add'])->name('documents.add');
 
     //Payroll
     Route::get('/payroll/info', [TemporaryController::class, 'payroll_info'])->name('payroll.info');
