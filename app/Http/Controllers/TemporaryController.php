@@ -26,10 +26,6 @@ class TemporaryController extends Controller
         return view('attendance.list');
     }
 
-    public function leave_list()
-    {
-        return view('leaves.list');
-    }
 
     public function shift_index()
     {
@@ -61,10 +57,6 @@ class TemporaryController extends Controller
         return view('leaves.request');
     }
 
-    public function leave_add_req()
-    {
-        return view('leaves.add_req');
-    }
 
     public function acc_income()
     {

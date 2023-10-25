@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type', 5);
-            $table->string('rules')->nullable();
+            $table->integer('type');
+            $table->string('comments')->nullable();
             $table->integer('days')->nullable();
             $table->boolean('isActive')->default(true);
             $table->timestamps();
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('emp_id');
             $table->unsignedBigInteger('leave_id');
-            $table->string('reaseon');
+            $table->string('reason');
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('days')->nullable();
@@ -68,9 +68,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leaves');
         Schema::dropIfExists('leave_request');
         Schema::dropIfExists('leave_balance');
         Schema::dropIfExists('leave_policy');
+        Schema::dropIfExists('leaves');
     }
 };

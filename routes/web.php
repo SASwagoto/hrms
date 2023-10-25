@@ -3,6 +3,7 @@
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -97,12 +98,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance/list', [TemporaryController::class,'attendance_list'])->name('att.list');
 
     //Leaves
-    Route::get('/leave/list', [TemporaryController::class,'leave_list'])->name('leave.list');
-    Route::get('/leave/add', [TemporaryController::class,'leave_add'])->name('leave.add');
+    Route::get('/leave/list', [LeaveController::class,'index'])->name('leave.list');
+    Route::get('/leave/add', [LeaveController::class,'create'])->name('leave.add');
+    Route::post('/leave/store', [LeaveController::class,'store'])->name('leave.store');
+    Route::get('/leave/request/add', [LeaveController::class,'leave_add_req'])->name('leave.add_req');
+    Route::get('/leave/request/store', [LeaveController::class,'request_store'])->name('leave.request.store');
+
     Route::get('/leave/balance', [TemporaryController::class,'leave_balance'])->name('leave.balance');
     Route::get('/leave/request', [TemporaryController::class,'leave_request'])->name('leave.request');
-    Route::get('/leave/add_req', [TemporaryController::class,'leave_add_req'])->name('leave.add_req');
-
+    
     //Shift
     Route::get('/attendance/shift', [TemporaryController::class,'shift_index'])->name('att.shift');
 
