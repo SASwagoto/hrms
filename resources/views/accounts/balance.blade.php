@@ -51,50 +51,44 @@
                         <table id="example" class="display table datatables" style="min-width: 845px">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Date</th>
-                                    <th>Accounts</th>
+                                    <th>Trans ID</th>
+                                    <th>Type</th>
+                                    <th>Payee/Source</th>
                                     <th>Description</th>
-                                    <th>Reference</th>
-                                    <th>Debit</th>
-                                    <th>Credits</th>
-                                    <th>Current Balance</th>
+                                    <th class="text-end">Debit/Credits</th>
+                                    <th>Created At</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($ledgers as $key => $ledger)
                                 <tr>
-                                    <td>10th Octobor 2023</td>
-                                    <td>Income</td>
-                                    <td>Software Sales</td>
-                                    <td>inv#02</td>
-                                    <td>1000.00</td>
-                                    <td>--</td>
-                                    <td>1000.00</td>
+                                    <td>{{$key +1}}</td>
+                                    <td>{{$ledger->idate}}{{$ledger->date}}</td>
+                                    <td>{{$ledger->trans_id}}</td>
+                                    <td>{{$ledger->type}}</td>
+                                    <td>{{$ledger->source}}{{$ledger->payee}}</td>
+                                    <td>{{$ledger->idesc}}{{$ledger->edesc}}</td>
+                                    @if ($ledger->type == 'income')
+                                    <td class="text-end text-primary">{{number_format($ledger->amount, 2)}}</td>
+                                    @elseif ($ledger->type == 'expense')
+                                    <td class="text-end text-danger">-{{number_format($ledger->amount, 2)}}</td>
+                                    @else
+                                    <td class="text-end">00.00</td>
+                                    @endif
+                                    <td>{{date('d-m-Y', strtotime($ledger->created_at))}}</td>
                                 </tr>
-                                <tr>
-                                    <td>11th Octobor 2023</td>
-                                    <td>Income</td>
-                                    <td>DM Service Provide</td>
-                                    <td>inv#03</td>
-                                    <td>500.00</td>
-                                    <td>--</td>
-                                    <td>1500.00</td>
-                                </tr>
-                                <tr>
-                                    <td>11th Octobor 2023</td>
-                                    <td>Expense</td>
-                                    <td>Accessories Purchase</td>
-                                    <td>Bill#123</td>
-                                    <td>--</td>
-                                    <td>700.00</td>
-                                    <td>800.00</td>
-                                </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="9" class="text-center">No Transaction Found</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="text-end">Total :</th>
-                                    <th>1500.00</th>
-                                    <th>700.00</th>
-                                    <th>800.00</th>
+                                    <th colspan="6" class="text-end">Total Transaction:</th>
+                                    <th class="text-end fw-bolder">{{number_format($ledgers->sum('iamount')-$ledgers->sum('eamount'), 2)}}</th>
                                 </tr>
                             </tfoot>
                         </table>

@@ -26,21 +26,11 @@ class TemporaryController extends Controller
         return view('attendance.list');
     }
 
-
-    public function shift_index()
-    {
-        return view('attendance.shift');
-    }
-
     public function schedule_index()
     {
         return view('attendance.schedule');
     }
 
-    public function holiday_add()
-    {
-        return view('holiday.add');
-    }
 
     public function leave_add()
     {
@@ -52,23 +42,7 @@ class TemporaryController extends Controller
         return view('leaves.balance');
     }
 
-
-
-
-    public function acc_income()
-    {
-        return view('accounts.income');
-    }
-
-    public function acc_expense()
-    {
-        return view('accounts.expense');
-    }
-
-    public function acc_balance()
-    {
-        return view('accounts.balance');
-    }
+    
 
     public function rec_post()
     {

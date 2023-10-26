@@ -118,7 +118,7 @@
                                         @enderror
                                     </label>
                                     <select name="dept_id" id="department"
-                                        class="default-select form-control wide form-control mb-3">
+                                        class="default-select form-control wide form-control mb-3" data-route="{{url('/')}}">
                                         <option value="">Options..</option>
                                         @forelse ($departments as $dept)
                                             <option value="{{ $dept->id }}">{{ $dept->dept_name }}</option>

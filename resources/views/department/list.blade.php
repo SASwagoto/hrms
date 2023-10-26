@@ -120,7 +120,7 @@
                                                     <ul class="action_btn">
                                                         <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
                                                                     style="color: #347af4;"></i></a></li>
-                                                        <li><a href="#" onclick="editable();"><i
+                                                        <li><a href="#"  ><i
                                                                     class="fa-solid fa-trash fa-xl"
                                                                     style="color: #ff0000;"></i></a></li>
                                                     </ul>

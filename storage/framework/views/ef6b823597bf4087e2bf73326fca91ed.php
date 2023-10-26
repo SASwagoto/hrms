@@ -17,48 +17,50 @@
                     <h4 class="mb-0">Add Holiday</h4>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label text-primary">Holiday Name<span class="required">*</span></label>
-                                <input type="text" required name="emp_id" class="form-control input-default"
-                                    placeholder="Enter Employee ID">
+                    <form action="<?php echo e(route('holiday.store')); ?>" method="post">
+                        <?php echo csrf_field(); ?>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">Holiday Name<span class="required">*</span></label>
+                                    <input type="text" required name="name" class="form-control input-default"
+                                        placeholder="Enter Holiday Title">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">Start Date<span class="required">*</span></label>
+                                    <input type="date" required name="start_date" class="form-control input-default"
+                                        id="start_date">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">Day<span class="required">*</span></label>
+                                    <input type="number" required name="days" class="form-control input-default"
+                                        id="day" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label text-primary">Start Date<span class="required">*</span></label>
-                                <input type="date" required name="start_date" class="form-control input-default"
-                                    id="start_date">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label text-primary">Day<span class="required">*</span></label>
-                                <input type="number" required name="day" class="form-control input-default"
-                                    id="day" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <button class="btn btn-primary" type="submit">Submit</button>
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <label class="form-label text-primary">Holiday Type<span class="required">*</span></label>
+                                    <select name="type" class="default-select form-control wide form-control mb-3">
+                                        <option value="1">National Holiday</option>
+                                        <option value="2">Public Holiday</option>
+                                        <option value="3">Company Holiday</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-primary">End Date<span class="required">*</span></label>
+                                    <input type="date" required name="end_date" class="form-control input-default"
+                                        id="end_date">
+                                </div>
+                                <div class="">
+                                    <label class="form-label text-primary">Description<span class="required">*</span></label>
+                                    <textarea name="description" class="form-control" rows="1"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="">
-                                <label class="form-label text-primary">Holiday Type<span class="required">*</span></label>
-                                <select name="position" class="default-select form-control wide form-control mb-3">
-                                    <option value="">National Holiday</option>
-                                    <option value="">Public Holiday</option>
-                                    <option value="">Company Holiday</option>>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label text-primary">End Date<span class="required">*</span></label>
-                                <input type="date" required name="end_date" class="form-control input-default"
-                                    id="end_date">
-                            </div>
-                            <div class="">
-                                <label class="form-label text-primary">Description<span class="required">*</span></label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-                            </div>
-
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -91,27 +93,49 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        <?php $__empty_1 = true; $__currentLoopData = $holidays; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $holiday): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <tr>
-                                            <th>1</th>
-                                            <td>Eid Holiday</td>
-                                            <td>Public Holiday</td>
-                                            <td>11/10/2023</td>
-                                            <td>17/10/2023</td>
-                                            <td>7</td>
-                                            <td> <span class="badge badge-success light">
-                                                    Active</span>
+                                            <th><?php echo e($key+1); ?></th>
+                                            <td><?php echo e($holiday->name); ?></td>
+                                            <td><?php switch($holiday->type):
+                                                case (1): ?>
+                                                    National Holiday
+                                                    <?php break; ?>
+                                                <?php case (2): ?>
+                                                    Public Holiday
+                                                    <?php break; ?>
+                                                <?php case (3): ?>
+                                                    Company Holiday
+                                                    <?php break; ?>
+                                                <?php default: ?>
+                                                    National Holiday
+                                            <?php endswitch; ?></td>
+                                            <td><?php echo e($holiday->start_date); ?></td>
+                                            <td><?php echo e($holiday->end_date); ?></td>
+                                            <td><?php echo e($holiday->days); ?></td>
+                                            <td>
+                                            <?php if($holiday->isActive == true): ?>
+                                            <span class="badge badge-success light">Active</span>
+                                            <?php else: ?>
+                                            <span class="badge badge-danger light">Inactive</span>
+                                            <?php endif; ?>
                                             </td>
                                             <td>
                                                 <ul class="action_btn">
                                                     <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
                                                         style="color: #347af4;"></i></a></li>
-                                                    <li><a href="#" onclick="editable();"><i
+                                                    <li><a href="#"><i
                                                                 class="fa-solid fa-trash fa-xl"
                                                                 style="color: #ff0000;"></i></a></li>
                                                 </ul>
                                             </td>
                                         </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                            <tr>
+                                                <td colspan="8" class="text-center">No Holiday Founds</td>
+                                            </tr>
+                                        <?php endif; ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>

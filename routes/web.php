@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LangController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TemporaryController;
+use App\Http\Controllers\WorkShiftController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/show/{employee}', [EmployeeController::class, 'show'])->name('emp.show');
 
     //getPosition
-    Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions']);
+    Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions'])->name('getPositions');
 
     //Department
     Route::get('/department', [DepartmentController::class,'index'])->name('dept.index');
@@ -110,21 +112,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-leave-balance/{userId}/{leaveId}', [LeaveController::class,'getLeaveBalance']);
 
     Route::get('/leave/balance', [TemporaryController::class,'leave_balance'])->name('leave.balance');
+     //Holiday
+     Route::get('/holiday/add', [LeaveController::class,'holiday'])->name('holi.add');
+     Route::post('/holiday/store', [LeaveController::class,'holiday_store'])->name('holiday.store');
     
     
     //Shift
-    Route::get('/attendance/shift', [TemporaryController::class,'shift_index'])->name('att.shift');
+    Route::get('/attendance/shift', [WorkShiftController::class,'index'])->name('att.shift');
+    Route::post('/attendance/shift/store', [WorkShiftController::class,'store'])->name('att.shift.store');
 
     //Schedule
     Route::get('/attendance/schedule', [TemporaryController::class,'schedule_index'])->name('att.schedule');
 
-    //Holiday
-    Route::get('/holiday/add', [TemporaryController::class,'holiday_add'])->name('holi.add');
+   
 
     //accounts
-    Route::get('/income', [TemporaryController::class, 'acc_income'])->name('acc.income');
-    Route::get('/expense', [TemporaryController::class, 'acc_expense'])->name('acc.expense');
-    Route::get('/balance', [TemporaryController::class, 'acc_balance'])->name('acc.balance');
+    Route::get('/accounts/add', [AccountController::class,'index'])->name('acc.index');
+    Route::post('/accounts/store', [AccountController::class,'store'])->name('acc.store');
+    Route::get('/income', [AccountController::class, 'acc_income'])->name('acc.income');
+    Route::post('/income/store', [AccountController::class, 'acc_income_store'])->name('acc.income.store');
+    Route::get('/expense', [AccountController::class, 'acc_expense'])->name('acc.expense');
+    Route::post('/expense/store', [AccountController::class, 'acc_expense_store'])->name('acc.expense.store');
+    Route::get('/accounts/ledger', [AccountController::class, 'acc_ledger'])->name('acc.ledger');
 
     //Recruitment
     Route::get('/recruitment/post', [TemporaryController::class, 'rec_post'])->name('rec.post');

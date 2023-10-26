@@ -70,9 +70,10 @@
                     <span class="nav-text">{{__('menu.accounts')}}</span>
                 </a>
                 <ul aria-expanded="false">
+                    <li><a href="{{route('acc.index')}}">{{__('menu.accounts')}}</a></li>
                     <li><a href="{{route('acc.income')}}">{{__('menu.income')}}</a></li>
                     <li><a href="{{route('acc.expense')}}">{{__('menu.expense')}}</a></li>
-                    <li><a href="{{route('acc.balance')}}">{{__('menu.accounts.ladger')}}</a></li>
+                    <li><a href="{{route('acc.ledger')}}">{{__('menu.accounts.ladger')}}</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

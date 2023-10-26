@@ -70,9 +70,10 @@
                     <span class="nav-text"><?php echo e(__('menu.accounts')); ?></span>
                 </a>
                 <ul aria-expanded="false">
+                    <li><a href="<?php echo e(route('acc.index')); ?>"><?php echo e(__('menu.accounts')); ?></a></li>
                     <li><a href="<?php echo e(route('acc.income')); ?>"><?php echo e(__('menu.income')); ?></a></li>
                     <li><a href="<?php echo e(route('acc.expense')); ?>"><?php echo e(__('menu.expense')); ?></a></li>
-                    <li><a href="<?php echo e(route('acc.balance')); ?>"><?php echo e(__('menu.accounts.ladger')); ?></a></li>
+                    <li><a href="<?php echo e(route('acc.ledger')); ?>"><?php echo e(__('menu.accounts.ladger')); ?></a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="/javascript:void(0);" aria-expanded="false">

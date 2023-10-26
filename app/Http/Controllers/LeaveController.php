@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use App\Models\Holiday;
 use App\Models\Leave;
 use App\Models\LeaveBalance;
 use App\Models\LeavePolicy;
@@ -147,6 +148,20 @@ class LeaveController extends Controller
        $leaves = Leave::active()->get();
        $policies = LeavePolicy::all();
        return view('leaves.policy', compact('leaves','policies'));
+    }
+
+    public function holiday()
+    {
+        $holidays = Holiday::all();
+        return view('holiday.add', compact('holidays'));
+    }
+
+    public function holiday_store(Request $request)
+    {
+        $holiday = Holiday::create($request->all());
+
+        Alert::success($holiday->name, 'Added Successfully!');
+        return redirect()->back();
     }
 
 }

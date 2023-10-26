@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('acc_id');
+            $table->string('payee');
+            $table->double('amount', 10,2);
+            $table->date('date');
+            $table->string('description')->nullable;
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

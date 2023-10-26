@@ -153,7 +153,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </label>
                                     <select name="dept_id" id="department"
-                                        class="default-select form-control wide form-control mb-3">
+                                        class="default-select form-control wide form-control mb-3" data-route="<?php echo e(url('/')); ?>">
                                         <option value="">Options..</option>
                                         <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>

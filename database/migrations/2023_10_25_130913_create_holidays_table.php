@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('type');
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('description')->nullable();
             $table->integer('days')->nullable;
             $table->boolean('isActive')->default(true);
             $table->timestamps();
