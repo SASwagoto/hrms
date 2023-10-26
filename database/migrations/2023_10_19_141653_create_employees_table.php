@@ -29,6 +29,7 @@ return new class extends Migration
             $table->text('permanent_address')->nullable();
             $table->unsignedBigInteger('dept_id')->nullable();
             $table->unsignedBigInteger('position_id')->nullable();
+            $table->string('profile_img')->nullable();
             $table->date('join_date')->default(now());
             $table->timestamps();
 
