@@ -10,6 +10,8 @@ use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class EmployeeController extends Controller
 {
@@ -40,6 +42,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
+        
         $name = $request->first_name.' '.$request->last_name;
         $addUser = User::create([
             'name'=> $name,
@@ -66,6 +69,15 @@ class EmployeeController extends Controller
             'position_id'=> $request->position_id,
             'join_date'=> $request->join_date,
         ]);
+
+        if ($request->hasFile('profile_img')) {
+            $image = $request->file('profile_img');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs(public_path('uploads/employee'), $imageName);
+
+            $employee->profile_img = $imageName;
+            $employee->save();
+        }
 
         
         if ($request->input('exam') !== null) {
