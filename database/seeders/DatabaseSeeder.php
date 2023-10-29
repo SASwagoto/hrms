@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             SiteSeeder::class,
             DepartmentSeeder::class,
             EmployeeSeeder::class,
+            AccountSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

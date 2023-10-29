@@ -48,13 +48,18 @@
                         <div class="d-flex justify-content-between">
                             <div class="user">
                                 <div class="">
+                                    @if ($employee->profile_img)
+                                    <img src="{{ asset('storage/employee/'.$employee->profile_img) }}" alt="" class="avatar avatar-xxl">
+                                    @else
                                     <img src="{{ asset('assets') }}/images/av.jpg" alt="" class="avatar avatar-xxl">
+                                    @endif
+                                    
                                 </div>
                                 <div class="hd">
                                     <h2 class="mb-0">{{$employee->user->name}}</h2>
                                     <p class="text-primary font-w600 hd">{{$employee->position->position_name}}</p>
                                 </div>
-                                <div class="basic-form ef d-none" style="width: 500px;">
+                                <div class="basic-form mt-3 ef d-none" style="width: 500px;">
                                     <div class="mb-3">
                                         <input type="text" class="form-control input-default"
                                             value="{{$employee->user->name}}">
@@ -121,9 +126,9 @@
                                         </a>
                                     </li>
                                     <li><span>Phone:</span>
-                                        <h5 class="hd mb-0">{{$employee->phone_number}}</h5>
+                                        <h5 class="hd mb-0"><a href="tel:{{$employee->phone_number}}">{{$employee->phone_number}}</a></h5>
                                         <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control input-default" value="{{$employee->phone_number}}"
+                                            <input type="text" class="form-control put-default" value="{{$employee->phone_number}}"
                                                 style="width: 445px">
                                         </div>
                                     </li>
@@ -138,7 +143,7 @@
 
                                     </li>
                                     <li><span>Address:</span>
-                                        <h5 class="hd mb-0">{{$employee->present_address}}</h5>
+                                        <h5 class="hd mb-0">{{$employee->team}}</h5>
                                         <div class="basic-form ef d-none">
                                             <input type="text" class="form-control input-default"
                                                 value="{{$employee->present_address}}" style="width: 445px">
@@ -211,6 +216,16 @@
                             <th>Marital Status</th>
                             <th>:</th>
                             <td>{{$employee->marital_status}}</td>
+                        </tr>
+                        <tr>
+                            <th>Present Address</th>
+                            <th>:</th>
+                            <td>{{$employee->present_address}}</td>
+                        </tr>
+                        <tr>
+                            <th>Permanent Address</th>
+                            <th>:</th>
+                            <td>{{$employee->permanent_address}}</td>
                         </tr>
                     </tbody>
                 </table>

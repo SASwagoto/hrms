@@ -6,6 +6,15 @@
     <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('assets')); ?>/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Add these lines to your layout file -->
+    <style>
+        .pagination{
+            float: right;
+        }
+        div#example-employee_paginate{
+            display: none;
+        }
+    </style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('header'); ?>
@@ -17,7 +26,7 @@
         <div class="col-xl-12">
             <div class="page-title flex-wrap">
                 <div class="input-group search-area mb-md-0 mb-3">
-                    <input type="text" class="form-control" placeholder="Search here...">
+                    <input type="text" class="form-control" id="dynamic-search" placeholder="Search here...">
                     <span class="input-group-text"><a href="javascript:void(0)">
                             <svg width="15" height="15" viewBox="0 0 18 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -27,12 +36,23 @@
                             </svg>
                         </a></span>
                 </div>
-                <div>
-                    <select class="image-select bs-select dashboard-select me-3" aria-label="Default">
-                        <option selected>Newest</option>
-                        <option value="1">Oldest</option>
-                        <option value="2">Recent</option>
-                    </select>
+                <div class="d-flex">
+                    <div class="basic-dropdown me-3">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                Employee by Department
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?php echo e(route('emp.index')); ?>">All Employee</a>
+                                <?php $__empty_1 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <a class="dropdown-item" href="<?php echo e(route('emp.byDept', $dept->slug)); ?>"><?php echo e($dept->dept_name); ?></a>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <a class="dropdown-item" href="javascript:void(0);">No Departments Found</a> 
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Button trigger modal -->
                     <a href="<?php echo e(route('emp.create')); ?>" type="button" class="btn btn-primary" data-bs-toggle="modals"
                         data-bs-target="#exampleModal">
@@ -45,7 +65,7 @@
         <div class="col-xl-12 wow fadeInUp" data-wow-delay="0.5s">
             <div class="table-responsive full-data">
                 <table class="table-responsive-lg display dataTablesCard student-tab dataTable no-footer table ov_auto"
-                    id="example-student">
+                    id="example-employee">
                     <thead>
                         <tr>
                             <th>
@@ -73,8 +93,13 @@
                             </td>
                             <td>
                                 <div class="trans-list">
+                                    <?php if($emp->profile_img): ?>
+                                    <img src="<?php echo e(asset('storage/employee/'.$emp->profile_img)); ?>" alt="Profile Image"
+                                    class="avatar avatar-sm me-3">
+                                    <?php else: ?>
                                     <img src="<?php echo e(asset('assets/')); ?>/images/trans/1.jpg" alt=""
                                         class="avatar avatar-sm me-3">
+                                    <?php endif; ?>
                                     <h4 class="d-block"><?php echo e($emp->user->name); ?></h4>
                                 </div>
                             </td>
@@ -105,7 +130,7 @@
                                 <ul class="action_btn">
                                     <li><a href="<?php echo e(route('emp.show', $emp->username)); ?>"><i class="fa-solid fa-circle-info fa-beat"
                                                 style="color: #12a561;"></i></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-pen-to-square"
+                                    <li><a href="<?php echo e(route('emp.edit', $emp->username)); ?>"><i class="fa-solid fa-pen-to-square"
                                                 style="color: #347af4;"></i></a></li>
                                     <li><a href="#"><i class="fa-solid fa-trash" 
                                                 style="color: #ff0000;"></i></a></li>
@@ -128,6 +153,8 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
+                <?php echo e($employees->links()); ?>
+
             </div>
         </div>
         <!--/column-->
@@ -142,6 +169,8 @@
     <script src="<?php echo e(asset('assets')); ?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo e(asset('assets')); ?>/js/plugins-init/datatables.init.js"></script>
     <script src="<?php echo e(asset('assets')); ?>/vendor/wow-master/dist/wow.min.js"></script>
+   
+    
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\hrms\resources\views/employee/list.blade.php ENDPATH**/ ?>

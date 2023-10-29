@@ -44,4 +44,8 @@ class Employee extends Model
     {
         return $this->hasMany(Education::class, 'user_id', 'user_id');
     }
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id', 'team_has_members.team_id');
+    }
 }

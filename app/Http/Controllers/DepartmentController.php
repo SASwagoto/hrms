@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DepartmentController extends Controller
@@ -51,6 +52,7 @@ class DepartmentController extends Controller
         if ($validate) {
             Department::create([
                 'dept_name' => $request->dept_name,
+                'slug' => Str::slug($request->dept_name),
             ]);
             Alert::success( $request->dept_name, 'Added Successfully');
             return redirect()->back();
@@ -100,6 +102,7 @@ class DepartmentController extends Controller
        
          $department->update([
             'dept_name'=> $request->dept_name,
+            'slug' => Str::slug($request->dept_name),
             'isActive'=> $isActive,
          ]);
 

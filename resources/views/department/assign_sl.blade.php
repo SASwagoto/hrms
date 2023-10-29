@@ -36,7 +36,9 @@
                                     class="required">*</span></label>
                             <select id="sector-select" class="form-control" name="sector_id">
                                 @forelse ($sectors as $sector)
+                                @if (empty($sector->sector_leader))
                                 <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
+                                @endif
                                 @empty
                                 <option>No Sector Found</option>
                                 @endforelse

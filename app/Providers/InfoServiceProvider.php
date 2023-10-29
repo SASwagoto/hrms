@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Department;
 use App\Models\Site;
 use App\Models\Team;
 use Illuminate\Support\Facades\View;

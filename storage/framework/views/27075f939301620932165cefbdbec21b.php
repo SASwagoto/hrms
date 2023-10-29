@@ -46,13 +46,18 @@
                         <div class="d-flex justify-content-between">
                             <div class="user">
                                 <div class="">
+                                    <?php if($employee->profile_img): ?>
+                                    <img src="<?php echo e(asset('storage/employee/'.$employee->profile_img)); ?>" alt="" class="avatar avatar-xxl">
+                                    <?php else: ?>
                                     <img src="<?php echo e(asset('assets')); ?>/images/av.jpg" alt="" class="avatar avatar-xxl">
+                                    <?php endif; ?>
+                                    
                                 </div>
                                 <div class="hd">
                                     <h2 class="mb-0"><?php echo e($employee->user->name); ?></h2>
                                     <p class="text-primary font-w600 hd"><?php echo e($employee->position->position_name); ?></p>
                                 </div>
-                                <div class="basic-form ef d-none" style="width: 500px;">
+                                <div class="basic-form mt-3 ef d-none" style="width: 500px;">
                                     <div class="mb-3">
                                         <input type="text" class="form-control input-default"
                                             value="<?php echo e($employee->user->name); ?>">
@@ -119,9 +124,9 @@
                                         </a>
                                     </li>
                                     <li><span>Phone:</span>
-                                        <h5 class="hd mb-0"><?php echo e($employee->phone_number); ?></h5>
+                                        <h5 class="hd mb-0"><a href="tel:<?php echo e($employee->phone_number); ?>"><?php echo e($employee->phone_number); ?></a></h5>
                                         <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control input-default" value="<?php echo e($employee->phone_number); ?>"
+                                            <input type="text" class="form-control put-default" value="<?php echo e($employee->phone_number); ?>"
                                                 style="width: 445px">
                                         </div>
                                     </li>
@@ -136,7 +141,7 @@
 
                                     </li>
                                     <li><span>Address:</span>
-                                        <h5 class="hd mb-0"><?php echo e($employee->present_address); ?></h5>
+                                        <h5 class="hd mb-0"><?php echo e($employee->team); ?></h5>
                                         <div class="basic-form ef d-none">
                                             <input type="text" class="form-control input-default"
                                                 value="<?php echo e($employee->present_address); ?>" style="width: 445px">
@@ -210,6 +215,16 @@
                             <th>Marital Status</th>
                             <th>:</th>
                             <td><?php echo e($employee->marital_status); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Present Address</th>
+                            <th>:</th>
+                            <td><?php echo e($employee->present_address); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Permanent Address</th>
+                            <th>:</th>
+                            <td><?php echo e($employee->permanent_address); ?></td>
                         </tr>
                     </tbody>
                 </table>

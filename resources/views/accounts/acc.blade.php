@@ -27,7 +27,7 @@
                             <label class="form-label text-primary">Accounts Type <span class="required">*</span></label>
                             <select name="acc_type" id="acc_type" class="form-control" required>
                                 <option value="">Options..</option>
-                                <option>Cash</option>
+                                <option disabled>Cash &#40;Default&#41;</option>
                                 <option>Bank</option>
                                 <option>Mobile Banking</option>
                             </select>

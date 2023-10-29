@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
 use File;
@@ -24,8 +25,17 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
-        return view('employee.list', compact('employees'));
+        $depts = Department::active()->get();
+        $employees = Employee::orderBy("created_at", "desc")->paginate(5);
+        return view('employee.list', compact('employees', 'depts'));
+    }
+
+    public function byDept(Department $department)
+    {
+        $depts = Department::active()->get();
+        $employees = Employee::where('dept_id', $department->id)->orderBy("created_at", "desc")->paginate(5);
+        return view('employee.list', compact('employees', 'depts'));
+        
     }
 
     /**
@@ -69,11 +79,13 @@ class EmployeeController extends Controller
             'position_id'=> $request->position_id,
             'join_date'=> $request->join_date,
         ]);
-
+        //dd($request->all());
         if ($request->hasFile('profile_img')) {
+            //dd($request->all());
             $image = $request->file('profile_img');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs(public_path('uploads/employee'), $imageName);
+            $image->move(public_path('storage/employee'), $imageName);
+
 
             $employee->profile_img = $imageName;
             $employee->save();
@@ -118,7 +130,9 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $departments = Department::active()->orderBy('dept_name', 'asc')->get();
+        $positions = Position::where('dept_id', $employee->dept_id)->get();
+        return view('employee.edit', compact('employee', 'departments', 'positions'));
     }
 
     /**

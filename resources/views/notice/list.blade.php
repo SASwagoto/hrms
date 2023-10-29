@@ -48,7 +48,7 @@
                 <div class="table-responsive full-data">
                     <table
                         class="table-responsive-lg table display dataTablesCard student-tab dataTable no-footer"
-                        id="example-student">
+                        id="example-employee">
                         <thead>
                             <tr>
                                 <th>

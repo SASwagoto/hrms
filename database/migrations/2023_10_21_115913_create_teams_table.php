@@ -28,11 +28,11 @@ return new class extends Migration
         Schema::create('team_has_members', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('team_id');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
-            $table->foreign('member_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::create('zone_has_teams', function (Blueprint $table) {

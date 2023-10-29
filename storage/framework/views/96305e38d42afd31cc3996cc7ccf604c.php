@@ -357,7 +357,12 @@
                                     <div class="d-flex align-items-center sidebar-info">
 
                                     </div>
+                                    <?php if(Auth::user()->emp->profile_img): ?>
+                                    <img src="<?php echo e(asset('storage/employee/'.Auth::user()->emp->profile_img)); ?>" class="ms-0"
+                                                alt=""> 
+                                    <?php else: ?>
                                     <img src="<?php echo e(asset('assets')); ?>/images/user.jpg" alt="">
+                                    <?php endif; ?>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end pb-0" style="">
@@ -365,8 +370,13 @@
                                     <div class="card-header p-3">
                                         <ul class="d-flex align-items-center">
                                             <li>
+                                                <?php if(Auth::user()->emp->profile_img): ?>
+                                                <img src="<?php echo e(asset('storage/employee/'.Auth::user()->emp->profile_img)); ?>" class="ms-0"
+                                                alt=""> 
+                                                <?php else: ?>
                                                 <img src="<?php echo e(asset('assets')); ?>/images/user.jpg" class="ms-0"
                                                     alt="">
+                                                <?php endif; ?>
                                             </li>
                                             <li class="ms-2">
                                                 <h4 class="mb-0"><?php echo e(Auth::user()->name); ?></h4>

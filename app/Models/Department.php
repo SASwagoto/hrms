@@ -12,6 +12,11 @@ class Department extends Model
     use HasFactory;
     protected $guarded = [];  
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function scopeActive($query)
     {
         return $query->where('isActive', true);

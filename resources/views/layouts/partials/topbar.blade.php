@@ -365,7 +365,12 @@
                                     <div class="d-flex align-items-center sidebar-info">
 
                                     </div>
+                                    @if (Auth::user()->emp->profile_img)
+                                    <img src="{{ asset('storage/employee/'.Auth::user()->emp->profile_img) }}" class="ms-0"
+                                                alt=""> 
+                                    @else
                                     <img src="{{ asset('assets') }}/images/user.jpg" alt="">
+                                    @endif
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end pb-0" style="">
@@ -373,8 +378,13 @@
                                     <div class="card-header p-3">
                                         <ul class="d-flex align-items-center">
                                             <li>
+                                                @if (Auth::user()->emp->profile_img)
+                                                <img src="{{ asset('storage/employee/'.Auth::user()->emp->profile_img) }}" class="ms-0"
+                                                alt=""> 
+                                                @else
                                                 <img src="{{ asset('assets') }}/images/user.jpg" class="ms-0"
                                                     alt="">
+                                                @endif
                                             </li>
                                             <li class="ms-2">
                                                 <h4 class="mb-0">{{ Auth::user()->name }}</h4>

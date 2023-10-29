@@ -101,7 +101,7 @@ let dataSet = [
     }); */
 
 //example 1
-    var table = $('#example-student').DataTable({
+    var table = $('#example-employee').DataTable({
         createdRow: function ( row, data, index ) {
            $(row).addClass('selected')
         } ,

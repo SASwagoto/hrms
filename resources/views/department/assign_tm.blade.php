@@ -16,7 +16,6 @@
     <div class="col-lg-12">
         <ul class="action_btn float-start">
             <li><a href="{{ route('sector.index') }}">Create New Sector</a></li>
-            <li><a href="{{ route('sector.assign.sl') }}">Assign Sector Leader</a></li>
             <li><a href="{{ route('sector.assign.tm') }}">Assign Team</a></li>
         </ul>
     </div>
@@ -49,9 +48,11 @@
                                 <span class="required">*</span></label>
                             <select class="multi-select" name="team[]" multiple="multiple">
                                 @forelse ($teams as $team)
+                                @if ($team->sector === null)
                                 <option value="{{$team->id}}">{{$team->team_name}}</option>
+                                @endif
                                 @empty
-                                <option>No Permission Found</option>
+                                <option>No Teams Found</option>
                                 @endforelse
                             </select>
                         </div>

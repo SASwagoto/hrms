@@ -23,7 +23,7 @@
         }
         ul.action_btn li{
             float: left;
-            margin: 0px 10px;
+            margin: 0px 5px;
         }
         .content-body{
             margin-bottom: 40px !important;

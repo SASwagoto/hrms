@@ -44,9 +44,11 @@ Route::middleware('auth')->group(function () {
 
     //Employee route
     Route::get('/employee', [EmployeeController::class, 'index'])->name('emp.index');
+    Route::get('/employee/by-department/{department}', [EmployeeController::class, 'byDept'])->name('emp.byDept');
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp.create');
     Route::post('/employee/store', [EmployeeController::class, 'store'])->name('emp.store');
     Route::get('/employee/show/{employee}', [EmployeeController::class, 'show'])->name('emp.show');
+    Route::get('/employee/edit/{employee}', [EmployeeController::class, 'edit'])->name('emp.edit');
 
     //getPosition
     Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions'])->name('getPositions');
@@ -64,6 +66,7 @@ Route::middleware('auth')->group(function () {
     //teams
     Route::get('/teams', [TeamController::class,'team_index'])->name('teams.index');
     Route::post('/teams/store', [TeamController::class,'team_store'])->name('team.store');
+    Route::put('/team/update/{team}', [TeamController::class,'team_update'])->name('team.update');
 
     //Zone
     Route::get('/zone', [TeamController::class, 'zone'])->name('zone.index');
@@ -74,8 +77,7 @@ Route::middleware('auth')->group(function () {
     //Sector
     Route::get('/sector', [TeamController::class, 'sector'])->name('sector.index');
     Route::post('/sector/store', [TeamController::class, 'sector_store'])->name('sector.store');
-    Route::get('/sector/assign-leader', [TeamController::class, 'sector_assign_leader'])->name('sector.assign.sl');
-    Route::post('/sector/assign-leader/store', [TeamController::class, 'assign_S_leader'])->name('assign.sl');
+    Route::put('/sector/update/{sector}', [TeamController::class, 'sector_update'])->name('sector.update');
     Route::get('/sector/assign-team', [TeamController::class, 'sector_assign_team'])->name('sector.assign.tm');
     Route::post('/sector/assign-team/store', [TeamController::class, 'assign_team'])->name('assign.tm');
 

@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-    <form id="employeeForm" action="{{ route('emp.store') }}" method="post">
+    <form id="employeeForm" action="{{ route('emp.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xl-12">

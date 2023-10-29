@@ -23,7 +23,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <form id="employeeForm" action="<?php echo e(route('emp.store')); ?>" method="post">
+    <form id="employeeForm" action="<?php echo e(route('emp.store')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
         <div class="row">
             <div class="col-xl-12">

@@ -22,7 +22,10 @@ class TeamController extends Controller
     {
         $zones = Zone::active()->orderBy('zone_name', 'asc')->get();
         $depts = Department::active()->get();
-        $users = User::role('employee')->orderBy('name', 'asc')->get();
+        $users = User::role('Employee')->leftJoin('teams', 'users.id', '=', 'teams.leader_id')
+        ->whereNull('teams.leader_id')
+        ->select('users.*')
+        ->get();
         $teams = Team::all();
         return view('department.teams', compact('depts','teams', 'zones','users'));
     }
@@ -31,6 +34,20 @@ class TeamController extends Controller
     {
         Team::create($request->all());
         Alert::success( $request->team_name,'Added Successfully!');
+        return redirect()->back();
+    }
+
+    public function team_update(Request $request, Team $team)
+    {
+        $isActive = ($request->has('isActive')) ? 1 : 0;
+        $team->update([
+            'team_name'=> $request->team_name,
+            'dept_id'=> $request->dept_id,
+            'zone_id'=> $request->zone_id,
+            'leader_id'=> $request->leader_id,
+            'isActive'=> $isActive,
+        ]);
+        Alert::success( $request->team_name,'Updated Successfully!');
         return redirect()->back();
     }
 
@@ -70,8 +87,12 @@ class TeamController extends Controller
 
     public function sector()
     {
-        $sectors = Sector::orderBy('id','desc')->get();
-        return view('department.sector', compact('sectors'));
+        $sectors = Sector::orderBy('id','desc')->paginate(10);
+        $users = User::role('Employee')->leftJoin('sectors', 'users.id', '=', 'sectors.sector_leader')
+        ->whereNull('sectors.sector_leader')
+        ->select('users.*')
+        ->get();
+        return view('department.sector', compact('sectors', 'users'));
     }
 
     public function sector_store(Request $request)
@@ -80,32 +101,35 @@ class TeamController extends Controller
         Alert::success( $request->sector_name,'Added Successfully!');
         return redirect()->back();
     }
-
-    public function sector_assign_leader()
-    {
-        $sectors = Sector::active()->orderBy('id','desc')->get();
-        $users = User::role('employee')->orderBy('name', 'asc')->get();
-        return view('department.assign_sl', compact('sectors','users'));
+    public function sector_update(Request $request, Sector $sector){
+        $isActive = ($request->has('isActive')) ? 1 : 0;
+        $sector->update([
+            'sector_name'=> $request->sector_name,
+            'sector_leader'=> $request->sector_leader,
+            'isActive'=> $isActive,
+        ]);
+        Alert::success( $request->sector_name,'Updated Successfully!');
+        return redirect()->back();
     }
-
     public function sector_assign_team()
     {
         $sectors = Sector::with('teams')->orderBy('id','desc')->get();
+        // $sectors = Sector::with('teams')
+        // ->whereDoesntHave('teams') // Exclude sectors with related teams
+        // ->orderBy('id', 'desc')
+        // ->get();
         $teams = Team::active()->orderBy('team_name','asc')->get();
+        // $teams = Team::active()
+        // ->leftJoin('sector_has_teams', 'teams.id', '=', 'sector_has_teams.team_id')
+        // ->whereNull('sector_has_teams.sector_id')
+        // ->select('teams.*')
+        // ->orderBy('teams.team_name', 'asc')
+        // ->get();
 
         return view('department.assign_tm', compact('sectors','teams'));
     }
 
-    public function assign_S_leader(Request $request)
-    {
-        $sector = Sector::find($request->sector_id);
-        $user = User::find($request->sector_leader);
-        $sector->update([
-            'sector_leader'=> $request->sector_leader,
-        ]);
-        Alert::success('Success', $user->name.' assign to sector leader');
-        return redirect()->back();
-    }
+
 
     public function assign_team(Request $request)
     {

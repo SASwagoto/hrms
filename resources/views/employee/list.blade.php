@@ -8,6 +8,15 @@
     <link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Add these lines to your layout file -->
+    <style>
+        .pagination{
+            float: right;
+        }
+        div#example-employee_paginate{
+            display: none;
+        }
+    </style>
 @endpush
 {{-- Header --}}
 @section('header')
@@ -19,7 +28,7 @@
         <div class="col-xl-12">
             <div class="page-title flex-wrap">
                 <div class="input-group search-area mb-md-0 mb-3">
-                    <input type="text" class="form-control" placeholder="Search here...">
+                    <input type="text" class="form-control" id="dynamic-search" placeholder="Search here...">
                     <span class="input-group-text"><a href="javascript:void(0)">
                             <svg width="15" height="15" viewBox="0 0 18 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -29,12 +38,27 @@
                             </svg>
                         </a></span>
                 </div>
-                <div>
-                    <select class="image-select bs-select dashboard-select me-3" aria-label="Default">
-                        <option selected>Newest</option>
+                <div class="d-flex">
+                    <div class="basic-dropdown me-3">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                Employee by Department
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{route('emp.index')}}">All Employee</a>
+                                @forelse ($depts as $dept)
+                                <a class="dropdown-item" href="{{route('emp.byDept', $dept->slug)}}">{{$dept->dept_name}}</a>
+                                @empty
+                                <a class="dropdown-item" href="javascript:void(0);">No Departments Found</a> 
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <select class="image-select bs-select dashboard-select me-3" aria-label="Default">
+                        <option selected><a href="{{route('emp.index')}}">All</a></option>
                         <option value="1">Oldest</option>
                         <option value="2">Recent</option>
-                    </select>
+                    </select> --}}
                     <!-- Button trigger modal -->
                     <a href="{{ route('emp.create') }}" type="button" class="btn btn-primary" data-bs-toggle="modals"
                         data-bs-target="#exampleModal">
@@ -47,7 +71,7 @@
         <div class="col-xl-12 wow fadeInUp" data-wow-delay="0.5s">
             <div class="table-responsive full-data">
                 <table class="table-responsive-lg display dataTablesCard student-tab dataTable no-footer table ov_auto"
-                    id="example-student">
+                    id="example-employee">
                     <thead>
                         <tr>
                             <th>
@@ -75,8 +99,13 @@
                             </td>
                             <td>
                                 <div class="trans-list">
+                                    @if ($emp->profile_img)
+                                    <img src="{{ asset('storage/employee/'.$emp->profile_img) }}" alt="Profile Image"
+                                    class="avatar avatar-sm me-3">
+                                    @else
                                     <img src="{{ asset('assets/') }}/images/trans/1.jpg" alt=""
                                         class="avatar avatar-sm me-3">
+                                    @endif
                                     <h4 class="d-block">{{$emp->user->name}}</h4>
                                 </div>
                             </td>
@@ -107,7 +136,7 @@
                                 <ul class="action_btn">
                                     <li><a href="{{route('emp.show', $emp->username)}}"><i class="fa-solid fa-circle-info fa-beat"
                                                 style="color: #12a561;"></i></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-pen-to-square"
+                                    <li><a href="{{route('emp.edit', $emp->username)}}"><i class="fa-solid fa-pen-to-square"
                                                 style="color: #347af4;"></i></a></li>
                                     <li><a href="#"><i class="fa-solid fa-trash" 
                                                 style="color: #ff0000;"></i></a></li>
@@ -130,6 +159,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{$employees->links()}}
             </div>
         </div>
         <!--/column-->
@@ -144,4 +174,12 @@
     <script src="{{ asset('assets') }}/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins-init/datatables.init.js"></script>
     <script src="{{ asset('assets') }}/vendor/wow-master/dist/wow.min.js"></script>
+   {{-- <script>
+     $(document).ready(function() {
+        $('#example-employee').DataTable({
+            "paging": false, // Disable DataTables pagination
+        });
+    });
+   </script> --}}
+    
 @endpush
