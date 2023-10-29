@@ -120,8 +120,8 @@ Route::middleware('auth')->group(function () {
     
     
     //Shift
-    Route::get('/attendance/shift', [WorkShiftController::class,'index'])->name('att.shift');
-    Route::post('/attendance/shift/store', [WorkShiftController::class,'store'])->name('att.shift.store');
+    Route::get('/shift', [WorkShiftController::class,'index'])->name('att.shift');
+    Route::post('/shift/store', [WorkShiftController::class,'store'])->name('att.shift.store');
 
     //Schedule
     Route::get('/attendance/schedule', [TemporaryController::class,'schedule_index'])->name('att.schedule');

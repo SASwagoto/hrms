@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Add Employee
+    Edit {{$employee->user->name}} Profile
 @endsection
 
 @push('css')
@@ -21,7 +21,7 @@
     </style>
 @endpush
 @section('header')
-    Add Employee
+Edit {{$employee->user->name}} Profile
 @endsection
 
 @section('content')

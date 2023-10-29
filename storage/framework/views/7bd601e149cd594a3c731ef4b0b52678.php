@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    Add Employee
+    Edit <?php echo e($employee->user->name); ?> Profile
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('css'); ?>
@@ -19,7 +19,7 @@
     </style>
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('header'); ?>
-    Add Employee
+Edit <?php echo e($employee->user->name); ?> Profile
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

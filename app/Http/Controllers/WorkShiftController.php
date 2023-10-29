@@ -9,12 +9,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class WorkShiftController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('attendance.shift');
+        $shifts = WorkShift::all();
+        return view('attendance.shift', compact('shifts'));
     }
 
     /**
