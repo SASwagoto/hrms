@@ -114,8 +114,9 @@
                                 <div class="date">{{$emp->join_date}}</div>
                             </td>
                             <td>
-                                <h6 class="mb-0">{{$emp->position->position_name}}</h6>
-                                <span>{{$emp->department->dept_name}}</span>
+                                
+                                <h6 class="mb-0">{{$emp->position->position_name ?? 'Not Avaiable'}}</h6>
+                                <span>{{$emp->department->dept_name ?? 'Not Available'}}</span> 
                             </td>
                             <td>
                                 <div class="d-flex">

@@ -143,7 +143,71 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $name = $request->first_name.' '.$request->last_name;
+        $user = User::find($employee->user_id);
+        $user->update([
+            'name'=> $name,
+            'email'=> $request->email,
+        ]);
+
+        $employee->update([
+            'first_name'=> $request->first_name,
+            'last_name'=> $request->last_name,
+            'username'=> $request->username,
+            'employee_id'=> $request->employee_id,
+            'phone_number'=> $request->phone_number,
+            'dob'=> $request->dob,
+            'marital_status'=> $request->marital_status,
+            'blood_group'=> $request->blood_group,
+            'gender'=> $request->gender,
+            'religion'=> $request->religion,
+            'nid'=> $request->nid,
+            'present_address'=> $request->present_address,
+            'permanent_address'=> $request->permanent_address,
+            'dept_id'=> $request->dept_id,
+            'position_id'=> $request->position_id,
+            'join_date'=> $request->join_date,
+        ]);
+        if ($request->hasFile('profile_img')) {
+            $image = $request->file('profile_img');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('storage/employee'), $imageName);
+
+            if ($employee->profile_img) {
+                Storage::delete('employee/' . $employee->profile_img);
+            }
+
+
+            $employee->profile_img = $imageName;
+            $employee->save();
+        }
+
+        $educations = Education::where('user_id', $employee->user_id)->get();
+
+        if ($request->input('exam') !== null) {
+            foreach ($request->exam as $key => $exam) {
+                $educationData = [
+                    'exam' => $exam,
+                    'institute' => $request->institute[$key],
+                    'subject' => $request->subject[$key],
+                    'pass_year' => $request->pass_year[$key],
+                    'group' => $request->group[$key],
+                    'session_year' => $request->session_year[$key],
+                    'result' => $request->result[$key],
+                ];
+    
+                if (isset($educations[$key])) {
+                    $educations[$key]->update($educationData);
+                } else {
+                    $educationData['user_id'] = $employee->user_id;
+                    Education::create($educationData);
+                }
+            }
+        }
+        Alert::success($employee->username, 'Updated Successfully!' );
+        return redirect()->route('emp.show', $employee->username);
+
+
     }
 
     public function softDelete(Employee $employee)

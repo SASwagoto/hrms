@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('days')->nullable();
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('leave_request', function (Blueprint $table) {
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('next_approved_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('emp_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');
@@ -48,6 +50,7 @@ return new class extends Migration
             $table->unsignedBigInteger('leave_id');
             $table->integer('current_balance')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');

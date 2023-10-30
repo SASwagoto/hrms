@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/employee/store', [EmployeeController::class, 'store'])->name('emp.store');
     Route::get('/employee/show/{employee}', [EmployeeController::class, 'show'])->name('emp.show');
     Route::get('/employee/edit/{employee}', [EmployeeController::class, 'edit'])->name('emp.edit');
+    Route::put('/employee/update/{employee}', [EmployeeController::class, 'update'])->name('emp.update');
     Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'softDelete'])->name('emp.delete');
    
 
@@ -127,12 +128,11 @@ Route::middleware('auth')->group(function () {
      Route::post('/holiday/store', [LeaveController::class,'holiday_store'])->name('holiday.store');
     
     
-    //Shift
-    Route::get('/shift', [WorkShiftController::class,'index'])->name('att.shift');
-    Route::post('/shift/store', [WorkShiftController::class,'store'])->name('att.shift.store');
-
-    //Schedule
-    Route::get('/attendance/schedule', [TemporaryController::class,'schedule_index'])->name('att.schedule');
+    //Shift && Schedule
+    Route::get('/shift', [WorkShiftController::class,'index'])->name('shift');
+    Route::get('/shift/add', [WorkShiftController::class,'create'])->name('shift.add');
+    Route::post('/shift/store', [WorkShiftController::class,'store'])->name('shift.store');
+    Route::get('/shift/schedule', [WorkShiftController::class,'schedule_index'])->name('shift.schedule');
 
    
 

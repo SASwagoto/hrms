@@ -36,7 +36,7 @@
                             <option value="2">Recent</option>
                         </select>
                         <!-- Button trigger modal -->
-                        <a href="{{route('notice.index')}}" type="button" class="btn btn-primary" data-bs-toggle="modals"
+                        <a href="{{route('notice.create')}}" type="button" class="btn btn-primary" data-bs-toggle="modals"
                             data-bs-target="#exampleModal">
                             + New Notice
                         </a>

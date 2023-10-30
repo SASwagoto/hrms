@@ -35,8 +35,8 @@
                 <span class="nav-text"><?php echo e(__('menu.attendance')); ?></span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="<?php echo e(route('att.shift')); ?>"><?php echo e(__('menu.work.shifts')); ?></a></li>
-                <li><a href="<?php echo e(route('att.schedule')); ?>"><?php echo e(__('menu.employee.schedules')); ?></a></li>
+                <li><a href="<?php echo e(route('shift')); ?>"><?php echo e(__('menu.work.shifts')); ?></a></li>
+                <li><a href="<?php echo e(route('shift.schedule')); ?>"><?php echo e(__('menu.employee.schedules')); ?></a></li>
                 
             </ul>
             </li>

@@ -14,5 +14,10 @@ class WorkShift extends Model
     protected $fillable = [
         'name', 'type','start_time','end_time','duration'
     ] ;
+
+    public function scopeActive($query)
+    {
+        return $query->where('isActive', true);
+    }
     
 }

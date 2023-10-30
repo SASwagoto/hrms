@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\WorkShift;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class WorkShiftController extends Controller
      */
     public function create()
     {
-        
+        return view('attendance.addShift');
     }
 
     /**
@@ -82,5 +83,12 @@ class WorkShiftController extends Controller
     public function destroy(WorkShift $workShift)
     {
         //
+    }
+
+    public function schedule_index()
+    {
+        $users = User::role('Employee')->orderBy('name', 'asc')->get();
+        $shifts = WorkShift::active()->get();
+        return view('attendance.schedule', compact('users','shifts'));
     }
 }

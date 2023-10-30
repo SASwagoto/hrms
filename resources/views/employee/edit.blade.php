@@ -25,8 +25,9 @@ Edit {{$employee->user->name}} Profile
 @endsection
 
 @section('content')
-    <form id="employeeForm" action="{{ route('emp.store') }}" method="post" enctype="multipart/form-data">
+    <form id="employeeForm" action="{{ route('emp.update', $employee->username) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">

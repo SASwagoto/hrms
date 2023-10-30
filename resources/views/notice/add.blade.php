@@ -19,7 +19,7 @@
                 <h4 class="mb-0">Notice Details</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('notice.store')}}" method="post">
+                <form action="{{route('notice.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-xl-6 col-sm-6">

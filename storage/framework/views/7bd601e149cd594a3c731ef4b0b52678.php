@@ -23,8 +23,9 @@ Edit <?php echo e($employee->user->name); ?> Profile
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <form id="employeeForm" action="<?php echo e(route('emp.store')); ?>" method="post" enctype="multipart/form-data">
+    <form id="employeeForm" action="<?php echo e(route('emp.update', $employee->username)); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
+        <?php echo method_field('PUT'); ?>
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">

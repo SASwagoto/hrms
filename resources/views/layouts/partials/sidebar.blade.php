@@ -35,8 +35,8 @@
                 <span class="nav-text">{{__('menu.attendance')}}</span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="{{route('att.shift')}}">{{__('menu.work.shifts')}}</a></li>
-                <li><a href="{{route('att.schedule')}}">{{__('menu.employee.schedules')}}</a></li>
+                <li><a href="{{route('shift')}}">{{__('menu.work.shifts')}}</a></li>
+                <li><a href="{{route('shift.schedule')}}">{{__('menu.employee.schedules')}}</a></li>
                 
             </ul>
             </li>

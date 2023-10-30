@@ -25,13 +25,6 @@ class TemporaryController extends Controller
     {
         return view('attendance.list');
     }
-
-    public function schedule_index()
-    {
-        return view('attendance.schedule');
-    }
-
-
     public function leave_add()
     {
         return view('leaves.add');

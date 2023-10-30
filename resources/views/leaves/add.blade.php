@@ -118,7 +118,7 @@ use Illuminate\Support\Str;
                                         </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="6" class="text-center">No Leave Found</td>
+                                                <td colspan="7" class="text-center">No Leave Found</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

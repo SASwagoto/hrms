@@ -24,6 +24,21 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('work_shift_has_users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('work_shift_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('work_shift_id')->references('id')->on('work_shifts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('approved_by')->references('id')->on('users')->onDelete('set null');
+        
+        });
     }
 
     /**

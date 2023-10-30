@@ -6,7 +6,10 @@ use App\Models\Notice;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class NoticeController extends Controller
 {
@@ -36,10 +39,18 @@ class NoticeController extends Controller
             'title'=> $request->title,
             'notice_date'=> $request->notice_date,
             'notice_to'=> $request->notice_to,
-            'noticefile'=> $request->noticefile,
             'description'=> $request->description,
             'created_by'=> Auth::id(),
         ]);
+
+        if ($request->hasFile('noticefile')) {
+            $file = $request->file('noticefile');
+            $filename = $request->title.'-'. time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/notice'), $filename);
+
+            $notice->noticefile = $filename;
+            $notice->save(); 
+        }
 
         Alert::success('Success', $notice->title.' Added Successfully!');
         return redirect()->route('notice.index');

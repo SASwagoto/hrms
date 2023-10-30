@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="dropdown custom-dropdown">
-                                <a href="javascript:void(0);" class="" id="edit_btn"><i
+                                <a href="{{route('emp.edit', $employee->username)}}" class="" id="edit_btn"><i
                                         class="fa-solid fa-pen-to-square fa-2xl"></i></a>
                                 <a href="javascript:void(0);" class="d-none" id="save_btn"><i
                                         class="fa-solid fa-check fa-2xl"></i></a>
@@ -225,17 +225,4 @@
     <script src="{{ asset('assets') }}/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins-init/datatables.init.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#edit_btn").on('click', function() {
-                $("#edit_btn").addClass("d-none");
-                $("#save_btn").removeClass("d-none");
-            });
-
-            $("#save_btn").on('click', function() {
-                $("#edit_btn").removeClass("d-none");
-                $("#save_btn").addClass("d-none");
-            });
-        });
-    </script>
 @endpush

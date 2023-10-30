@@ -26,18 +26,25 @@
                             <div class="mb-3">
                                 <label class="form-label text-primary">Select Employee<span
                                         class="required">*</span></label>
-                                <select id="employee-select" name="emp_id">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
+                                <select id="employee-select" name="user_id">
+                                    <option value="">Options</option>
+                                    @forelse ($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @empty
+                                    <option value="">No user found</option>
+                                    @endforelse
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label text-primary">Select Shift<span class="required">*</span></label>
                                 <select id="shift-select" name="shift_id">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                    <option value="CA">California</option>
+                                    <option value="">Options..</option>
+                                    @forelse ($shifts as $shift)
+                                    <option value="{{$shift->id}}">{{$shift->name}}</option>
+                                    @empty
+                                    <option value="">No Shifts Found</option>
+                                    @endforelse
                                 </select>
                             </div>
 
