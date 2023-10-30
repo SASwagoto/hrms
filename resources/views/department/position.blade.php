@@ -74,21 +74,53 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($positions as $key => $pos)
-                                    <tr>
+                                    <tr class="view-mode-row">
+                                        <form action="{{route('pos.update', $pos->id)}}" id="updateForm{{$key+1}}" method="post">
+                                            @csrf
+                                            @method('PUT')
                                         <th>{{$key+1}}</th>
-                                        <td>{{$pos->position_name}}</td>
-                                        <td>{{$pos->department->dept_name}}</td>
-                                        <td><span
-                                            class="badge {{ $pos->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $pos->isActive ? 'Active' : 'Inactive' }}</span>
+                                        <td class="view-mode">{{$pos->position_name}}</td>
+                                        <td class="edit-mode" style="display: none;">
+                                            <input type="text" name="pos_name" required class="form-control input-default" value="{{$pos->position_name}}">
+                                        </td>
+                                        <td class="view-mode">{{$pos->department->dept_name}}</td>
+                                        <td  class="edit-mode" style="display: none;">
+                                            <select id="department-select" class="form-control" name="dept_id">
+                                                <option value="">Options..</option>
+                                                @forelse ($depts as $dept)
+                                                <option @if($pos->dept_id == $dept->id) selected @endif value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                                @empty
+                                                <option>No Department Found</option>
+                                                @endforelse
+                                            </select>
+                                        </td>
+                                        <td class="view-mode" data-column-name="isActive">
+                                            <span class="badge {{ $pos->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $pos->isActive ? 'Active' : 'Inactive' }}</span>
+                                        </td>
+                                        <td class="edit-mode" style="display: none;">
+                                            <input type="checkbox" name="isActive" @if ($pos->isActive) checked @endif>
                                         </td>
                                         <td>
                                             <ul class="action_btn">
-                                                <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xl"
-                                                    style="color: #347af4;"></i></a></li>
-                                                <li><a href="#"><i class="fa-solid fa-trash fa-xl"
-                                                            style="color: #ff0000;"></i></a></li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="edit-button">
+                                                        <i class="fa-solid fa-pen-to-square fa-xl" style="color: #347af4;"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);" class="save-button" onclick="document.getElementById('updateForm{{$key+1}}').submit()" style="display: none;">
+                                                        <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="view-mode"><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$pos->id}}').submit()"><i class="fa-solid fa-trash fa-xl"
+                                                    style="color: #ff0000;"></i></a></li>
                                             </ul>
                                         </td>
+                                    </form>
+                                    <form action="{{route('pos.delete', $pos->id)}}" method="POST" id="delete-form{{$pos->id}}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                     </tr> 
                                     @empty
                                         <tr>
@@ -98,6 +130,7 @@
                                     
                                 </tbody>
                             </table>
+                            {{$positions->links()}}
                         </div>
                     </div>
                 </div>
@@ -114,5 +147,52 @@
 <script>
     // Initialize Select2 for the "Select Employee" dropdown
     $('#department-select').select2();
+</script>
+<script>
+    $(document).ready(function () {
+        // Function to switch to edit mode
+        function switchToEditMode(row) {
+            row.addClass('edit-mode-row');
+            row.find('.edit-button').hide();
+            row.find('.view-mode').hide();
+            row.find('.save-button').show();
+            row.find('.edit-mode').show();
+           
+        }
+
+        // Function to switch back to view mode
+        function switchToViewMode(row) {
+            row.removeClass('edit-mode-row');
+            row.find('.edit-button').show();
+            row.find('.view-mode').show();
+            row.find('.save-button').hide();
+            row.find('.edit-mode').hide();
+            
+        }
+
+        // Handle edit button click
+        $('.edit-button').on('click', function (e) {
+            e.preventDefault();
+            var row = $(this).closest('tr');
+            switchToEditMode(row);
+        });
+
+        // Handle save button click
+        $('.save-button').on('click', function (e) {
+            e.preventDefault();
+            var row = $(this).closest('tr');
+            var updatedData = {};
+            row.find('.edit-mode-cell').each(function () {
+                var cell = $(this);
+                var columnName = cell.data('column-name');
+                var value = cell.find('input').val();
+                updatedData[columnName] = value;
+            });
+
+            // Send updatedData to the server using AJAX
+            // On success, switch back to view mode
+            switchToViewMode(row);
+        });
+    });
 </script>
 @endpush

@@ -82,12 +82,12 @@
                                                                 <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
                                                             </a>
                                                         </li>
-                                                        <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$dept->id}}').submit()"><i class="fa-solid fa-trash fa-xl"
+                                                        <li class="view-mode"><a href="javascript:void(0);" onclick="document.getElementById('delete-form{{$dept->id}}').submit()"><i class="fa-solid fa-trash fa-xl"
                                                             style="color: #ff0000;"></i></a></li>
                                                     </ul>
                                                 </td>
                                                 </form>
-                                                <form action="{{route('dept.delete', $dept->id)}}" method="POST" id="delete-form{{$dept->id}}">
+                                                <form action="{{route('dept.delete', $dept->slug)}}" method="POST" id="delete-form{{$dept->id}}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>

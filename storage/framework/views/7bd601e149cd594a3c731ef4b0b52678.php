@@ -205,22 +205,7 @@ unset($__errorArgs, $__bag); ?>
                                     <input type="email" name="email" class="form-control" value="<?php echo e($employee->user->email); ?>"
                                         placeholder="hello@example.com">
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label text-primary">Password<span class="required">* </span>
-                                        <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="text-danger"><?php echo e($message); ?></span>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </label>
-                                    <input type="password" name="password" class="form-control pass"
-                                        value="<?php echo e(old('password')); ?>" placeholder="Password">
-                                </div>
+                                
                             </div>
                             <div class="col-xl-4">
                                 <div class="mb-3">
@@ -239,16 +224,7 @@ unset($__errorArgs, $__bag); ?>
                                     <input type="number" name="phone_number" class="form-control"
                                         value="<?php echo e($employee->phone_number); ?>" placeholder="+123456789">
                                 </div>
-                                <div class="password_container mb-3">
-                                    <label class="form-label text-primary">Confirm Password<span
-                                            class="required">* </span> <span id="pass_check_msg" class=""></span></label>
-                                    <input type="password" name="confirm_password" class="form-control confirm_pass"
-                                        placeholder="Confirm Password">
-                                    <a href="javascript:void(0);" class="eye_btn pass_show d-none"><i
-                                            class="fa-solid fa-eye fa-lg"></i></a>
-                                    <a href="javascript:void(0);" class="eye_btn pass_hide d-none"><i
-                                            class="fa-solid fa-eye-slash fa-lg"></i></i></a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

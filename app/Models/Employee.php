@@ -8,10 +8,11 @@ use App\Models\Position;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
@@ -44,8 +45,18 @@ class Employee extends Model
     {
         return $this->hasMany(Education::class, 'user_id', 'user_id');
     }
+
+    public function teamLeader()
+    {
+        return $this->hasOne(Team::class,'leader_id', 'user_id');
+    }
+    public  function sectorLeader()
+    {
+        return $this->hasOne(Sector::class,'sector_leader', 'user_id');
+    }
+
     public function team()
     {
-        return $this->belongsTo(Team::class, 'team_id', 'team_has_members.team_id');
+        return $this->hasOne(Team::class, 'team_has_members', 'team_has_members.user_id');
     }
 }

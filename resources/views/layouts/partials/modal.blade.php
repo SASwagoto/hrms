@@ -1,9 +1,45 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-center">
+        <form action="#" method="post">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Set As Team Leader</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label text-primary">Select Team</label>
+                                <select id="team_select" class="form-control" name="team_id">
+                                  @forelse ($teams as $team)
+                                  @if ($team->leader_id === null)
+                                  <option value="{{$team->id}}">{{$team->team_name}}</option> 
+                                  @endif
+                                  @empty
+                                  <option disabled>No Team Founds</option>
+                                  @endforelse
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Set As Team Leader</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Set As Team Member</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,11 +48,8 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label text-primary">Select Team</label>
                             <select id="team_select" class="form-control" name="team_id">
-                              @forelse ($teams as $team)
-                              <option value="{{$team->id}}">{{$team->team_name}}</option>
-                              @empty
-                              <option disabled>No Team Founds</option>
-                              @endforelse
+                                <option value="AL">Alabama</option>
+                                <option value="WY">Wyoming</option>
                             </select>
                         </div>
                     </div>
@@ -29,12 +62,13 @@
     </div>
 </div>
 
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="TeamMembers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Set As Team Member</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Team Details</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

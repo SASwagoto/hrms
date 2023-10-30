@@ -37,6 +37,15 @@ class TeamController extends Controller
         return redirect()->back();
     }
 
+    public function team_show(Team $team)
+    {
+        $users = User::role('Employee')->leftJoin('teams', 'users.id', '=', 'teams.leader_id')
+        ->whereNull('teams.leader_id')
+        ->select('users.*')
+        ->get();
+        return view('department.teamDetails', compact('team', 'users'));
+    }
+
     public function team_update(Request $request, Team $team)
     {
         $isActive = ($request->has('isActive')) ? 1 : 0;
@@ -49,6 +58,48 @@ class TeamController extends Controller
         ]);
         Alert::success( $request->team_name,'Updated Successfully!');
         return redirect()->back();
+    }
+
+    public function addMember(Request $request)
+    {
+        $exist = DB::table('team_has_members')
+        ->where('team_id', $request->team_id)
+        ->where('user_id', $request->user_id)
+        ->first();
+        if( $exist ){
+            Alert::error( 'Exist','This employee already in this team.');
+            return redirect()->back();
+        }else{
+            DB::table('team_has_members')->insert([
+                'team_id' => $request->team_id,
+                'user_id'=> $request->user_id,
+            ]);
+            Alert::success( 'Successfull','Member added.');
+            return redirect()->back();
+        }
+        
+    }
+
+    public function removeMember(Request $request)
+    {
+        $team = Team::find($request->team_id);
+        $team->members()->detach($request->user_id);
+
+        Alert::success('Removed','Removed successfully form team.');
+        return redirect()->back();
+
+        // $delete = DB::table('team_has_members')
+        // ->where('team_id', $request->team_id)
+        // ->where('user_id', $request->user_id)
+        // ->delete();
+        // if( !$delete ){
+        //     Alert::error( 'Erorr','Data not found!');
+        //     return redirect()->back();
+        // }else{
+        //     Alert::success('Removed','Removed successfully form team.');
+        //     return redirect()->back();
+        // }
+        
     }
 
     public function zone()
@@ -145,4 +196,6 @@ class TeamController extends Controller
         Alert::success('Success', 'Teams added successfully!');
         return redirect()->back();
     }
+
+    
 }

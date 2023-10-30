@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('app_logo')->nullable();
             $table->string('fav_icon')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

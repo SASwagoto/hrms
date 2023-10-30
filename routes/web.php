@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/employee/store', [EmployeeController::class, 'store'])->name('emp.store');
     Route::get('/employee/show/{employee}', [EmployeeController::class, 'show'])->name('emp.show');
     Route::get('/employee/edit/{employee}', [EmployeeController::class, 'edit'])->name('emp.edit');
+    Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'softDelete'])->name('emp.delete');
+   
 
     //getPosition
     Route::get('/get-positions/{id}', [DepartmentController::class,'getPositions'])->name('getPositions');
@@ -62,11 +64,17 @@ Route::middleware('auth')->group(function () {
     //positions
     Route::get('/positions', [DepartmentController::class,'pos_index'])->name('pos.index');
     Route::post('/positions/store', [DepartmentController::class,'pos_store'])->name('pos.store');
+    Route::put('/positions/update/{position}', [DepartmentController::class,'pos_update'])->name('pos.update');
+    Route::delete('/positions/delete/{position}', [DepartmentController::class,'pos_delete'])->name('pos.delete');
 
     //teams
     Route::get('/teams', [TeamController::class,'team_index'])->name('teams.index');
     Route::post('/teams/store', [TeamController::class,'team_store'])->name('team.store');
+    Route::post('/teams/add-member', [TeamController::class,'addMember'])->name('team.addMember');
+    Route::delete('/teams/remove-member', [TeamController::class,'removeMember'])->name('team.removeMember');
+    Route::get('/team/show/{team}', [TeamController::class,'team_show'])->name('team.show');
     Route::put('/team/update/{team}', [TeamController::class,'team_update'])->name('team.update');
+    
 
     //Zone
     Route::get('/zone', [TeamController::class, 'zone'])->name('zone.index');

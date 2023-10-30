@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('approved_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');

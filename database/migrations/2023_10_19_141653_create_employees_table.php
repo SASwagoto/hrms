@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('profile_img')->nullable();
             $table->date('join_date')->default(now());
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('dept_id')->references('id')->on('departments')->onDelete('set null');

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('zone_id')->nullable();
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('leader_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('zone_id')->references('id')->on('zones')->onDelete('set null') ;
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->unsignedBigInteger('team_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

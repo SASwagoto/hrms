@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sector_leader')->nullable();
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('sector_leader')->references('id')->on('users')->onDelete('set null');
         });
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('sector_id');
             $table->unsignedBigInteger('team_id');
+            $table->softDeletes();
 
             $table->foreign('sector_id')->references('id')->on('sectors')->onDelete('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('type', ['income', 'expense']);
             $table->double('amount', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

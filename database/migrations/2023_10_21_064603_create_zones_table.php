@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('zone_name');
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }

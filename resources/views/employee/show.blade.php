@@ -55,22 +55,9 @@
                                     @endif
                                     
                                 </div>
-                                <div class="hd">
+                                <div class="">
                                     <h2 class="mb-0">{{$employee->user->name}}</h2>
-                                    <p class="text-primary font-w600 hd">{{$employee->position->position_name}}</p>
-                                </div>
-                                <div class="basic-form mt-3 ef d-none" style="width: 500px;">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control input-default"
-                                            value="{{$employee->user->name}}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <select class="default-select form-control wide form-control mb-3">
-                                            @foreach ($positions as $position)
-                                            <option value="{{$position->id}}">{{$position->position_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <p class="text-primary font-w600 ">{{$employee->position->position_name}}</p>
                                 </div>
                             </div>
                             <div class="dropdown custom-dropdown">
@@ -90,12 +77,8 @@
                                     </li>
                                     <li>
                                         <span>Email:</span>
-                                        <h5 class="hd mb-0"><a href="mailto:{{$employee->user->email}}">{{$employee->user->email}}</a>
+                                        <h5 class=" mb-0"><a href="mailto:{{$employee->user->email}}">{{$employee->user->email}}</a>
                                         </h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="email" class="form-control input-default"
-                                                value="{{$employee->user->email}}" style="width: 445px">
-                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -107,14 +90,8 @@
                                         </a>
                                     </li>
                                     <li><span>Department:</span>
-                                        <h5 class="hd mb-0">{{$employee->department->dept_name}}</h5>
-                                        <div class="basic-form ef d-none" style="width: 445px">
-                                            <select class="default-select form-control wide form-control mb-3">
-                                                @foreach ($departments as $dept)
-                                                <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <h5 class=" mb-0">{{$employee->department->dept_name}}</h5>
+                                    
                                     </li>
                                 </ul>
                             </div>
@@ -126,11 +103,7 @@
                                         </a>
                                     </li>
                                     <li><span>Phone:</span>
-                                        <h5 class="hd mb-0"><a href="tel:{{$employee->phone_number}}">{{$employee->phone_number}}</a></h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control put-default" value="{{$employee->phone_number}}"
-                                                style="width: 445px">
-                                        </div>
+                                        <h5 class=" mb-0"><a href="tel:{{$employee->phone_number}}">{{$employee->phone_number}}</a></h5>
                                     </li>
                                 </ul>
                             </div>
@@ -138,17 +111,26 @@
                                 <ul class="student-details">
                                     <li class="me-2">
                                         <a class="icon-box bg-secondary">
-                                            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+                                            <i class="fa-solid fa-user-group" style="color: #ffffff;"></i>
                                         </a>
-
                                     </li>
-                                    <li><span>Address:</span>
-                                        <h5 class="hd mb-0">{{$employee->team}}</h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control input-default"
-                                                value="{{$employee->present_address}}" style="width: 445px">
-                                        </div>
+                                    @if ($employee->sectorLeader)
+                                    <li class="me-4">
+                                        <span>Sector Leader</span>
+                                        <h5 class="mb-0">{{$employee->sectorLeader->sector_name}}</h5>
                                     </li>
+                                    @endif
+                                    @if ($employee->teamLeader)
+                                        <li class="me-4">
+                                            <span>Team Leader</span>
+                                            <h5 class="mb-0">{{$employee->teamLeader->team_name}}</h5>
+                                        </li>
+                                    @endif
+                                    @if ($employee->team)
+                                    <li><span>Member:</span>
+                                        <h5 class=" mb-0">{{$employee->team->team_name}}</h5>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -246,15 +228,11 @@
     <script>
         $(document).ready(function() {
             $("#edit_btn").on('click', function() {
-                $(".ef").removeClass("d-none");
-                $(".hd").addClass("d-none");
                 $("#edit_btn").addClass("d-none");
                 $("#save_btn").removeClass("d-none");
             });
 
             $("#save_btn").on('click', function() {
-                $(".ef").addClass("d-none");
-                $(".hd").removeClass("d-none");
                 $("#edit_btn").removeClass("d-none");
                 $("#save_btn").addClass("d-none");
             });

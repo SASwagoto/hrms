@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -60,8 +61,18 @@ class User extends Authenticatable
         return self::role('employee')->get();
     }
 
-    public function team()
+    public function teams()
     {
-        return $this->hasOne('team_has_members', 'user_id', 'id');
+        return $this->belongsToMany(Team::class, 'team_has_members', 'user_id', 'team_id');
     }
+
+    public function customSoftDelete()
+    {
+        $this->delete();
+        //$this->roles()->detach();
+        $this->emp()->delete();
+        $this->educations()->delete();
+    }
+
+    
 }

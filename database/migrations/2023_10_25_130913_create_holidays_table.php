@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('days')->nullable;
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

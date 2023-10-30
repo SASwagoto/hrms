@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('dept_id');
             $table->boolean('isActive')->default(true);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('dept_id')->references('id')->on('departments')->onDelete('cascade');
         });

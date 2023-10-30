@@ -85,7 +85,7 @@
                                                     </ul>
                                                 </td>
                                                 </form>
-                                                <form action="<?php echo e(route('dept.delete', $dept->id)); ?>" method="POST" id="delete-form<?php echo e($dept->id); ?>">
+                                                <form action="<?php echo e(route('dept.delete', $dept->slug)); ?>" method="POST" id="delete-form<?php echo e($dept->id); ?>">
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('DELETE'); ?>
                                                 </form>

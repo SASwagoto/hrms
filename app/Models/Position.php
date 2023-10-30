@@ -6,10 +6,11 @@ use App\Models\Department;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Position extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];  
 
@@ -27,4 +28,11 @@ class Position extends Model
     {
         return $this->belongsTo(User::class, 'leader_id');
     }
+
+    public function customSoftDelete()
+    {
+        $this->delete();
+        
+    }
+
 }

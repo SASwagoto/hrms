@@ -62,7 +62,7 @@ class DepartmentController extends Controller
     public function pos_index()
     {
         $depts = Department::active()->get();
-        $positions = Position::all();
+        $positions = Position::paginate(10);
         return view('department.position', compact('depts', 'positions'));
     }
 
@@ -74,6 +74,28 @@ class DepartmentController extends Controller
             'dept_id' => $request->dept_id,
         ]);
         Alert::success( $request->pos_name,'Added Successfully!');
+        return redirect()->back();
+    }
+
+    public function pos_update(Request $request, Position $position)
+    {
+        $isActive = ($request->has('isActive')) ? 1 : 0;
+        $position->update([
+            'position_name'=> $request->pos_name,
+            'dept_id'=> $request->dept_id,
+            'isActive'=> $isActive,
+        ]);
+
+        Alert::success( $request->pos_name,'Updated Successfully!');
+        return redirect()->back();
+        //return $request;
+    }
+
+    public function pos_delete(Position $position)
+    {
+        $position->customSoftDelete();
+
+        Alert::success( 'Deleted','Deleted Successfully!');
         return redirect()->back();
     }
 
@@ -115,7 +137,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        $department->delete();
+        $department->customSoftDelete();
         Alert::success( $department->name,'Deleted Successfully');
         return redirect()->back();
     }

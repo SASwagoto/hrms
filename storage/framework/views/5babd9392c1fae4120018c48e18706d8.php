@@ -81,7 +81,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $emp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td>
                                 <div class="checkbox align-self-center me-0">
@@ -132,17 +132,13 @@
                                                 style="color: #12a561;"></i></a></li>
                                     <li><a href="<?php echo e(route('emp.edit', $emp->username)); ?>"><i class="fa-solid fa-pen-to-square"
                                                 style="color: #347af4;"></i></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-trash" 
+                                    <li><a href="javascript:void(0);" onclick="document.getElementById('deleteForm<?php echo e($key + 1); ?>').submit()"><i class="fa-solid fa-trash" 
                                                 style="color: #ff0000;"></i></a></li>
-                                    <li><div class="dropdown custom-dropdown float-end">
-                                        <div class="btn sharp tp-btn " data-bs-toggle="dropdown">
-                                            <i class="fa-solid fa-caret-down"></i>
-                                        </div>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal">Set As Team Leader</a>
-                                            <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Set As Team Member</a>
-                                        </div>
-                                    </div></li>
+                                    <form action="<?php echo e(route('emp.delete', $emp->username)); ?>" id="deleteForm<?php echo e($key+1); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('DELETE'); ?>
+                                    <input type="hidden" name="username" value="<?php echo e($emp->username); ?>">
+                                    </form>
                                 </ul>
                             </td>
                         </tr>

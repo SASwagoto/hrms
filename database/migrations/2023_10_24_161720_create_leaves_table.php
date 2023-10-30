@@ -58,6 +58,7 @@ return new class extends Migration
             $table->unsignedBigInteger('leave_id');
             $table->text('policy')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');
         });

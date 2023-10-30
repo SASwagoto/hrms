@@ -121,6 +121,9 @@ class EmployeeController extends Controller
         // $emp = Employee::where('username', $employee->username)->first();
          $positions = Position::active()->where('dept_id', $employee->dept_id)->get();
          $departments = Department::active()->get();
+         $user = User::whereHas('teams', function ($query) {
+            $query->has('members', '=', 1);
+        })->with('teams.members')->first();
         //return view('employee.show', compact('emp', 'positions', 'departments'));
         return view('employee.show', compact('employee', 'positions', 'departments'));
     }
@@ -143,11 +146,20 @@ class EmployeeController extends Controller
         //
     }
 
+    public function softDelete(Employee $employee)
+    {
+        //return $employee;
+        $user = User::find($employee->user_id);
+        $user->customSoftDelete();
+
+        Alert::success('Deleted','Employee Deleted Successfully!');
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Employee $employee)
     {
-        //
+        
     }
 }

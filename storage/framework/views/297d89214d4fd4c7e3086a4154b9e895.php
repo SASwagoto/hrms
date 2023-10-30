@@ -184,7 +184,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="view-mode">
-                                                    <a href="javascript:void(0);">
+                                                    <a href="<?php echo e(route('team.show', $team->id)); ?>">
                                                         <i class="fa-solid fa-circle-info fa-xl"></i>
                                                     </a>
                                                 </li>

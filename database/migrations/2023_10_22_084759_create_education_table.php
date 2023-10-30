@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pass_year')->nullable();
             $table->string('result')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

@@ -39,6 +39,10 @@
         .dropdown.bootstrap-select.swal2-select{
             display: none;
         }
+        .pagination{
+            float: inline-end;
+            margin-right: 5px;
+        }
     </style>
 	<link rel="stylesheet" href="{{asset('assets')}}/css/custom.css">
 </head>

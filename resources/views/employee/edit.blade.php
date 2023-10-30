@@ -158,7 +158,7 @@ Edit {{$employee->user->name}} Profile
                                     <input type="email" name="email" class="form-control" value="{{ $employee->user->email }}"
                                         placeholder="hello@example.com">
                                 </div>
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label class="form-label text-primary">Password<span class="required">* </span>
                                         @error('password')
                                             <span class="text-danger">{{ $message }}</span>
@@ -166,7 +166,7 @@ Edit {{$employee->user->name}} Profile
                                     </label>
                                     <input type="password" name="password" class="form-control pass"
                                         value="{{ old('password') }}" placeholder="Password">
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-xl-4">
                                 <div class="mb-3">
@@ -178,7 +178,7 @@ Edit {{$employee->user->name}} Profile
                                     <input type="number" name="phone_number" class="form-control"
                                         value="{{ $employee->phone_number }}" placeholder="+123456789">
                                 </div>
-                                <div class="password_container mb-3">
+                                {{-- <div class="password_container mb-3">
                                     <label class="form-label text-primary">Confirm Password<span
                                             class="required">* </span> <span id="pass_check_msg" class=""></span></label>
                                     <input type="password" name="confirm_password" class="form-control confirm_pass"
@@ -187,7 +187,7 @@ Edit {{$employee->user->name}} Profile
                                             class="fa-solid fa-eye fa-lg"></i></a>
                                     <a href="javascript:void(0);" class="eye_btn pass_hide d-none"><i
                                             class="fa-solid fa-eye-slash fa-lg"></i></i></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

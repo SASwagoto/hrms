@@ -53,22 +53,9 @@
                                     <?php endif; ?>
                                     
                                 </div>
-                                <div class="hd">
+                                <div class="">
                                     <h2 class="mb-0"><?php echo e($employee->user->name); ?></h2>
-                                    <p class="text-primary font-w600 hd"><?php echo e($employee->position->position_name); ?></p>
-                                </div>
-                                <div class="basic-form mt-3 ef d-none" style="width: 500px;">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control input-default"
-                                            value="<?php echo e($employee->user->name); ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <select class="default-select form-control wide form-control mb-3">
-                                            <?php $__currentLoopData = $positions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $position): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($position->id); ?>"><?php echo e($position->position_name); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                    </div>
+                                    <p class="text-primary font-w600 "><?php echo e($employee->position->position_name); ?></p>
                                 </div>
                             </div>
                             <div class="dropdown custom-dropdown">
@@ -88,12 +75,8 @@
                                     </li>
                                     <li>
                                         <span>Email:</span>
-                                        <h5 class="hd mb-0"><a href="mailto:<?php echo e($employee->user->email); ?>"><?php echo e($employee->user->email); ?></a>
+                                        <h5 class=" mb-0"><a href="mailto:<?php echo e($employee->user->email); ?>"><?php echo e($employee->user->email); ?></a>
                                         </h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="email" class="form-control input-default"
-                                                value="<?php echo e($employee->user->email); ?>" style="width: 445px">
-                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -105,14 +88,8 @@
                                         </a>
                                     </li>
                                     <li><span>Department:</span>
-                                        <h5 class="hd mb-0"><?php echo e($employee->department->dept_name); ?></h5>
-                                        <div class="basic-form ef d-none" style="width: 445px">
-                                            <select class="default-select form-control wide form-control mb-3">
-                                                <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </select>
-                                        </div>
+                                        <h5 class=" mb-0"><?php echo e($employee->department->dept_name); ?></h5>
+                                    
                                     </li>
                                 </ul>
                             </div>
@@ -124,11 +101,7 @@
                                         </a>
                                     </li>
                                     <li><span>Phone:</span>
-                                        <h5 class="hd mb-0"><a href="tel:<?php echo e($employee->phone_number); ?>"><?php echo e($employee->phone_number); ?></a></h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control put-default" value="<?php echo e($employee->phone_number); ?>"
-                                                style="width: 445px">
-                                        </div>
+                                        <h5 class=" mb-0"><a href="tel:<?php echo e($employee->phone_number); ?>"><?php echo e($employee->phone_number); ?></a></h5>
                                     </li>
                                 </ul>
                             </div>
@@ -136,17 +109,26 @@
                                 <ul class="student-details">
                                     <li class="me-2">
                                         <a class="icon-box bg-secondary">
-                                            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+                                            <i class="fa-solid fa-user-group" style="color: #ffffff;"></i>
                                         </a>
-
                                     </li>
-                                    <li><span>Address:</span>
-                                        <h5 class="hd mb-0"><?php echo e($employee->team); ?></h5>
-                                        <div class="basic-form ef d-none">
-                                            <input type="text" class="form-control input-default"
-                                                value="<?php echo e($employee->present_address); ?>" style="width: 445px">
-                                        </div>
+                                    <?php if($employee->sectorLeader): ?>
+                                    <li class="me-4">
+                                        <span>Sector Leader</span>
+                                        <h5 class="mb-0"><?php echo e($employee->sectorLeader->sector_name); ?></h5>
                                     </li>
+                                    <?php endif; ?>
+                                    <?php if($employee->teamLeader): ?>
+                                        <li class="me-4">
+                                            <span>Team Leader</span>
+                                            <h5 class="mb-0"><?php echo e($employee->teamLeader->team_name); ?></h5>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if($employee->team): ?>
+                                    <li><span>Member:</span>
+                                        <h5 class=" mb-0"><?php echo e($employee->team->team_name); ?></h5>
+                                    </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -245,15 +227,11 @@
     <script>
         $(document).ready(function() {
             $("#edit_btn").on('click', function() {
-                $(".ef").removeClass("d-none");
-                $(".hd").addClass("d-none");
                 $("#edit_btn").addClass("d-none");
                 $("#save_btn").removeClass("d-none");
             });
 
             $("#save_btn").on('click', function() {
-                $(".ef").addClass("d-none");
-                $(".hd").removeClass("d-none");
                 $("#edit_btn").removeClass("d-none");
                 $("#save_btn").addClass("d-none");
             });

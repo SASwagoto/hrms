@@ -32,14 +32,14 @@ class AdminSeeder extends Seeder
             'email' => 'karim@hrms.com',
             'email_verified_at' => now(),
             'password' => bcrypt(12345678), // 12345678
-        ])->assignRole('Sector-Leader');
+        ])->assignRole('Employee');
 
         User::create([
             'name' => 'Safik',
             'email' => 'safik@hrms.com',
             'email_verified_at' => now(),
             'password' => bcrypt(12345678), // 12345678
-        ])->assignRole('Team-Leader');
+        ])->assignRole('Employee');
 
         User::create([
             'name' => 'barkat',
