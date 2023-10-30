@@ -81,7 +81,7 @@
                     <span class="nav-text">{{__('menu.recruitment')}}</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('rec.post')}}">{{__('menu.job.postings')}}</a></li>
+                    <li><a href="{{route('jobs.post')}}">{{__('menu.job.postings')}}</a></li>
                     <li><a href="{{route('rec.app')}}">{{__('menu.applicants')}}</a></li>
                     <li><a href="{{route('rec.int')}}">{{__('menu.interviews')}}</a></li>
                     <li><a href="{{route('rec.on')}}">{{__('menu.onboarding')}}</a></li>

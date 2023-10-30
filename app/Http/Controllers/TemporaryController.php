@@ -35,14 +35,6 @@ class TemporaryController extends Controller
         return view('leaves.balance');
     }
 
-    
-
-    public function rec_post()
-    {
-        return view('recruitment.post');
-
-    }
-
     public function rec_app()
     {
         return view('recruitment.applicants');

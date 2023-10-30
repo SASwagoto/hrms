@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\NoticeController;
@@ -146,7 +147,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/accounts/ledger', [AccountController::class, 'acc_ledger'])->name('acc.ledger');
 
     //Recruitment
-    Route::get('/recruitment/post', [TemporaryController::class, 'rec_post'])->name('rec.post');
+    Route::get('/jobs/post', [JobPostingController::class, 'create'])->name('jobs.post');
+    Route::post('/jobs/post/store', [JobPostingController::class, 'store'])->name('jobs.store');
     Route::get('/recruitment/applicants', [TemporaryController::class, 'rec_app'])->name('rec.app');
     Route::get('/recruitment/interview', [TemporaryController::class, 'rec_int'])->name('rec.int');
     Route::get('/recruitment/onboarding', [TemporaryController::class, 'rec_on'])->name('rec.on');

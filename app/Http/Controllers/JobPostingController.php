@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPosting;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class JobPostingController extends Controller
 {
@@ -12,7 +13,7 @@ class JobPostingController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,7 +21,7 @@ class JobPostingController extends Controller
      */
     public function create()
     {
-        //
+        return view('recruitment.post');
     }
 
     /**
@@ -28,7 +29,21 @@ class JobPostingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $un = rand(00000, 99999);
+        $data['unique_tracking_number'] = $un;
+        $job = JobPosting::create($data);
+
+        if ($request->hasFile('file_path')) {
+            $file = $request->file('file_path');
+            $fileName = $request->job_title.'-'.time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/jobs'), $fileName);
+
+            $job->file_path = $fileName;
+            $job->save();
+        }
+        Alert::success('Success', $job->job_title.' Posted Successfully!');
+        return redirect()->back();
     }
 
     /**

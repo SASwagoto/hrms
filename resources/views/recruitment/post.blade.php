@@ -14,7 +14,7 @@
 @section('content')
 <div class="row">
     <div class="col-xl-12">
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{route('jobs.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <div class="card-header">
@@ -25,12 +25,12 @@
                         <div class="col-xl-12">
                             <div class="mb-3">
                                 <label class="form-label text-primary">Job Title<span class="required">*</span></label>
-                                <input type="text" name="job_title" class="form-control"
+                                <input type="text" name="job_title" required class="form-control"
                                     placeholder="Job Title">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Company<span class="required">*</span></label>
-                                <input type="text" name="company" class="form-control"
+                                <input type="text" name="company" required class="form-control"
                                     placeholder="Company">
                             </div> 
                         </div>
@@ -141,7 +141,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Files<span class="required">*</span></label>
-                                <input class="form-control" type="file" id="formFile">
+                                <input class="form-control" name="file_path" type="file" id="formFile">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Job Description<span class="required">*</span></label>

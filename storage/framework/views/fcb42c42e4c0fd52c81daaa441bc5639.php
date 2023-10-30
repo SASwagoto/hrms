@@ -81,7 +81,7 @@
                     <span class="nav-text"><?php echo e(__('menu.recruitment')); ?></span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="<?php echo e(route('rec.post')); ?>"><?php echo e(__('menu.job.postings')); ?></a></li>
+                    <li><a href="<?php echo e(route('jobs.post')); ?>"><?php echo e(__('menu.job.postings')); ?></a></li>
                     <li><a href="<?php echo e(route('rec.app')); ?>"><?php echo e(__('menu.applicants')); ?></a></li>
                     <li><a href="<?php echo e(route('rec.int')); ?>"><?php echo e(__('menu.interviews')); ?></a></li>
                     <li><a href="<?php echo e(route('rec.on')); ?>"><?php echo e(__('menu.onboarding')); ?></a></li>
