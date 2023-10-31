@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\LeaveController;
@@ -33,10 +34,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('auth.login');
+})->name('login');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/homepage', [HomeController::class,'index'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -121,7 +125,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/leave/store', [LeaveController::class,'store'])->name('leave.store');
     Route::get('/leave/request/add', [LeaveController::class,'leave_add_req'])->name('leave.add_req');
     Route::post('/leave/request/store', [LeaveController::class,'request_store'])->name('leave.request.store');
-    Route::get('/leave/request/approve/{leaverequest}', [LeaveController::class,'request_approve'])->name('leave.approve');
+    Route::get('/leave/request/approve/{leaveRequest}', [LeaveController::class,'approve_request'])->name('leave.approve');
     Route::get('/leave/requests', [LeaveController::class,'leave_request'])->name('leave.request');
     Route::get('/leave/policy', [LeaveController::class,'leave_policy'])->name('leave.policy');
 

@@ -10,6 +10,7 @@ use App\Models\LeaveBalance;
 use App\Models\LeavePolicy;
 use App\Models\LeaveRequest;
 use App\Models\Team;
+use Auth;
 use DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -120,6 +121,10 @@ class LeaveController extends Controller
 
     public function leave_request()
     {
+        if (Auth::user()->role('Super-Admin', 'HR')) 
+        {
+            $leave_requests = LeaveRequest::where('status', 1)->orderBy('created_at','asc')->get();
+        }
         $team = Team::where('leader_id', auth()->user()->id)->first();
         $leave_requests = collect(); // Initialize a collection to store leave requests
 
@@ -139,9 +144,25 @@ class LeaveController extends Controller
         return view('leaves.request', compact('leave_requests'));
     }
 
-    public function approve_request(Request $request)
+    public function approve_request(LeaveRequest $leaveRequest)
     {
-        return $request;
+
+        if($leaveRequest->status == 1){
+            $leaveRequest->update([
+                'status'=> 2,
+                'next_approvedBy' => auth()->user()->id,
+                'next_approved_at'=> now(),
+            ]);
+        }
+
+        $leaveRequest->update([
+            'status'=> 1,
+            'approvedBy' => auth()->user()->id,
+            'approved_at'=> now(),
+        ]);
+
+        Alert::success('Approved', 'Leave Request Approved');
+        return redirect()->back();
     }
 
     
