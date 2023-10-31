@@ -87,8 +87,23 @@ class WorkShiftController extends Controller
 
     public function schedule_index()
     {
-        $users = User::role('Employee')->orderBy('name', 'asc')->get();
+        $users = User::role('Employee')
+        ->orderBy('name', 'asc')
+        ->doesntHave('workShifts')
+        ->get();
         $shifts = WorkShift::active()->get();
         return view('attendance.schedule', compact('users','shifts'));
+    }
+
+    public function assignSchedule(Request $request)
+    {
+        $workShift = WorkShift::find($request->shift_id);
+        $user = User::find($request->user_id);
+
+        $user->workShifts()->attach($workShift->id);
+
+        Alert::success('Assign','Successfully Assign Shift.');
+        return redirect()->back();
+
     }
 }

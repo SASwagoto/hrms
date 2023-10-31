@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $depts = Department::active()->get();
-        $employees = Employee::orderBy("created_at", "desc")->paginate(5);
+        $employees = Employee::orderBy("created_at", "desc")->paginate(10);
         return view('employee.list', compact('employees', 'depts'));
     }
 

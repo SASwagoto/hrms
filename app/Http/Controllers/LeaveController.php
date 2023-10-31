@@ -13,15 +13,21 @@ use App\Models\Team;
 use DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 
 class LeaveController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $leave_requests = LeaveRequest::where('emp_id', auth()->user()->id)->get();
+        $leave_requests = LeaveRequest::where('user_id', auth()->user()->id)->get();
         return view('leaves.list', compact('leave_requests'));
     }
 
@@ -91,7 +97,7 @@ class LeaveController extends Controller
     {
         
         LeaveRequest::create([
-            'emp_id'=> $request->emp_id,
+            'user_id'=> $request->user_id,
             'leave_id'=> $request->leave_id,
             'reason'=> $request->reason,
             'start_date'=> $request->start_date,
@@ -102,7 +108,7 @@ class LeaveController extends Controller
         $availableBalance = Leave::active()->where('id', $request->leave_id)->first();
         $currentBalance = $availableBalance->days - $request->days;
         LeaveBalance::create([
-            'emp_id'=> $request->emp_id,
+            'user_id'=> $request->user_id,
             'leave_id'=> $request->leave_id,
             'current_balance'=> $currentBalance,
             'created_at'=> now(),
@@ -120,21 +126,30 @@ class LeaveController extends Controller
         if ($team) {
             foreach ($team->members as $member) {
                 $memberLeaveRequests = LeaveRequest::where('status', 0)
-                    ->where('emp_id', $member->id)
+                    ->where('user_id', $member->id)
                     ->orderBy('created_at', 'desc')
                     ->get();
                 
                 // Merge the member's leave requests into the main collection
                 $leave_requests = $leave_requests->merge($memberLeaveRequests);
             }
+        }else{
+            $leave_requests = LeaveRequest::where('status',0)->orderBy('created_at','asc')->get();
         }
         return view('leaves.request', compact('leave_requests'));
     }
 
+    public function approve_request(Request $request)
+    {
+        return $request;
+    }
+
+    
+
     public function getLeaveBalance($userId, $leaveId)
     {
         $leave = Leave::where('id', $leaveId)->first();
-        $leave_balance = LeaveBalance::where('employee_id', $userId)->where('leave_id', $leaveId)->first();
+        $leave_balance = LeaveBalance::where('user_id', $userId)->where('leave_id', $leaveId)->first();
         if ($leave_balance) {
             $currentBalance = $leave_balance->current_balance;
             return response()->json($currentBalance);

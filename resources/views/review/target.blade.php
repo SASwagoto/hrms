@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <label class="form-label text-primary">Select Employee<span
                                     class="required">*</span></label>
-                            <select id="employee-select" name="emp_id">
+                            <select id="employee-select" name="user_id">
                                 <option value="IM">Imran</option>
                                 <option value="SH">Shawon</option>
                             </select>

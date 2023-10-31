@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sector', [TeamController::class, 'sector'])->name('sector.index');
     Route::post('/sector/store', [TeamController::class, 'sector_store'])->name('sector.store');
     Route::put('/sector/update/{sector}', [TeamController::class, 'sector_update'])->name('sector.update');
+    Route::delete('/sector/delete/{sector}', [TeamController::class, 'sector_delete'])->name('sector.delete');
     Route::get('/sector/assign-team', [TeamController::class, 'sector_assign_team'])->name('sector.assign.tm');
     Route::post('/sector/assign-team/store', [TeamController::class, 'assign_team'])->name('assign.tm');
 
@@ -104,6 +105,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/create-permission', [RoleController::class, 'create_permission'])->name('permission.create');
     Route::get('/give-permission', [RoleController::class, 'assign_permission'])->name('permission.assign');
     Route::post('/give-permission/create', [RoleController::class, 'create_assign_permission'])->name('permission.assign.create');
+    Route::post('/assign-role/create', [RoleController::class, 'assignRole'])->name('assignRole');
     
     //Notice
     Route::get('/notice/list', [NoticeController::class,'index'])->name('notice.index');
@@ -119,6 +121,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/leave/store', [LeaveController::class,'store'])->name('leave.store');
     Route::get('/leave/request/add', [LeaveController::class,'leave_add_req'])->name('leave.add_req');
     Route::post('/leave/request/store', [LeaveController::class,'request_store'])->name('leave.request.store');
+    Route::get('/leave/request/approve/{leaverequest}', [LeaveController::class,'request_approve'])->name('leave.approve');
     Route::get('/leave/requests', [LeaveController::class,'leave_request'])->name('leave.request');
     Route::get('/leave/policy', [LeaveController::class,'leave_policy'])->name('leave.policy');
 
@@ -135,6 +138,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/shift/add', [WorkShiftController::class,'create'])->name('shift.add');
     Route::post('/shift/store', [WorkShiftController::class,'store'])->name('shift.store');
     Route::get('/shift/schedule', [WorkShiftController::class,'schedule_index'])->name('shift.schedule');
+    Route::post('/shift/assign', [WorkShiftController::class,'assignSchedule'])->name('shift.assign');
 
    
 

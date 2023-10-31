@@ -496,7 +496,7 @@ unset($__errorArgs, $__bag); ?></label>
                 // Populate form fields with the saved draft data
                 document.getElementsByName('first_name')[0].value = savedDraft.first_name || '';
                 document.getElementsByName('last_name')[0].value = savedDraft.last_name || '';
-                document.getElementsByName('emp_id')[0].value = savedDraft.emp_id || '';
+                document.getElementsByName('user_id')[0].value = savedDraft.user_id || '';
                 document.getElementsByName('username')[0].value = savedDraft.username || '';
                 document.getElementsByName('dept_name')[0].value = savedDraft.dept_name || '';
                 document.getElementsByName('position')[0].value = savedDraft.position || '';
@@ -527,7 +527,7 @@ unset($__errorArgs, $__bag); ?></label>
                 // Get and store the values of your specific form fields
                 first_name: document.getElementsByName('first_name')[0].value,
                 last_name: document.getElementsByName('last_name')[0].value,
-                emp_id: document.getElementsByName('emp_id')[0].value,
+                user_id: document.getElementsByName('user_id')[0].value,
                 username: document.getElementsByName('username')[0].value,
                 dept_name: document.getElementsByName('dept_name')[0].value,
                 position: document.getElementsByName('position')[0].value,

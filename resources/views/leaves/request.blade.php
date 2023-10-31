@@ -39,7 +39,7 @@
                                 <td>{{$leave_request->days}}</td>
                                 <td>
                                     <ul class="action_btn">
-                                        <li><a href="#"><i class="fa-solid fa-check fa-lg"
+                                        <li><a href="{{route('leave.approve', $leave_request->id)}}"><i class="fa-solid fa-check fa-lg"
                                                     style="color: #0aae25;"></i></a></li>
                                         <li><a href="#"><i class="fa-solid fa-times fa-lg"
                                                     style="color: #ff0000;"></i></a></li>

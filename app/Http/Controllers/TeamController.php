@@ -207,7 +207,7 @@ class TeamController extends Controller
     public function sector_delete(Sector $sector)
     {
         $sector->delete();
-        Alert::success('Deleted','Team Deleted Successfully!');
+        Alert::success('Deleted','Sector Deleted Successfully!');
         return redirect()->back();
     }
 

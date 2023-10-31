@@ -20,7 +20,7 @@
                             <div class="mb-3">
                                 <label for="employee" class="form-label text-primary">Employee</label>
                                 <input type="text" class="form-control" readonly value="<?php echo e(Auth::user()->name); ?>">
-                                <input type="hidden" name="emp_id" value="<?php echo e(Auth::user()->id); ?>">
+                                <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Leave Reason<span class="required">*</span></label>

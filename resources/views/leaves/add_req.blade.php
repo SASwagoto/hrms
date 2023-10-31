@@ -22,7 +22,7 @@
                             <div class="mb-3">
                                 <label for="employee" class="form-label text-primary">Employee</label>
                                 <input type="text" class="form-control" readonly value="{{Auth::user()->name}}">
-                                <input type="hidden" name="emp_id" value="{{Auth::user()->id}}">
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Leave Reason<span class="required">*</span></label>
@@ -100,7 +100,7 @@
     }
 </script>
 
-<script>
+{{-- <script>
     $(document).ready(function(){
         $('#leave_type').on('change', function(){
             var leaveID = $(this).val();
@@ -118,5 +118,5 @@
             });
         });
     });
-</script>
+</script> --}}
 @endpush

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -69,6 +70,16 @@ class RoleController extends Controller
             $role->givePermissionTo($permission);
         }
         return redirect()->route('permission.assign');
+    }
+
+    public function assignRole(Request $request)
+    {
+        $role = Role::find($request->role_id);
+        $user = User::find($request->user_id);
+        $user->assignRole($role->name);
+
+        Alert::success('Assigned', 'Assign role successfully!');
+        return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.

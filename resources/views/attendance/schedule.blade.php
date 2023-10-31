@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="" method="POST">
+                        <form action="{{route('shift.assign')}}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label text-primary">Select Employee<span

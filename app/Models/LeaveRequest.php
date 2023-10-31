@@ -12,10 +12,25 @@ class LeaveRequest extends Model
 
     protected $table = 'leave_request';
 
+    protected $fillable = [
+        'user_id',
+        'leave_id',
+        'reason',
+        'start_date',
+        'end_date',
+        'days',
+        'status',
+        'approvedBy',
+        'next_approvedBy',
+        'approved_at',
+        'next_approved_at',
+    ];
+    
+
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'emp_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function leave()

@@ -142,6 +142,10 @@
                                             </td>
                                         </tr>
                                         </form>
+                                        <form action="{{route('sector.delete', $sector->id)}}" id="delete-form{{ $key + 1 }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        </form>
                                         @empty
                                             <tr>
                                                 <td colspan="5" class="text-center">No Sector Found</td>

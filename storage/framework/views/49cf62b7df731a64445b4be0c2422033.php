@@ -144,6 +144,10 @@
                                             </td>
                                         </tr>
                                         </form>
+                                        <form action="<?php echo e(route('sector.delete', $sector->id)); ?>" id="delete-form<?php echo e($key + 1); ?>" method="post">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        </form>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <tr>
                                                 <td colspan="5" class="text-center">No Sector Found</td>

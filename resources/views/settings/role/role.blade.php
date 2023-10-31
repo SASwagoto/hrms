@@ -27,7 +27,7 @@
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{route('assignRole')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label text-primary">{{__('messages.select.user')}}<span
@@ -73,14 +73,14 @@
                     </thead>
                     <tbody>
                         @forelse ($users as $key => $user)
-                        <tr>
+                        <tr class="view-mode-row">
                             <td>{{$key+1}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->roles()->pluck('name')->implode(', ')}}</td>
+                            <td class="view-mode">{{$user->name}}</td>
+                            <td class="view-mode">{{$user->roles()->pluck('name')->implode(', ')}}</td>
                             <td>
                                 <ul class="action_btn">
                                     <li><a href="#"><i class="fa fa-pencil"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pencil"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-times text-danger"></i></a></li>
                                 </ul>
                             </td>
                         </tr>

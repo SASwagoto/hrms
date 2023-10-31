@@ -24,7 +24,7 @@ return new class extends Migration
 
         Schema::create('leave_request', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('emp_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('leave_id');
             $table->string('reason');
             $table->date('start_date');
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('emp_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');
             $table->foreign('approvedBy')->references('id')->on('users')->onDelete('set null');
             $table->foreign('next_approvedBy')->references('id')->on('')->on('users')->onDelete('set null');
@@ -46,13 +46,13 @@ return new class extends Migration
 
         Schema::create('leave_balance', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('leave_id');
             $table->integer('current_balance')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');
         });
 

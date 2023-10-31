@@ -28,7 +28,7 @@
                                     <div class="mb-3">
                                         <label class="form-label text-primary">Select Employee<span
                                                 class="required">*</span></label>
-                                        <select id="employee-select" name="emp_id">
+                                        <select id="employee-select" name="user_id">
                                             <option value="">Employee 1</option>
                                             <option value="">Employee 2</option>
                                         </select>
@@ -47,7 +47,7 @@
                                 <label class="form-label text-primary">Tax Method<span
                                         class="required">*</span></label>
                                 <div class="d-flex">
-                                    <select id="tax-method" name="emp_id">
+                                    <select id="tax-method" name="user_id">
                                         <option value="">Value</option>
                                         <option value="">Percentage</option>
                                     </select>

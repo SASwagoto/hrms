@@ -66,6 +66,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class, 'team_has_members', 'user_id', 'team_id');
     }
 
+    public function workShifts()
+    {
+        return $this->belongsToMany(WorkShift::class, 'work_shift_has_users');
+    }
+
     public function customSoftDelete()
     {
         $this->delete();

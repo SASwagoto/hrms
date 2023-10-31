@@ -10,4 +10,12 @@ class LeaveBalance extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'leave_balance';
+
+    protected $fillable = [
+        'user_id',
+        'leave_id',
+        'current_balance',
+        // Add other fillable fields here if needed
+    ];
+    
 }
