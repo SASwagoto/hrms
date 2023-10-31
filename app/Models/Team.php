@@ -42,4 +42,12 @@ class Team extends Model
     {
         return $this->belongsToMany(User::class, 'team_has_members', 'team_id', 'user_id');
     }
+
+    public function customSoftDelete()
+    {
+        $this->delete();
+        if ($this->members->count() > 0) {
+        $this->members->delete();
+        }
+    }
 }

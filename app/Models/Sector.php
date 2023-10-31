@@ -27,4 +27,12 @@ class Sector extends Model
     {
         return $this->belongsToMany(Team::class, 'sector_has_teams', 'sector_id', 'team_id');
     }
+
+    public function customSoftDelete()
+    {
+        $this->delete();
+        if ($this->teams->count() > 0) {
+            $this->teams->delete();
+        }
+    }
 }

@@ -76,6 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/teams/remove-member', [TeamController::class,'removeMember'])->name('team.removeMember');
     Route::get('/team/show/{team}', [TeamController::class,'team_show'])->name('team.show');
     Route::put('/team/update/{team}', [TeamController::class,'team_update'])->name('team.update');
+    Route::delete('/team/delete/{team}', [TeamController::class,'team_delete'])->name('team.delete');
     
 
     //Zone

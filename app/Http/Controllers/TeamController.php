@@ -102,6 +102,13 @@ class TeamController extends Controller
         
     }
 
+    public function team_delete(Team $team)
+    {
+        $team->customSoftDelete();
+        Alert::success('Deleted','Team Deleted Successfully!');
+        return redirect()->back();
+    }
+
     public function zone()
     {
         $zones  = Zone::orderBy('id', 'desc')->get();
@@ -194,6 +201,13 @@ class TeamController extends Controller
             ]);
         }
         Alert::success('Success', 'Teams added successfully!');
+        return redirect()->back();
+    }
+
+    public function sector_delete(Sector $sector)
+    {
+        $sector->delete();
+        Alert::success('Deleted','Team Deleted Successfully!');
         return redirect()->back();
     }
 

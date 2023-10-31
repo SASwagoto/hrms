@@ -193,6 +193,10 @@
                                             </ul>
                                         </td>
                                         </form>
+                                        <form action="{{route('team.delete', $team->id)}}" id="delete-form{{ $key + 1 }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        </form>
                                         </tr>
                                         @empty
                                         <tr>
