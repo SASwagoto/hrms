@@ -10,7 +10,10 @@ class Zone extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = []; 
+    protected $fillable = [
+        'zone_name',
+        'isActive',
+    ];
 
     public function scopeActive($query)
     {

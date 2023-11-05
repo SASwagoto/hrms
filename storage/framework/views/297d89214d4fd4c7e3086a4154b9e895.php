@@ -95,111 +95,112 @@
                                     </thead>
                                     <tbody>
                                         <?php $__empty_1 = true; $__currentLoopData = $teams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                            <tr class="view-mode-row">
-                                                <form action="<?php echo e(route('team.update', $team->id)); ?>"
-                                                    id="updateForm<?php echo e($key + 1); ?>" method="POST">
-                                                    <?php echo csrf_field(); ?>
-                                                    <?php echo method_field('PUT'); ?>
-                                                    <td><?php echo e($key + 1); ?></td>
-                                                    <td class="view-mode"><?php echo e($team->team_name); ?></td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <input type="text" name="team_name"
-                                                            value="<?php echo e($team->team_name); ?>" class="form-control">
-                                                    </td>
-                                                    <td class="view-mode"><?php echo e($team->department->dept_name); ?></td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <select name="dept_id" class="form-control">
-                                                            <?php $__empty_2 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
-                                                                <option <?php if($dept->id == $team->department->id): ?> selected <?php endif; ?>
-                                                                    value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?>
+                                        <tr class="view-mode-row">
+                                            <form action="<?php echo e(route('team.update', $team->id)); ?>"
+                                                id="updateForm<?php echo e($key + 1); ?>" method="POST">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PUT'); ?>
+                                            <td><?php echo e($key + 1); ?></td>
+                                            <td class="view-mode"><?php echo e($team->team_name); ?></td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="text" name="team_name"
+                                                    value="<?php echo e($team->team_name); ?>" class="form-control">
+                                            </td>
+                                            <td class="view-mode"><?php echo e($team->department->dept_name); ?></td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select name="dept_id" class="form-control">
+                                                    <?php $__empty_2 = true; $__currentLoopData = $depts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
+                                                        <option <?php if($dept->id == $team->department->id): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($dept->id); ?>"><?php echo e($dept->dept_name); ?>
 
-                                                                </option>
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
-                                                                <option disabled value="">No Department found</option>
-                                                            <?php endif; ?>
-                                                        </select>
-                                                    </td>
-                                                    <td class="view-mode">
-                                                        <?php if($team->zone): ?>
-                                                            <?php echo e($team->zone->zone_name); ?>
+                                                        </option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
+                                                        <option disabled value="">No Department found</option>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </td>
+                                            <td class="view-mode">
+                                                <?php if($team->zone): ?>
+                                                    <?php echo e($team->zone->zone_name); ?>
 
-                                                        <?php else: ?>
-                                                            Not Assign
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <select id="zone-select" name="zone_id">
-                                                            <option value="">Options..</option>
-                                                            <?php $__empty_2 = true; $__currentLoopData = $zones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $zone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
-                                                                <option value="<?php echo e($zone->id); ?>"><?php echo e($zone->zone_name); ?>
-
-                                                                </option>
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
-                                                                <option>No Zone Found</option>
-                                                            <?php endif; ?>
-                                                        </select>
-                                                    </td>
-
-                                                    <td class="view-mode">
-                                                        <?php if($team->leader_id): ?>
-                                                            <?php echo e($team->leader->name); ?>
-
-                                                    </td>
                                                 <?php else: ?>
-                                                    Not Assigned
-                                        <?php endif; ?>
-                                        </td>
-                                        <td class="edit-mode" style="display: none;">
-                                            <select id="emp-select" class="form-control" name="leader_id">
-                                                <option value="">Choose..</option>
-                                                <?php $__empty_2 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
-                                                    <option <?php if($user->id == $team->leader_id): ?> selected <?php endif; ?>
-                                                        value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
-                                                    <option>No Employee Found</option>
+                                                    Not Assign
                                                 <?php endif; ?>
-                                            </select>
-                                        </td>
-                                        <td class="view-mode" data-column-name="isActive">
-                                            <span
-                                                class="badge <?php echo e($team->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($team->isActive ? 'Active' : 'Inactive'); ?></span>
-                                        </td>
-                                        <td class="edit-mode" style="display: none;">
-                                            <input type="checkbox" name="isActive"
-                                                <?php if($team->isActive): ?> checked <?php endif; ?>>
-                                        </td>
-                                        <td>
-                                            <ul class="action_btn">
-                                                <li>
-                                                    <a href="javascript:void(0);" class="edit-button">
-                                                        <i class="fa-solid fa-pen-to-square fa-xl"
-                                                            style="color: #347af4;"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);" class="save-button"
-                                                        onclick="document.getElementById('updateForm<?php echo e($key + 1); ?>').submit()"
-                                                        style="display: none;">
-                                                        <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="view-mode">
-                                                    <a href="<?php echo e(route('team.show', $team->id)); ?>">
-                                                        <i class="fa-solid fa-circle-info fa-xl"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="view-mode"><a href="javascript:void(0);"
-                                                        onclick="document.getElementById('delete-form<?php echo e($key + 1); ?>').submit()"><i
-                                                            class="fa-solid fa-trash fa-xl"
-                                                            style="color: #ff0000;"></i></a></li>
-                                            </ul>
-                                        </td>
-                                        </form>
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select id="zone-select" name="zone_id">
+                                                    <option value="">Options..</option>
+                                                    <?php $__empty_2 = true; $__currentLoopData = $zones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $zone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
+                                                        <option value="<?php echo e($zone->id); ?>"><?php echo e($zone->zone_name); ?>
+
+                                                        </option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
+                                                        <option>No Zone Found</option>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </td>
+
+                                            <td class="view-mode">
+                                                <?php if($team->leader_id): ?>
+                                                    <?php echo e($team->leader->name); ?>
+
+                                                <?php else: ?>
+                                                    Not Assign
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select id="emp-select" class="form-control" name="leader_id">
+                                                    <option value="">Choose..</option>
+                                                    <?php $__empty_2 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
+                                                        <option <?php if($user->id == $team->leader_id): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
+                                                        <option>No Employee Found</option>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </td>
+                                            <td class="view-mode" data-column-name="isActive">
+                                                <span
+                                                    class="badge <?php echo e($team->isActive ? 'badge-success' : 'badge-danger'); ?> light"><?php echo e($team->isActive ? 'Active' : 'Inactive'); ?></span>
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="checkbox" name="isActive"
+                                                    <?php if($team->isActive): ?> checked <?php endif; ?>>
+                                            </td>
+                                            <td>
+                                                <ul class="action_btn">
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="edit-button">
+                                                            <i class="fa-solid fa-pen-to-square fa-xl"
+                                                                style="color: #347af4;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="save-button"
+                                                            onclick="document.getElementById('updateForm<?php echo e($key + 1); ?>').submit()"
+                                                            style="display: none;">
+                                                            <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="view-mode">
+                                                        <a href="<?php echo e(route('team.show', $team->id)); ?>">
+                                                            <i class="fa-solid fa-circle-info fa-xl"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="view-mode"><a href="javascript:void(0);"
+                                                            onclick="document.getElementById('delete-form<?php echo e($key + 1); ?>').submit()"><i
+                                                                class="fa-solid fa-trash fa-xl"
+                                                                style="color: #ff0000;"></i></a></li>
+                                                </ul>
+                                            </td>
+                                            </form>
+                                            <form action="<?php echo e(route('team.delete', $team->id)); ?>" id="delete-form<?php echo e($key + 1); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
+                                            </form>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <tr>
-                                            <td colspan="7" class="text-center">No Team Found</td>
-                                        </tr>
+                                            
                                         <?php endif; ?>
                                     </tbody>
                                 </table>

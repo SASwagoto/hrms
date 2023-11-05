@@ -56,7 +56,7 @@
                                     <tbody>
                                         @forelse ($departments as $key => $dept)
                                             <tr class="view-mode-row">
-                                                <form action="{{route('dept.update', $dept->id)}}" method="POST" id="updateForm{{$key+1}}">
+                                                <form action="{{route('dept.update', $dept->slug)}}" method="POST" id="updateForm{{$key+1}}">
                                                 @csrf
                                                 @method('PUT')
                                                 <td>{{ $key + 1 }}</td>

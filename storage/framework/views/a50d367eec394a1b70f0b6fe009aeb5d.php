@@ -54,7 +54,7 @@
                                     <tbody>
                                         <?php $__empty_1 = true; $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dept): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                             <tr class="view-mode-row">
-                                                <form action="<?php echo e(route('dept.update', $dept->id)); ?>" method="POST" id="updateForm<?php echo e($key+1); ?>">
+                                                <form action="<?php echo e(route('dept.update', $dept->slug)); ?>" method="POST" id="updateForm<?php echo e($key+1); ?>">
                                                 <?php echo csrf_field(); ?>
                                                 <?php echo method_field('PUT'); ?>
                                                 <td><?php echo e($key + 1); ?></td>
@@ -80,7 +80,7 @@
                                                                 <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
                                                             </a>
                                                         </li>
-                                                        <li><a href="javascript:void(0);" onclick="document.getElementById('delete-form<?php echo e($dept->id); ?>').submit()"><i class="fa-solid fa-trash fa-xl"
+                                                        <li class="view-mode"><a href="javascript:void(0);" onclick="document.getElementById('delete-form<?php echo e($dept->id); ?>').submit()"><i class="fa-solid fa-trash fa-xl"
                                                             style="color: #ff0000;"></i></a></li>
                                                     </ul>
                                                 </td>

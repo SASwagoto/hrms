@@ -10,5 +10,11 @@ class Policy extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'policies',
+        'isActive',
+        'created_by',
+        'approved_by',
+    ];
 }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('category')->nullable();
+            $table->string('doc_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

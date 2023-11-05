@@ -163,7 +163,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/recruitment/onboarding', [TemporaryController::class, 'rec_on'])->name('rec.on');
 
     //Documents & policy
-    Route::get('/documents/doc', [TemporaryController::class, 'documents_doc'])->name('documents.doc');
+    Route::get('/documents', [PolicyController::class, 'documents_doc'])->name('documents.doc');
+    Route::post('/documents/store', [PolicyController::class, 'document_store'])->name('doc.store');
     Route::get('/policies', [PolicyController::class, 'index'])->name('policy.index');
     Route::get('/policies/add', [PolicyController::class, 'create'])->name('policy.create');
     Route::post('/policies/store', [PolicyController::class, 'store'])->name('policy.store');

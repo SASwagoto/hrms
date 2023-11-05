@@ -10,5 +10,13 @@ class Holiday extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'type',
+        'start_date',
+        'end_date',
+        'description',
+        'days',
+        'isActive',
+    ];
 }

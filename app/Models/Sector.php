@@ -11,7 +11,11 @@ class Sector extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = []; 
+    protected $fillable = [
+        'sector_name',
+        'sector_leader',
+        'isActive',
+    ];
 
     public function scopeActive($query)
     {

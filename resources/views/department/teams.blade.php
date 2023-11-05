@@ -97,111 +97,108 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($teams as $key => $team)
-                                            <tr class="view-mode-row">
-                                                <form action="{{ route('team.update', $team->id) }}"
-                                                    id="updateForm{{ $key + 1 }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td class="view-mode">{{ $team->team_name }}</td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <input type="text" name="team_name"
-                                                            value="{{ $team->team_name }}" class="form-control">
-                                                    </td>
-                                                    <td class="view-mode">{{ $team->department->dept_name }}</td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <select name="dept_id" class="form-control">
-                                                            @forelse ($depts as $dept)
-                                                                <option @if ($dept->id == $team->department->id) selected @endif
-                                                                    value="{{ $dept->id }}">{{ $dept->dept_name }}
-                                                                </option>
-                                                            @empty
-                                                                <option disabled value="">No Department found</option>
-                                                            @endforelse
-                                                        </select>
-                                                    </td>
-                                                    <td class="view-mode">
-                                                        @if ($team->zone)
-                                                            {{ $team->zone->zone_name }}
-                                                        @else
-                                                            Not Assign
-                                                        @endif
-                                                    </td>
-                                                    <td class="edit-mode" style="display: none;">
-                                                        <select id="zone-select" name="zone_id">
-                                                            <option value="">Options..</option>
-                                                            @forelse ($zones as $zone)
-                                                                <option value="{{ $zone->id }}">{{ $zone->zone_name }}
-                                                                </option>
-                                                            @empty
-                                                                <option>No Zone Found</option>
-                                                            @endforelse
-                                                        </select>
-                                                    </td>
-
-                                                    <td class="view-mode">
-                                                        @if ($team->leader_id)
-                                                            {{ $team->leader->name }}
-                                                    </td>
+                                        <tr class="view-mode-row">
+                                            <form action="{{ route('team.update', $team->id) }}"
+                                                id="updateForm{{ $key + 1 }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                            <td>{{ $key + 1 }}</td>
+                                            <td class="view-mode">{{ $team->team_name }}</td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="text" name="team_name"
+                                                    value="{{ $team->team_name }}" class="form-control">
+                                            </td>
+                                            <td class="view-mode">{{ $team->department->dept_name }}</td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select name="dept_id" class="form-control">
+                                                    @forelse ($depts as $dept)
+                                                        <option @if ($dept->id == $team->department->id) selected @endif
+                                                            value="{{ $dept->id }}">{{ $dept->dept_name }}
+                                                        </option>
+                                                    @empty
+                                                        <option disabled value="">No Department found</option>
+                                                    @endforelse
+                                                </select>
+                                            </td>
+                                            <td class="view-mode">
+                                                @if ($team->zone)
+                                                    {{ $team->zone->zone_name }}
                                                 @else
-                                                    Not Assigned
-                                        @endif
-                                        </td>
-                                        <td class="edit-mode" style="display: none;">
-                                            <select id="emp-select" class="form-control" name="leader_id">
-                                                <option value="">Choose..</option>
-                                                @forelse ($users as $user)
-                                                    <option @if ($user->id == $team->leader_id) selected @endif
-                                                        value="{{ $user->id }}">{{ $user->name }}</option>
-                                                @empty
-                                                    <option>No Employee Found</option>
-                                                @endforelse
-                                            </select>
-                                        </td>
-                                        <td class="view-mode" data-column-name="isActive">
-                                            <span
-                                                class="badge {{ $team->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $team->isActive ? 'Active' : 'Inactive' }}</span>
-                                        </td>
-                                        <td class="edit-mode" style="display: none;">
-                                            <input type="checkbox" name="isActive"
-                                                @if ($team->isActive) checked @endif>
-                                        </td>
-                                        <td>
-                                            <ul class="action_btn">
-                                                <li>
-                                                    <a href="javascript:void(0);" class="edit-button">
-                                                        <i class="fa-solid fa-pen-to-square fa-xl"
-                                                            style="color: #347af4;"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0);" class="save-button"
-                                                        onclick="document.getElementById('updateForm{{ $key + 1 }}').submit()"
-                                                        style="display: none;">
-                                                        <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="view-mode">
-                                                    <a href="{{route('team.show', $team->id)}}">
-                                                        <i class="fa-solid fa-circle-info fa-xl"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="view-mode"><a href="javascript:void(0);"
-                                                        onclick="document.getElementById('delete-form{{ $key + 1 }}').submit()"><i
-                                                            class="fa-solid fa-trash fa-xl"
-                                                            style="color: #ff0000;"></i></a></li>
-                                            </ul>
-                                        </td>
-                                        </form>
-                                        <form action="{{route('team.delete', $team->id)}}" id="delete-form{{ $key + 1 }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        </form>
+                                                    Not Assign
+                                                @endif
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select id="zone-select" name="zone_id">
+                                                    <option value="">Options..</option>
+                                                    @forelse ($zones as $zone)
+                                                        <option value="{{ $zone->id }}">{{ $zone->zone_name }}
+                                                        </option>
+                                                    @empty
+                                                        <option>No Zone Found</option>
+                                                    @endforelse
+                                                </select>
+                                            </td>
+
+                                            <td class="view-mode">
+                                                @if ($team->leader_id)
+                                                    {{ $team->leader->name }}
+                                                @else
+                                                    Not Assign
+                                                @endif
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <select id="emp-select" class="form-control" name="leader_id">
+                                                    <option value="">Choose..</option>
+                                                    @forelse ($users as $user)
+                                                        <option @if ($user->id == $team->leader_id) selected @endif
+                                                            value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @empty
+                                                        <option>No Employee Found</option>
+                                                    @endforelse
+                                                </select>
+                                            </td>
+                                            <td class="view-mode" data-column-name="isActive">
+                                                <span
+                                                    class="badge {{ $team->isActive ? 'badge-success' : 'badge-danger' }} light">{{ $team->isActive ? 'Active' : 'Inactive' }}</span>
+                                            </td>
+                                            <td class="edit-mode" style="display: none;">
+                                                <input type="checkbox" name="isActive"
+                                                    @if ($team->isActive) checked @endif>
+                                            </td>
+                                            <td>
+                                                <ul class="action_btn">
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="edit-button">
+                                                            <i class="fa-solid fa-pen-to-square fa-xl"
+                                                                style="color: #347af4;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="save-button"
+                                                            onclick="document.getElementById('updateForm{{ $key + 1 }}').submit()"
+                                                            style="display: none;">
+                                                            <i class="fa-solid fa-check fa-xl" style="color: #00ff00;"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="view-mode">
+                                                        <a href="{{route('team.show', $team->id)}}">
+                                                            <i class="fa-solid fa-circle-info fa-xl"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="view-mode"><a href="javascript:void(0);"
+                                                            onclick="document.getElementById('delete-form{{ $key + 1 }}').submit()"><i
+                                                                class="fa-solid fa-trash fa-xl"
+                                                                style="color: #ff0000;"></i></a></li>
+                                                </ul>
+                                            </td>
+                                            </form>
+                                            <form action="{{route('team.delete', $team->id)}}" id="delete-form{{ $key + 1 }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            </form>
                                         </tr>
                                         @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">No Team Found</td>
-                                        </tr>
+                                            
                                         @endforelse
                                     </tbody>
                                 </table>

@@ -12,7 +12,11 @@ class Position extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];  
+    protected $fillable = [
+        'position_name',
+        'dept_id',
+        'isActive',
+    ]; 
 
     public function scopeActive($query)
     {

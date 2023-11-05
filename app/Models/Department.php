@@ -11,7 +11,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Department extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = [];  
+    protected $fillable = [
+        'dept_name',
+        'slug',
+        'isActive',
+    ];
 
     public function getRouteKeyName()
     {

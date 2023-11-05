@@ -10,8 +10,13 @@ class Leave extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
-
+    protected $fillable = [
+        'name',
+        'type',
+        'comments',
+        'days',
+        'isActive',
+    ];
 
     public function scopeActive($query)
     {

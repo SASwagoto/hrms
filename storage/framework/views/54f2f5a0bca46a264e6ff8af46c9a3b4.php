@@ -41,7 +41,7 @@
         }
         .pagination{
             float: inline-end;
-            margin-right: 5px;
+            margin: 10px 0px;
         }
     </style>
 	<link rel="stylesheet" href="<?php echo e(asset('assets')); ?>/css/custom.css">

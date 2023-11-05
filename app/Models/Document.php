@@ -10,5 +10,10 @@ class Document extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'description',
+        'category',
+        'doc_file',
+    ];
 }

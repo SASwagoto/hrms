@@ -52,12 +52,6 @@ class TemporaryController extends Controller
         return view('recruitment.onboarding');
 
     }
-
-    public function documents_doc()
-    {
-        return view('documents.doc');
-
-    }
     public function documents_add()
     {
         return view('documents.add');

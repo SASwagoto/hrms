@@ -12,7 +12,13 @@ class Team extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'team_name',
+        'leader_id',
+        'dept_id',
+        'zone_id',
+        'isActive',
+    ];
 
     public function scopeActive($query)
     {

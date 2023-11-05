@@ -14,7 +14,26 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'first_name',
+        'last_name',
+        'username',
+        'employee_id',
+        'phone_number',
+        'dob',
+        'marital_status',
+        'blood_group',
+        'gender',
+        'religion',
+        'nid',
+        'present_address',
+        'permanent_address',
+        'dept_id',
+        'position_id',
+        'profile_img',
+        'join_date',
+    ];
 
     public function getRouteKeyName()
     {

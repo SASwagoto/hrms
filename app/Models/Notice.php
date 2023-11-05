@@ -11,7 +11,17 @@ class Notice extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'notice_date',
+        'notice_to',
+        'noticefile',
+        'description',
+        'isApproved',
+        'approved_by',
+        'created_by',
+        'approved_at',
+    ];
 
     public function createdBy()
     {

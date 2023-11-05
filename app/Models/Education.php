@@ -11,7 +11,16 @@ class Education extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'exam',
+        'institute',
+        'subject',
+        'group',
+        'session_year',
+        'pass_year',
+        'result',
+    ];
 
     public function employee()
     {

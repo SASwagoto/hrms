@@ -10,5 +10,19 @@ class Site extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];  
+    protected $fillable = [
+        'app_title',
+        'company_name',
+        'company_email',
+        'company_phone',
+        'about_us',
+        'fb_url',
+        'twitter_url',
+        'linkedin_url',
+        'insta_url',
+        'footer_title',
+        'footer_url',
+        'app_logo',
+        'fav_icon',
+    ];
 }

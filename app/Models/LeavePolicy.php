@@ -10,4 +10,9 @@ class LeavePolicy extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'leave_policy';
+
+    protected $fillable = [
+        'leave_id',
+        'policy',
+    ];
 }
