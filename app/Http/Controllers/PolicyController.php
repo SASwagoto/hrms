@@ -80,7 +80,7 @@ class PolicyController extends Controller
 
     }
 
-    public function document_add(Request $request)
+    public function document_store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title'=> 'required|string|max:255',

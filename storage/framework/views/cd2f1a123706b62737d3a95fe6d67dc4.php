@@ -51,6 +51,7 @@ use Illuminate\Support\Str;
                 </div>
             </div>
         </div>
+        
         <div class="col-xl-9 col-lg-9">
             <div class="card" id="bootstrap-table4">
                 <div class="card-header d-flex justify-content-between flex-wrap border-0 px-3">
