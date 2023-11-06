@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\JobPosting;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -21,7 +22,8 @@ class JobPostingController extends Controller
      */
     public function create()
     {
-        return view('recruitment.post');
+        $depts = Department::active()->get();
+        return view('recruitment.post', compact('depts'));
     }
 
     /**

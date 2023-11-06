@@ -27,7 +27,7 @@ return new class extends Migration
             $table->date('application_deadline')->nullable();
             $table->string('requisition_number')->nullable();
             $table->text('about_us')->nullable();
-            $table->string('department')->nullable();
+            $table->unsignedBigInteger('dept_id')->nullable();
             $table->text('requirements')->nullable();
             $table->string('experience')->nullable();
             $table->string('contact_information')->nullable();

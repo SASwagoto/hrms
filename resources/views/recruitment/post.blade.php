@@ -75,22 +75,21 @@
                             </div>
                         </div>
                         <div class="col-xl-4">
-                            
                             <div class="mb-3">
-                                <label class="form-label text-primary">Position<span class="required">*</span></label>
-                                <select name="pos_name" class="default-select form-control wide form-control">
-                                    <option value="">Pos 1</option>
-                                    <option value="">Pis 2</option>
-                                    <option value="">Pos 3</option>
+                                <label class="form-label text-primary">Department<span class="required">*</span></label>
+                                <select name="dept_id" id="department" class="default-select form-control wide form-control">
+                                    <option disabled selected value="">Selec Department</option>
+                                    @forelse ($depts as $dept)
+                                        <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                    @empty
+                                        <option disabled value="">No Dept Found</option>
+                                    @endforelse
                                 </select>
                             </div>
+                            
                             <div class="mb-3">
                                 <label class="form-label text-primary">Preferred Skills<span class="required">*</span></label>
-                                <select class="multi-select" name="states[]" multiple="multiple">
-                                    <option value="AL">Skills 1</option>
-                                    <option value="WY">Skills 2</option>
-                                    <option value="UI">Skills 3</option>
-                                </select>
+                                <input type="text" class="form-control" name="skils[]" placeholder="Preferred Skills">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Benefits<span class="required">*</span></label>
@@ -99,7 +98,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Application Deadline<span class="required">*</span></label>
-                                <input type="text" name="application_deadline" class="form-control"
+                                <input type="date" name="application_deadline" class="form-control"
                                     placeholder="Application Deadline">
                             </div>
                             <div class="mb-3">
@@ -113,21 +112,17 @@
                             </div>
                         </div>
                         <div class="col-xl-4">
-                            <div class="mb-3">
-                                <label class="form-label text-primary">Department<span class="required">*</span></label>
-                                <select name="dept_name" class="default-select form-control wide form-control">
-                                    <option value="">Dep 1</option>
-                                    <option value="">Dep 2</option>
-                                    <option value="">Dep 3</option>
+                            <div class="position mb-3">
+                                <label class="form-label text-primary">Select
+                                    positions<span class="required">*</span>
+                                </label>
+                                <select name="position_id" class="default-select form-control wide form-control mb-3">
+
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Requirements<span class="required">*</span></label>
-                                <select class="multi-select" name="states[]" multiple="multiple">
-                                    <option value="AL">Req 1</option>
-                                    <option value="WY">req 2</option>
-                                    <option value="UI">req 3</option>
-                                </select>
+                                <input type="text" name="requirements" id="" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-primary">Experience<span class="required">*</span></label>
@@ -164,4 +159,26 @@
 <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('assets') }}/vendor/select2/js/select2.full.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins-init/select2-init.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#department').on('change', function() {
+            var departmentId = $(this).val();
+            var positionSelect = $('#position');
+            positionSelect.prop('disabled', true); // Disable "Position" select while loading data.
+
+            $.ajax({
+                url: '/get-positions/' + departmentId,
+                type: 'GET',
+                success: function(data) {
+                    //console.log(data);
+                    $('.position').html(data);
+                },
+                error: function(xhr) {
+                    // Handle errors here.
+                }
+            });
+        });
+    });
+</script>
 @endpush
