@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,6 +15,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view("dashboard");
+        $employees = Employee::all();
+        $leave_req = LeaveRequest::all();
+        return view("dashboard", compact("employees", "leave_req"));
     }
 }

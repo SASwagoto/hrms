@@ -12,7 +12,8 @@
 
 <!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="{{asset('assets')}}/images/favicon.png" >
-	<link href="{{asset('assets')}}/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+    <link href="{{asset('assets')}}/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     @stack('css')
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -48,7 +49,7 @@
 </head>
 <body>
 
-    <div id="main-wrapper" class="wallet-open show">
+    <div id="main-wrapper" class="show">
 	
 
         @include('layouts.partials.header')
@@ -75,6 +76,7 @@
     
     <!-- Required vendors -->
     <script src="{{asset('assets')}}/vendor/global/global.min.js"></script>
+    <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     @stack('js')
     
     <script src="{{asset('assets')}}/js/custom.min.js"></script>

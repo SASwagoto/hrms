@@ -118,7 +118,7 @@
 
 @push('js')
     <!-- Datatable -->
-    <script src="{{ asset('assets') }}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
     <script src="{{ asset('assets') }}/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins-init/datatables.init.js"></script>
     <script src="{{ asset('assets') }}/vendor/wow-master/dist/wow.min.js"></script>

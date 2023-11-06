@@ -12,7 +12,8 @@
 
 <!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="<?php echo e(asset('assets')); ?>/images/favicon.png" >
-	<link href="<?php echo e(asset('assets')); ?>/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <?php echo $__env->yieldPushContent('css'); ?>
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -48,7 +49,7 @@
 </head>
 <body>
 
-    <div id="main-wrapper" class="wallet-open show">
+    <div id="main-wrapper" class="show">
 	
 
         <?php echo $__env->make('layouts.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -75,6 +76,7 @@
     
     <!-- Required vendors -->
     <script src="<?php echo e(asset('assets')); ?>/vendor/global/global.min.js"></script>
+    <script src="<?php echo e(asset('assets')); ?>/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <?php echo $__env->yieldPushContent('js'); ?>
     
     <script src="<?php echo e(asset('assets')); ?>/js/custom.min.js"></script>
